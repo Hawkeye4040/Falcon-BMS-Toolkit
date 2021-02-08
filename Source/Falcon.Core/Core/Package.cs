@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Falcon.Core
 {
-    public sealed class Package
+    public sealed class Package : ICloneable
     {
         #region Properties
 
@@ -54,10 +54,7 @@ namespace Falcon.Core
         {
             List<Pilot> pilots = new List<Pilot>();
 
-            foreach (Flight packageFlight in package.Flights)
-            {
-                pilots.AddRange(packageFlight.Pilots);
-            }
+            foreach (Flight packageFlight in package.Flights) pilots.AddRange(packageFlight.Pilots);
 
             return pilots;
         }
@@ -75,6 +72,11 @@ namespace Falcon.Core
         public bool Remove(Flight flight)
         {
             return Flights.Remove(flight);
+        }
+
+        public object Clone()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
