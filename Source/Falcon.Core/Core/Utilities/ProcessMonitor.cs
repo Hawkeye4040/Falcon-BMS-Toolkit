@@ -68,23 +68,28 @@ namespace Falcon.Radio.Utilities
 
         public void Start()
         {
-            if (OnProcessStartedCallback != null) ProcessStartMonitor.Start();
-            if (OnProcessStoppedCallback != null) ProcessStopMonitor.Start();
+            if (OnProcessStartedCallback != null)
+                ProcessStartMonitor.Start();
+
+            if (OnProcessStoppedCallback != null)
+                ProcessStopMonitor.Start();
         }
 
 
         public void Stop()
         {
-            if (OnProcessStartedCallback != null) ProcessStartMonitor.Stop();
-            if (OnProcessStoppedCallback != null) ProcessStopMonitor.Stop();
+            if (OnProcessStartedCallback != null) 
+                ProcessStartMonitor.Stop();
+            if (OnProcessStoppedCallback != null)
+                ProcessStopMonitor.Stop();
         }
 
 
         private void OnProcessStarted(object sender, EventArrivedEventArgs managementEvent)
         {
-            string ProcessFilename = null;
+            string processFilename = null;
 
-            int ProcessID;
+            int processId;
 
             try
             {
@@ -93,14 +98,14 @@ namespace Falcon.Radio.Utilities
                 //  filename. (This could fail with an exception if the process closes in the time it takes
                 //  to get the filename, or access is denied because the process was started by the system.)
 
-                ProcessID = Convert.ToInt32(managementEvent.NewEvent.Properties["ProcessID"].Value);
+                processId = Convert.ToInt32(managementEvent.NewEvent.Properties["ProcessID"].Value);
 
-                if (Process.GetProcesses().Any(x => x.Id == ProcessID))
+                if (Process.GetProcesses().Any(x => x.Id == processId))
                 {
-                    ProcessModule processModule = Process.GetProcessById(ProcessID).MainModule;
+                    ProcessModule processModule = Process.GetProcessById(processId).MainModule;
 
                     if (processModule != null)
-                        ProcessFilename = processModule.FileName;
+                        processFilename = processModule.FileName;
                 }
             }
             catch (Exception)
@@ -108,15 +113,14 @@ namespace Falcon.Radio.Utilities
                 return;
             }
 
-            if (ProcessFilename != null)
-            {
-                //  Start tracking the process by adding it to the list, then pass the process ID and filename
-                //  to relevant callback.
+            if (processFilename == null) return;
+            //  Start tracking the process by adding it to the list, then pass the process ID and filename
+            //  to relevant callback.
 
-                if (!TrackedProcesses.ContainsKey(ProcessID)) TrackedProcesses.Add(ProcessID, ProcessFilename);
+            if (!TrackedProcesses.ContainsKey(processId)) 
+                TrackedProcesses.Add(processId, processFilename);
 
-                OnProcessStartedCallback(ProcessID, ProcessFilename);
-            }
+            OnProcessStartedCallback(processId, processFilename);
         }
 
         private void OnProcessStopped(object sender, EventArrivedEventArgs managementEvent)
@@ -137,7 +141,7 @@ namespace Falcon.Radio.Utilities
 
             catch (Exception)
             {
-                return;
+                // TODO: Log Exception.
             }
         }
 
@@ -145,7 +149,7 @@ namespace Falcon.Radio.Utilities
 
         #region Delegates
 
-        public delegate void Callback(int processID, string processFilename);
+        public delegate void Callback(int processId, string processFilename);
 
         #endregion
     }
