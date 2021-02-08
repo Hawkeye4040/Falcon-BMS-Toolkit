@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace Falcon.Planner.Server
+namespace Falcon.Planner
 {
     /// <summary>
     ///     Interaction logic for App.xaml

@@ -1,4 +1,4 @@
-﻿namespace Falcon.Planner.Server.Windows
+﻿namespace Falcon.Planner.Windows
 {
     /// <summary>
     ///     Interaction logic for MainWindow.xaml

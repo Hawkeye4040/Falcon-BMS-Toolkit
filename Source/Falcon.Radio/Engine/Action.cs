@@ -6,6 +6,7 @@ using System.Threading;
 using System.Windows;
 
 using Falcon.Core;
+using Falcon.Core.Utilities;
 
 using NAudio.Wave;
 

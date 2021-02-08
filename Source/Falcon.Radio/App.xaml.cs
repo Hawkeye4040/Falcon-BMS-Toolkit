@@ -5,8 +5,8 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Threading;
 
+using Falcon.Core.Utilities;
 using Falcon.Radio.Engine;
-using Falcon.Radio.Utilities;
 
 namespace Falcon.Radio
 {

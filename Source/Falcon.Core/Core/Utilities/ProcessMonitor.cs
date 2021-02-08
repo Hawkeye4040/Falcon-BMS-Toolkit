@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Management;
 
-namespace Falcon.Radio.Utilities
+namespace Falcon.Core.Utilities
 {
     public sealed class ProcessMonitor
     {
