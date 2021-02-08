@@ -21,7 +21,7 @@ namespace Falcon.Core
 
         //  Win32 APIs relating to Inter-process Communication:
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int RegisterWindowMessage(string message);
 
         [DllImport("user32.dll")]

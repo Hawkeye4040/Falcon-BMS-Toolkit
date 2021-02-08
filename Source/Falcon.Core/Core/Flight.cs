@@ -1,4 +1,6 @@
-﻿namespace Falcon.Core
+﻿using System.Collections.Generic;
+
+namespace Falcon.Core
 {
     public sealed class Flight
     {
@@ -8,6 +10,13 @@
 
         public Package Package { get; set; }
 
+        public List<Pilot> Pilots { get; set; }
+
         #endregion
+
+        public Flight()
+        {
+            Pilots = new List<Pilot>(4); 
+        }
     }
 }

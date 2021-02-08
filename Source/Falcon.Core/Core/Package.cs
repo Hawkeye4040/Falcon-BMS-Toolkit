@@ -50,6 +50,18 @@ namespace Falcon.Core
 
         #region Methods
 
+        public static List<Pilot> GetAllPilots(Package package)
+        {
+            List<Pilot> pilots = new List<Pilot>();
+
+            foreach (Flight packageFlight in package.Flights)
+            {
+                pilots.AddRange(packageFlight.Pilots);
+            }
+
+            return pilots;
+        }
+
         private static int GeneratePackageNumber()
         {
             throw new NotImplementedException();

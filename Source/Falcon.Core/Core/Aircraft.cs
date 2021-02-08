@@ -6,11 +6,9 @@
 
         public string Model { get; set; }
 
-        //public Pilot Pilot { get; set; }
+        public Pilot Pilot { get; set; }
 
         public Loadout Loadout { get; set; }
-
-
 
         #endregion
     }
