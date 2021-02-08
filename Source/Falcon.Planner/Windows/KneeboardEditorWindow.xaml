@@ -1,0 +1,208 @@
+﻿<Window x:Class="Falcon.Planner.Windows.KneeboardEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="clr-namespace:Falcon.UI;assembly=Falcon.UI"
+        mc:Ignorable="d"
+        Title="Kneeboard Editor"
+        WindowState="Maximized"
+        Width="1920" Height="1080"
+        Background="#353535">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="ui:MenuCommands.CloseWindow" Executed="CloseWindowCommand_OnExecuted" />
+    </Window.CommandBindings>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Menu Style="{StaticResource MainMenuStyle}">
+            <MenuItem Header="File" Template="{StaticResource MenuItemControlTemplate}">
+                <MenuItem Header="New" Template="{StaticResource SubMenuItemControlTemplate}">
+                    <MenuItem Header="Data Card" Icon="{StaticResource Icons.BinaryFile}" />
+                </MenuItem>
+                <MenuItem Header="Open" Template="{StaticResource SubMenuItemControlTemplate}">
+                    <MenuItem Header="Data Card" Icon="{StaticResource Icons.BinaryFile}" />
+                    <MenuItem Header="Kneeboard Package" Icon="{StaticResource Icons.Package}" />
+                </MenuItem>
+                <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
+                <MenuItem Header="Save" Icon="{StaticResource Icons.Save}" />
+                <MenuItem Header="Save As" Icon="{StaticResource Icons.SaveAs}" />
+                <MenuItem Header="Save All" Icon="{StaticResource Icons.SaveAll}" />
+                <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
+                <MenuItem Header="Import" Icon="{StaticResource Icons.Import}" />
+                <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
+                <MenuItem Header="Close" Icon="{StaticResource Icons.Close}" Command="ui:MenuCommands.CloseWindow" />
+            </MenuItem>
+
+            <MenuItem Header="Edit" Template="{StaticResource MenuItemControlTemplate}">
+                <MenuItem Header="Undo" Icon="{StaticResource Icons.Undo}" />
+                <MenuItem Header="Redo" Icon="{StaticResource Icons.Redo}" />
+                <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
+                <MenuItem Header="Cut" Icon="{StaticResource Icons.Cut}" />
+                <MenuItem Header="Copy" Icon="{StaticResource Icons.Copy}" />
+                <MenuItem Header="Paste" Icon="{StaticResource Icons.Paste}" />
+                <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
+                <MenuItem Header="Delete" Icon="{StaticResource Icons.Cancel}" />
+            </MenuItem>
+
+            <MenuItem Header="View" Template="{StaticResource MenuItemControlTemplate}" />
+
+            <MenuItem Header="Build" Template="{StaticResource MenuItemControlTemplate}">
+                <MenuItem Header="Kneeboard Package" Icon="{StaticResource Icons.Package}" />
+                <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
+                <MenuItem Header="Build &amp; Send to BMS" Icon="{StaticResource Icons.BMS}" />
+            </MenuItem>
+        </Menu>
+
+        <Grid x:Name="DocumentPanel" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Toolbar -->
+
+            <Grid Grid.Row="0">
+                <ToolBar Background="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="NewButton" Command="ui:MenuCommands.NewKneeboard" Margin="15,0,0,0"
+                                Content="{StaticResource Icons.NewFile}" Style="{DynamicResource ToolBarButtonStyle}" />
+                        <Button x:Name="OpenButton" Command="ui:MenuCommands.NewKneeboard" Margin="2,0,0,0"
+                                Content="{StaticResource Icons.OpenFile}" Style="{StaticResource ToolBarButtonStyle}" />
+                        <Button x:Name="SaveButton" Command="ui:MenuCommands.NewKneeboard" Margin="2,0,0,0"
+                                Content="{StaticResource Icons.Save}" Style="{StaticResource ToolBarButtonStyle}" />
+                        <Button x:Name="SaveAllButton" Command="ui:MenuCommands.NewKneeboard" Margin="2,0,0,0"
+                                Content="{StaticResource Icons.SaveAll}" Style="{StaticResource ToolBarButtonStyle}" />
+                        <Button x:Name="UndoButton" Command="ui:MenuCommands.NewKneeboard" Margin="2,0,0,0"
+                                Content="{StaticResource Icons.Undo}" Style="{StaticResource ToolBarButtonStyle}" />
+                        <Button x:Name="RedoButton" Command="ui:MenuCommands.NewKneeboard" Margin="2,0,0,0"
+                                Content="{StaticResource Icons.Redo}" Style="{StaticResource ToolBarButtonStyle}" />
+                    </StackPanel>
+                </ToolBar>
+            </Grid>
+
+            <!-- Document Tab -->
+
+            <TabControl Grid.Row="1" Background="Transparent" SelectedIndex="0">
+                <TabItem Style="{DynamicResource DocumentTabItemStyle}">
+
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Briefing.dtc" Margin="15,0,5,0" VerticalAlignment="Center" />
+                            <ToggleButton Content="{StaticResource Icons.PushPinUnPin}" Background="Transparent"
+                                          BorderBrush="Transparent" VerticalAlignment="Center"
+                                          Style="{StaticResource PinItemToggleButtonStyle}" />
+                            <Button Content="{StaticResource Icons.Close}" Background="Transparent"
+                                    BorderBrush="Transparent" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </TabItem.Header>
+
+                    <TabItem.Content>
+                        <FlowDocumentReader HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ViewingMode="Page">
+                            
+                        </FlowDocumentReader>
+                    </TabItem.Content>
+                </TabItem>
+
+                <TabItem Style="{StaticResource DocumentTabItemStyle}">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Weather.dtc" Margin="15,0,5,0" VerticalAlignment="Center" />
+                            <ToggleButton Content="{StaticResource Icons.PushPinUnPin}" Background="Transparent"
+                                          BorderBrush="Transparent" VerticalAlignment="Center"
+                                          Style="{StaticResource PinItemToggleButtonStyle}" />
+                            <Button Content="{StaticResource Icons.Close}" Background="Transparent"
+                                    BorderBrush="Transparent" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <FlowDocumentReader>
+                        <FlowDocument>
+                            
+                        </FlowDocument>
+                    </FlowDocumentReader>
+                </TabItem>
+
+                <TabItem Style="{StaticResource DocumentTabItemStyle}">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Flight Plan.dtc" Margin="15,0,5,0" VerticalAlignment="Center" />
+                            <ToggleButton Content="{StaticResource Icons.PushPinUnPin}" Background="Transparent"
+                                          BorderBrush="Transparent" VerticalAlignment="Center"
+                                          Style="{StaticResource PinItemToggleButtonStyle}" />
+                            <Button Content="{StaticResource Icons.Close}" Background="Transparent"
+                                    BorderBrush="Transparent" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <FlowDocumentReader>
+                        
+                    </FlowDocumentReader>
+                </TabItem>
+
+                <TabItem Style="{StaticResource DocumentTabItemStyle}">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Weapon Delivery Plan.dtc" Margin="15,0,5,0" VerticalAlignment="Center" />
+                            <ToggleButton Content="{StaticResource Icons.PushPinUnPin}" Background="Transparent"
+                                          BorderBrush="Transparent" VerticalAlignment="Center"
+                                          Style="{StaticResource PinItemToggleButtonStyle}" />
+                            <Button Content="{StaticResource Icons.Close}" Background="Transparent"
+                                    BorderBrush="Transparent" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <FlowDocumentReader>
+                        
+                    </FlowDocumentReader>
+                </TabItem>
+
+                <TabItem Style="{StaticResource DocumentTabItemStyle}">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Package Coordination.dtc" Margin="15,0,5,0" VerticalAlignment="Center" />
+                            <ToggleButton Content="{StaticResource Icons.PushPinUnPin}" Background="Transparent"
+                                          BorderBrush="Transparent" VerticalAlignment="Center"
+                                          Style="{StaticResource PinItemToggleButtonStyle}" />
+                            <Button Content="{StaticResource Icons.Close}" Background="Transparent"
+                                    BorderBrush="Transparent" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <FlowDocumentReader>
+                        
+                    </FlowDocumentReader>
+                </TabItem>
+
+                <TabItem Style="{StaticResource DocumentTabItemStyle}">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Package Communication.dtc" Margin="15,0,5,0" VerticalAlignment="Center" />
+                            <ToggleButton Content="{StaticResource Icons.PushPinUnPin}" Background="Transparent"
+                                          BorderBrush="Transparent" VerticalAlignment="Center"
+                                          Style="{StaticResource PinItemToggleButtonStyle}" />
+                            <Button Content="{StaticResource Icons.Close}" Background="Transparent"
+                                    BorderBrush="Transparent" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <FlowDocumentReader>
+                        
+                    </FlowDocumentReader>
+                </TabItem>
+
+            </TabControl>
+
+        </Grid>
+
+
+        <Grid x:Name="StatusPanel" Grid.Row="2" Background="DodgerBlue">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Foreground="AliceBlue" Text="Ready" FontSize="20" Padding="15,1,15,2" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

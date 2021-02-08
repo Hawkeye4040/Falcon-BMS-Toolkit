@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>Falcon</RootNamespace>
+    <Authors>Matthew 'Hawkeye' Williamson</Authors>
+    <RepositoryUrl>https://github.com/Hawkeye4040/Falcon-BMS-Toolkit</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,168 @@
+﻿<Window x:Class="Falcon.Radio.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Falcon Radio" Height="450" Width="800"
+        Background="#353535"
+        WindowStyle="ToolWindow"
+        ResizeMode="NoResize">
+
+    <Window.CommandBindings>
+
+    </Window.CommandBindings>
+
+    <Window.Resources>
+        <Style x:Key="TextBlockStyle">
+            <Setter Property="TextBlock.Foreground" Value="AliceBlue"/>
+            <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center" />
+            <Setter Property="TextBlock.Height" Value="30"/>
+        </Style>
+
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+
+        <Style x:Key="ToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Menu Style="{StaticResource MainMenuStyle}">
+            <MenuItem Header="File" Template="{StaticResource MenuItemControlTemplate}">
+                <MenuItem Header="Profile" Template="{StaticResource SubMenuItemControlTemplate}">
+                    <MenuItem Header="New" />
+                    <MenuItem Header="Open" />
+                    <Separator />
+                    <MenuItem Header="Edit" />
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Settings" />
+                <MenuItem Header="Exit" />
+            </MenuItem>
+
+            <MenuItem Header="Help" Template="{StaticResource MenuItemControlTemplate}">
+                <MenuItem Header="Documentation" />
+                <Separator />
+                <MenuItem Header="Send Feedback" />
+                <Separator />
+                <MenuItem Header="About" />
+            </MenuItem>
+
+        </Menu>
+
+        <Grid Grid.Row="1" Margin="10,15,10,15">
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <Border Background="#252525" BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="5" HorizontalAlignment="Stretch" Width="275">
+                    <StackPanel Margin="15,5,15,5">
+                        <TextBlock Foreground="AliceBlue" Text="Declare" />
+                    </StackPanel>
+                </Border>
+
+                <StackPanel Width="100">
+                    <TextBlock Text="Master Power" FontSize="10" Style="{StaticResource TextBlockStyle}" Height="16" />
+                    <TextBlock Text="ON" Foreground="AliceBlue" FontSize="8" Height="12" Width="15"/>
+
+
+                    <ToggleButton x:Name="RadioPowerToggleButton" Background="Transparent" BorderBrush="Transparent" Width="40" Height="40" RenderTransformOrigin="0.5,0.5" Checked="MasterPowerButton_Checked" Unchecked="MasterPowerButton_UnChecked">
+                        <ToggleButton.Content>
+                            <Image  Source="../Resources/Cockpit Button.png" />
+                        </ToggleButton.Content>
+                    </ToggleButton>
+
+                    <TextBlock Text="OFF" Foreground="AliceBlue" FontSize="8" Height="12" Width="15"/>
+                </StackPanel>
+
+
+                <StackPanel Width="100">
+                    <TextBlock Text="Voice Control" FontSize="10" Style="{StaticResource TextBlockStyle}" Height="Auto"/>
+                    <TextBlock Text="ON" Foreground="AliceBlue" FontSize="8"  Height="12" Width="15"/>
+
+
+                    <ToggleButton x:Name="RadioVoiceControlToggleButton" Width="40" Height="40" RenderTransformOrigin="0.5,0.5" Checked="RadioVoiceControlToggleButton_OnChecked" Unchecked="RadioVoiceControlToggleButton_OnUnchecked" Style="{DynamicResource ToggleButtonStyle}">
+                        <ToggleButton.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="0"/>
+                            </TransformGroup>
+                        </ToggleButton.RenderTransform>
+                        <ToggleButton.Content>
+                            <Image  Source="../Resources/Cockpit Button.png" />
+                        </ToggleButton.Content>
+                    </ToggleButton>
+
+                    <TextBlock Text="OFF" Foreground="AliceBlue" FontSize="8" Height="12" Width="15"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <Image Name="RadioIndicatorLight" Source="../Resources/Cockpit Indicator Light.png" Width="56" Height="56" />
+                    <ComboBox x:Name="AudioDeviceSelector" Width="300" Margin="5" SelectionChanged="AudioDeviceSelector_OnSelectionChanged">
+                        <ComboBoxItem Content="Default" />
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+
+
+        </Grid>
+    </Grid>
+</Window>

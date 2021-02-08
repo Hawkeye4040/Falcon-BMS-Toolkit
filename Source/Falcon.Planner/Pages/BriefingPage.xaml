@@ -1,0 +1,206 @@
+﻿<Page x:Class="Falcon.Planner.Pages.BriefingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      d:DesignWidth="2480" d:DesignHeight="3508"
+      Title="Briefing">
+
+    <FlowDocument Background="AliceBlue" Foreground="Black" ColumnWidth="1920" ColumnGap="0"
+                  IsColumnWidthFlexible="True" ColumnRuleWidth="0" PagePadding="10,0,1,0">
+        <Table CellSpacing="0">
+            <Table.Columns>
+                <TableColumn Width="100" />
+                <TableColumn Width="200" />
+                <TableColumn Width="100" />
+                <TableColumn Width="200" />
+                <TableColumn Width="100" />
+                <TableColumn Width="200" />
+            </Table.Columns>
+
+            <TableRowGroup>
+                <TableRow>
+                    <TableCell BorderBrush="Black" BorderThickness="2" ColumnSpan="6">
+                        <BlockUIContainer>
+                            <TextBlock Text="Briefing" FontSize="24" HorizontalAlignment="Center" />
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+            </TableRowGroup>
+
+            <TableRowGroup>
+                <TableRow>
+                    <TableCell Background="LightGray" BorderBrush="Black" BorderThickness="1"
+                               ToolTip="Name of the Mission">
+                        <Paragraph Foreground="Black">Mission</Paragraph>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <BlockUIContainer>
+                            <TextBox x:Name="MissionNameTextBox" Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+                    <TableCell Background="LightGray" BorderBrush="Black" BorderThickness="1" ToolTip="Package Number">
+                        <Paragraph Foreground="Black">Package</Paragraph>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <BlockUIContainer>
+                            <TextBox x:Name="PackageNumberTextBox" Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+                    <TableCell Background="LightGray" BorderBrush="Black" BorderThickness="1" ToolTip="Flight Callsign">
+                        <Paragraph Foreground="Black">Callsign</Paragraph>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <BlockUIContainer>
+                            <TextBox x:Name="FlightCallsignTextBox" Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+
+                <TableRow>
+                    <TableCell Background="LightGray" BorderBrush="Black" BorderThickness="1"
+                               ToolTip="Departure Airbase">
+                        <Paragraph Foreground="Black">Airbase</Paragraph>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <BlockUIContainer>
+                            <TextBox x:Name="DepartureAirbaseTextBox" Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+                    <TableCell Background="LightGray" BorderBrush="Black" BorderThickness="1" ToolTip="Aircraft Type">
+                        <Paragraph Foreground="Black">Aircraft</Paragraph>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <BlockUIContainer>
+                            <TextBox x:Name="AircraftTypeTextBox"  Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+                    <TableCell Background="LightGray" BorderBrush="Black" BorderThickness="1" ToolTip="Your Squadron">
+                        <Paragraph Foreground="Black">Squadron</Paragraph>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <BlockUIContainer>
+                            <TextBox x:Name="SquadronTextBox" Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+
+                <TableRow>
+                    <TableCell Background="LightGray" BorderBrush="Black" BorderThickness="1"
+                               ToolTip="Your mission description">
+                        <Paragraph Foreground="Black">Description</Paragraph>
+                    </TableCell>
+                    <TableCell BorderBrush="Black" BorderThickness="1" ColumnSpan="5">
+                        <BlockUIContainer>
+                            <TextBox x:Name="MissionDescriptionTextBox" Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+
+                <TableRow>
+                    <TableCell Background="LightGray" BorderBrush="Black" BorderThickness="1" ToolTip="Your Task">
+                        <Paragraph Foreground="Black">Task</Paragraph>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <BlockUIContainer>
+                            <TextBox x:Name="FlightTaskTextBox" Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Background="LightGray" BorderBrush="Black" BorderThickness="1"
+                               ToolTip="Package Takeoff Time">
+                        <Paragraph Foreground="Black">Takeoff</Paragraph>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <BlockUIContainer>
+                            <TextBox x:Name="PackageTakeoffTimeTextBox" Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Background="LightGray" BorderBrush="Black" BorderThickness="1"
+                               ToolTip="Package Time over Target">
+                        <Paragraph Foreground="Black">TOT</Paragraph>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <BlockUIContainer>
+                            <TextBox x:Name="PackageTimeOverTargetTextBox"  Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+            </TableRowGroup>
+
+            <TableRowGroup>
+                <TableRow>
+                    <TableCell BorderBrush="Black" BorderThickness="2" ColumnSpan="6">
+                        <BlockUIContainer>
+                            <TextBlock Text="Situation" FontSize="24"
+                                       HorizontalAlignment="Center" />
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+
+                <TableRow>
+                    <TableCell BorderBrush="Black" BorderThickness="1" ColumnSpan="6">
+                        <BlockUIContainer>
+                            <TextBox x:Name="SituationTextBox" SpellCheck.IsEnabled="True" MinLines="9" MaxLines="9" MinHeight="450" />
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+
+                <TableRow>
+                    <TableCell BorderBrush="Black" BorderThickness="2" ColumnSpan="6">
+                        <BlockUIContainer>
+                            <TextBlock Text="Intel" FontSize="24"
+                                       HorizontalAlignment="Center" />
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+
+                <TableRow>
+                    <TableCell BorderBrush="Black" BorderThickness="1" ColumnSpan="6">
+                        <BlockUIContainer>
+                            <TextBox x:Name="IntelTextBox" SpellCheck.IsEnabled="True" MinLines="9" MaxLines="9" MinHeight="450"/>
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+
+                <TableRow>
+                    <TableCell BorderBrush="Black" BorderThickness="2" ColumnSpan="6">
+                        <BlockUIContainer>
+                            <TextBlock Text="Objectives" FontSize="24"
+                                       HorizontalAlignment="Center" />
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+
+                <TableRow>
+                    <TableCell BorderBrush="Black" BorderThickness="1" ColumnSpan="6">
+                        <BlockUIContainer>
+                            <TextBox x:Name="ObjectivesTextBox"  SpellCheck.IsEnabled="True" MinLines="9" MaxLines="9" MinHeight="450" />
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+
+                <TableRow>
+                    <TableCell BorderBrush="Black" BorderThickness="2" ColumnSpan="6">
+                        <BlockUIContainer>
+                            <TextBlock Text="Notes" FontSize="24"
+                                       HorizontalAlignment="Center" />
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+
+                <TableRow>
+                    <TableCell BorderBrush="Black" BorderThickness="1" ColumnSpan="6">
+                        <BlockUIContainer>
+                            <TextBox x:Name="NotesTextBox"  SpellCheck.IsEnabled="True" MinLines="9" MaxLines="9" MinHeight="450"/>
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+
+            </TableRowGroup>
+        </Table>
+    </FlowDocument>
+
+</Page>

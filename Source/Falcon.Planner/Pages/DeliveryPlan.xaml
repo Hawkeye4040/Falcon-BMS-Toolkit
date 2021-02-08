@@ -1,0 +1,308 @@
+﻿<Page x:Class="Falcon.Planner.Pages.DeliveryPlan"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d" 
+      d:DesignWidth="2480" d:DesignHeight="3508"
+      Title="Delivery Plan">
+
+    <FlowDocument Background="AliceBlue" Foreground="Black" ColumnWidth="2480">
+
+        <Table CellSpacing="0">
+
+            <Table.Columns>
+                <TableColumn Width="30"/>
+                <TableColumn />
+                <TableColumn />
+                <TableColumn />
+                <TableColumn />
+                <TableColumn Width="150"/>
+                <TableColumn Width="150"/>
+                <TableColumn Width="150"/>
+                <TableColumn Width="150"/>
+                <TableColumn Width="150"/>
+                <TableColumn Width="150"/>
+            </Table.Columns>
+
+            <TableRowGroup>
+                <TableRow>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}" ColumnSpan="9">
+                        <BlockUIContainer>
+                            <TextBlock Text="Delivery Plan" TextAlignment="Center" FontSize="20" Padding="5"/>
+                        </BlockUIContainer>
+                    </TableCell>
+                    
+                </TableRow>
+
+                <TableRow>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph Padding="3"  Style="{StaticResource HeaderParagraphStyle}">Callsign</Paragraph>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <BlockUIContainer>
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph Padding="3"  Style="{StaticResource HeaderParagraphStyle}">Package</Paragraph>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <BlockUIContainer>
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}" ColumnSpan="2">
+                        <Paragraph Padding="3" Style="{StaticResource HeaderParagraphStyle}">Mission</Paragraph>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}" ColumnSpan="2">
+                        <BlockUIContainer>
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+
+                <TableRow>
+
+                    <TableCell Style="{StaticResource HeaderTableCellStyle}">
+                        <BlockUIContainer>
+                            <TextBlock Text="T/O Loadout" Padding="3">
+                                <TextBlock.LayoutTransform>
+                                    <RotateTransform Angle="270" />
+                                </TextBlock.LayoutTransform>
+                            </TextBlock>
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}" ColumnSpan="4">
+                        <Table CellSpacing="0" LineHeight="0.15">
+                            <Table.Columns>
+                                <TableColumn Width="100"/>
+                                <TableColumn />
+                                <TableColumn Width="150"/>
+                                <TableColumn Width="200"/>
+                            </Table.Columns>
+                            <TableRowGroup>
+                                <TableRow >
+                                    <TableCell Style="{StaticResource HeaderTableCellStyle}" ColumnSpan="4" >
+                                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" TextAlignment="Left" TextIndent="35" Padding="2">Configuration</Paragraph>
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell Style="{StaticResource HeaderTableCellStyle}">
+                                        <Paragraph TextIndent="15">A-A</Paragraph>
+                                    </TableCell>
+                                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                                        <BlockUIContainer>
+                                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                                        </BlockUIContainer>
+                                    </TableCell>
+                                    <TableCell Style="{StaticResource HeaderTableCellStyle}">
+                                        <Paragraph TextIndent="15">Gross Weight</Paragraph>
+                                    </TableCell>
+                                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                                        <BlockUIContainer>
+                                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                                        </BlockUIContainer>
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell Style="{StaticResource HeaderTableCellStyle}">
+                                        <Paragraph TextIndent="15">A-G</Paragraph>
+                                    </TableCell>
+                                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                                        <BlockUIContainer>
+                                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                                        </BlockUIContainer>
+                                    </TableCell>
+                                    <TableCell Style="{StaticResource HeaderTableCellStyle}">
+                                        <Paragraph TextIndent="15">Drag Index</Paragraph>
+                                    </TableCell>
+                                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                                        <BlockUIContainer>
+                                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                                        </BlockUIContainer>
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell Style="{StaticResource HeaderTableCellStyle}">
+                                        <Paragraph TextIndent="15">ECM</Paragraph>
+                                    </TableCell>
+                                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                                        <BlockUIContainer>
+                                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                                        </BlockUIContainer>
+                                    </TableCell>
+                                    <TableCell Style="{StaticResource HeaderTableCellStyle}">
+                                        <Paragraph TextIndent="15">ALOW</Paragraph>
+                                    </TableCell>
+                                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                                        <BlockUIContainer>
+                                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                                        </BlockUIContainer>
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell Style="{StaticResource HeaderTableCellStyle}">
+                                        <Paragraph TextIndent="15">Tanks</Paragraph>
+                                    </TableCell>
+                                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                                        <BlockUIContainer>
+                                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                                        </BlockUIContainer>
+                                    </TableCell>
+                                    <TableCell Style="{StaticResource HeaderTableCellStyle}">
+                                        <Paragraph TextIndent="15">MSL</Paragraph>
+                                    </TableCell>
+                                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                                        <BlockUIContainer>
+                                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                                        </BlockUIContainer>
+                                    </TableCell>
+                                </TableRow>
+                            </TableRowGroup>
+                        </Table>
+                        
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}" >
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" Padding="3">TO Spec</Paragraph>
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" Padding="3">Rotation</Paragraph>
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" Padding="3">Refusal</Paragraph>
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" Padding="3">Mil Power</Paragraph>
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" Padding="3">Mil Climb</Paragraph>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}" >
+                        <BlockUIContainer BorderBrush="Black" BorderThickness="1">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                        <BlockUIContainer BorderBrush="Black" BorderThickness="1">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                        <BlockUIContainer BorderBrush="Black" BorderThickness="1">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                        <BlockUIContainer BorderBrush="Black" BorderThickness="1">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                        <BlockUIContainer BorderBrush="Black" BorderThickness="1">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}" >
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" Padding="3">Fuel</Paragraph>
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" Padding="3">Takeoff Fuel</Paragraph>
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" Padding="3">Set Fuel</Paragraph>
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" Padding="3">JOKER</Paragraph>
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" Padding="3">BINGO</Paragraph>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}" >
+                        <BlockUIContainer BorderBrush="Black" BorderThickness="1">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                        <BlockUIContainer BorderBrush="Black" BorderThickness="1">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                        <BlockUIContainer BorderBrush="Black" BorderThickness="1">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                        <BlockUIContainer BorderBrush="Black" BorderThickness="1">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                        <BlockUIContainer BorderBrush="Black" BorderThickness="1">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+            </TableRowGroup>
+        </Table>
+
+        <Table CellSpacing="0">
+            <Table.Columns>
+                <TableColumn Width="30"/>
+                <TableColumn Width="250"/>
+                <TableColumn />
+                <TableColumn Width="250"/>
+            </Table.Columns>
+            <TableRowGroup>
+                <TableRow>
+                    <TableCell Style="{StaticResource HeaderTableCellStyle}">
+                        <BlockUIContainer>
+                            <TextBlock Text="Target" Padding="3">
+                                <TextBlock.LayoutTransform>
+                                    <RotateTransform Angle="270" />
+                                </TextBlock.LayoutTransform>
+                            </TextBlock>
+                        </BlockUIContainer>
+
+                    </TableCell>
+        
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" Padding="3">Primary</Paragraph>
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" Padding="3">DPMI</Paragraph>
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" Padding="3">Latitude / Longitude</Paragraph>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <BlockUIContainer BorderBrush="Black" BorderThickness="1">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                        <BlockUIContainer BorderBrush="Black" BorderThickness="1">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                        <BlockUIContainer BorderBrush="Black" BorderThickness="1">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" Padding="3">Secondary</Paragraph>
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" Padding="3">DPMI</Paragraph>
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}" Padding="3">Latitude / Longitude</Paragraph>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <BlockUIContainer BorderBrush="Black" BorderThickness="1">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                        <BlockUIContainer BorderBrush="Black" BorderThickness="1">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                        <BlockUIContainer BorderBrush="Black" BorderThickness="1">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}"></TextBox>
+                        </BlockUIContainer>
+                    </TableCell>
+
+                </TableRow>
+            </TableRowGroup>
+        </Table>
+
+        <Table CellSpacing="0">
+            <Table.Columns>
+                <TableColumn Width="30" />
+                <TableColumn />
+                <TableColumn />
+                <TableColumn />
+                <TableColumn />
+                <TableColumn />
+            </Table.Columns>
+            <TableRowGroup>
+                <TableRow>
+                    <TableCell Style="{StaticResource HeaderTableCellStyle}">
+                        <BlockUIContainer>
+                            <TextBlock Text="Weapon">
+                                <TextBlock.LayoutTransform>
+                                    <RotateTransform Angle="270" />
+                                </TextBlock.LayoutTransform>
+                            </TextBlock>
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+            </TableRowGroup>
+        </Table>
+    </FlowDocument>
+</Page>

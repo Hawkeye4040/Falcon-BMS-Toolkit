@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RepositoryUrl>https://github.com/Hawkeye4040/Falcon-BMS-Toolkit</RepositoryUrl>
+    <Authors>Matthew 'Hawkeye' Williamson</Authors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Falcon.Core\Falcon.Core.csproj" />
+    <ProjectReference Include="..\Falcon.UI\Falcon.UI.csproj" />
+  </ItemGroup>
+
+</Project>

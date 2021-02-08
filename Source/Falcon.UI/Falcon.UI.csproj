@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Authors>Matthew 'Hawkeye' Williamson</Authors>
+    <Product>Falcon UI</Product>
+    <RepositoryUrl>https://github.com/Hawkeye4040/Falcon-BMS-Toolkit</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Controls\" />
+  </ItemGroup>
+
+</Project>

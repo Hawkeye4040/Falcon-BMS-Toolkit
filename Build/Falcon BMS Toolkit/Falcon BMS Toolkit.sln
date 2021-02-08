@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{4936393D-FEB8-439E-82C9-F8235EA16D62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falcon.Core", "..\..\Source\Falcon.Core\Falcon.Core.csproj", "{F5FD1EF2-361A-4153-B66E-841088CA8AE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falcon.UI", "..\..\Source\Falcon.UI\Falcon.UI.csproj", "{A6B4B4A1-1C69-4B13-B6E6-6F5D504A8DF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falcon.Planner", "..\..\Source\Falcon.Planner\Falcon.Planner.csproj", "{50C73295-140C-4006-8ACE-1ABE1585F984}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falcon.Planner.Server", "..\..\Source\Falcon.Planner.Server\Falcon.Planner.Server.csproj", "{2721118E-1EB6-43E6-BD6F-8728E8D27E98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falcon.Editor", "..\..\Source\Falcon.Editor\Falcon.Editor.csproj", "{7BF27D35-EC34-4511-9F70-E1B31FD8EAE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falcon.Radio", "..\..\Source\Falcon.Radio\Falcon.Radio.csproj", "{C1AA6874-D1E1-4180-AAA3-BD391EF95972}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5FD1EF2-361A-4153-B66E-841088CA8AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5FD1EF2-361A-4153-B66E-841088CA8AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5FD1EF2-361A-4153-B66E-841088CA8AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5FD1EF2-361A-4153-B66E-841088CA8AE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6B4B4A1-1C69-4B13-B6E6-6F5D504A8DF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6B4B4A1-1C69-4B13-B6E6-6F5D504A8DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6B4B4A1-1C69-4B13-B6E6-6F5D504A8DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6B4B4A1-1C69-4B13-B6E6-6F5D504A8DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50C73295-140C-4006-8ACE-1ABE1585F984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50C73295-140C-4006-8ACE-1ABE1585F984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50C73295-140C-4006-8ACE-1ABE1585F984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50C73295-140C-4006-8ACE-1ABE1585F984}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2721118E-1EB6-43E6-BD6F-8728E8D27E98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2721118E-1EB6-43E6-BD6F-8728E8D27E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2721118E-1EB6-43E6-BD6F-8728E8D27E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2721118E-1EB6-43E6-BD6F-8728E8D27E98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BF27D35-EC34-4511-9F70-E1B31FD8EAE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BF27D35-EC34-4511-9F70-E1B31FD8EAE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BF27D35-EC34-4511-9F70-E1B31FD8EAE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BF27D35-EC34-4511-9F70-E1B31FD8EAE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1AA6874-D1E1-4180-AAA3-BD391EF95972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1AA6874-D1E1-4180-AAA3-BD391EF95972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1AA6874-D1E1-4180-AAA3-BD391EF95972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1AA6874-D1E1-4180-AAA3-BD391EF95972}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F5FD1EF2-361A-4153-B66E-841088CA8AE6} = {4936393D-FEB8-439E-82C9-F8235EA16D62}
+		{A6B4B4A1-1C69-4B13-B6E6-6F5D504A8DF0} = {4936393D-FEB8-439E-82C9-F8235EA16D62}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A1B4B9DE-6681-45DF-9798-911BA59F2B0B}
+	EndGlobalSection
+EndGlobal

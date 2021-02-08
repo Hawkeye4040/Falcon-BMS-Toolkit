@@ -1,0 +1,1159 @@
+﻿<Page x:Class="Falcon.Planner.Pages.FlightPlanPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      d:DesignWidth="2480" d:DesignHeight="3508"
+      Title="Flight Plan">
+
+    <!-- TODO: Change Table Row Groups to individual Tables to allow for adjusting and using different column widths between sections. Ensure seamless transition. -->
+    <FlowDocument Background="AliceBlue" Foreground="Black" ColumnWidth="2480">
+        <Table CellSpacing="0">
+            <Table.Columns>
+                <TableColumn Width="30" />
+                <TableColumn Width="45" />
+                <TableColumn Width="250" />
+                <TableColumn Width="300" />
+                <TableColumn Width="115" />
+                <TableColumn Width="115" />
+                <TableColumn Width="115" />
+                <TableColumn Width="115" />
+                <TableColumn Width="115" />
+                <TableColumn Width="115" />
+                <TableColumn Width="150" />
+            </Table.Columns>
+
+            <TableRowGroup>
+                <TableRow>
+
+                    <TableCell BorderBrush="Black" BorderThickness="3" ColumnSpan="10">
+                        <BlockUIContainer>
+                            <TextBlock Text="Flight Plan" HorizontalAlignment="Center" FontSize="20" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                </TableRow>
+                <TableRow>
+
+                    <TableCell BorderBrush="Black" BorderThickness="1" Background="LightGray" RowSpan="2"
+                               ColumnSpan="2">
+                        <Paragraph TextAlignment="Center">ATIS</Paragraph>
+                        <Paragraph TextAlignment="Center">Military</Paragraph>
+                    </TableCell>
+
+                    <TableCell BorderBrush="Black" BorderThickness="1" RowSpan="2" ColumnSpan="8">
+                        <BlockUIContainer>
+                            <TextBox VerticalAlignment="Stretch" Height="37" BorderBrush="Transparent" MaxLines="2" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                </TableRow>
+
+            </TableRowGroup>
+
+            <TableRowGroup>
+                <TableRow>
+
+                    <TableCell Style="{StaticResource HeaderTableCellStyle}">
+                        <BlockUIContainer>
+                            <TextBlock Text="Airbase">
+                                <TextBlock.LayoutTransform>
+                                    <RotateTransform Angle="270" />
+                                </TextBlock.LayoutTransform>
+                            </TextBlock>
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell BorderBrush="Black" BorderThickness="1" Background="LightGray" RowSpan="1"
+                               ColumnSpan="2">
+                        <Paragraph Padding="3" BorderBrush="Black" BorderThickness="1" />
+                        <Paragraph Padding="3" BorderBrush="Black" BorderThickness="1">Departure</Paragraph>
+                        <Paragraph Padding="3" BorderBrush="Black" BorderThickness="1">Arrival</Paragraph>
+                        <Paragraph Padding="3" BorderBrush="Black" BorderThickness="1">Alternate</Paragraph>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray"
+                                   TextAlignment="Center" Padding="3">
+                            Airbase
+                        </Paragraph>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray" Padding="3"
+                                   TextAlignment="Center">
+                            TACAN
+                        </Paragraph>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                    </TableCell>
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray" Padding="3"
+                                   TextAlignment="Center">
+                            Ground
+                        </Paragraph>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray" Padding="3"
+                                   TextAlignment="Center">
+                            Approach
+                        </Paragraph>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray" Padding="3"
+                                   TextAlignment="Center">
+                            Elevation
+                        </Paragraph>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray" Padding="3"
+                                   TextAlignment="Center">
+                            Runway
+                        </Paragraph>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray" Padding="3"
+                                   TextAlignment="Center">
+                            ILS
+                        </Paragraph>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                        <BlockUIContainer>
+                            <TextBox BorderBrush="Black" BorderThickness="1" Padding="3" />
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+
+                    <TableCell Style="{StaticResource HeaderTableCellStyle}">
+                        <BlockUIContainer>
+                            <TextBlock Text="Flight" Padding="5">
+                                <TextBlock.LayoutTransform>
+                                    <RotateTransform Angle="270" />
+                                </TextBlock.LayoutTransform>
+                            </TextBlock>
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell BorderBrush="Black" BorderThickness="1" Background="LightGray" ColumnSpan="2">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">Position</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1">Flight Lead</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1">Wing</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1">Element Lead</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1">Wing</Paragraph>
+                    </TableCell>
+
+                    <TableCell>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray"
+                                   TextAlignment="Center">
+                            Name
+                        </Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray"
+                                   TextAlignment="Center">
+                            IDM
+                        </Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray"
+                                   TextAlignment="Center">
+                            TACAN
+                        </Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray"
+                                   TextAlignment="Center">
+                            Takeoff
+                        </Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray"
+                                   TextAlignment="Center">
+                            Landing
+                        </Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray"
+                                   TextAlignment="Center">
+                            Laser Code
+                        </Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray"
+                                   TextAlignment="Center">
+                            IFF Mode 2/3
+                        </Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                </TableRow>
+
+
+            </TableRowGroup>
+            <TableRowGroup>
+                <TableRow>
+                    <TableCell Style="{StaticResource HeaderTableCellStyle}" RowSpan="4">
+                        <BlockUIContainer>
+                            <TextBlock Text="Package" Padding="5" >
+                                <TextBlock.LayoutTransform>
+                                    <TransformGroup>
+                                        <RotateTransform Angle="270" />
+                                        <TranslateTransform Y="50" />
+                                    </TransformGroup>
+                                </TextBlock.LayoutTransform>
+                            </TextBlock>
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+
+                <TableRow>
+
+                    <TableCell ColumnSpan="2">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray" TextIndent="25">Callsign</Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton VerticalAlignment="Center" Margin="3" Background="Transparent"
+                                             IsChecked="True" />
+                                <TextBox HorizontalAlignment="Stretch" BorderBrush="Transparent" Width="227" />
+                            </StackPanel>
+                        </BlockUIContainer>
+
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton VerticalAlignment="Center" Margin="3" Background="Transparent" />
+                                <TextBox HorizontalAlignment="Stretch" BorderBrush="Transparent" Width="227" />
+                            </StackPanel>
+                        </BlockUIContainer>
+
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton VerticalAlignment="Center" Margin="3" Background="Transparent" />
+                                <TextBox HorizontalAlignment="Stretch" BorderBrush="Transparent" Width="227" />
+                            </StackPanel>
+                        </BlockUIContainer>
+
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch">
+                                <RadioButton VerticalAlignment="Center" Margin="3" Background="Transparent" />
+                                <TextBox HorizontalAlignment="Stretch" BorderBrush="Transparent" Width="227" />
+                            </StackPanel>
+                        </BlockUIContainer>
+
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton VerticalAlignment="Center" Margin="3" Background="Transparent" />
+                                <TextBox HorizontalAlignment="Stretch" BorderBrush="Transparent" Width="227" />
+                            </StackPanel>
+                        </BlockUIContainer>
+
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray"
+                                   TextAlignment="Center">
+                            Aircraft Type
+                        </Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray"
+                                   TextAlignment="Center">
+                            UHF
+                        </Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray"
+                                   TextAlignment="Center">
+                            VHF
+                        </Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray"
+                                   TextAlignment="Center">
+                            IDM
+                        </Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray"
+                                   TextAlignment="Center">
+                            TACAN
+                        </Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}" ColumnSpan="2">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray"
+                                   TextAlignment="Center">
+                            Task
+                        </Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                </TableRow>
+            </TableRowGroup>
+
+            <TableRowGroup>
+
+                <TableRow>
+                    <TableCell Style="{StaticResource HeaderTableCellStyle}" RowSpan="4">
+                        <BlockUIContainer>
+                            <TextBlock Text="Flight Plan" Padding="5">
+                                <TextBlock.LayoutTransform>
+                                    <RotateTransform Angle="270" />
+                                </TextBlock.LayoutTransform>
+                            </TextBlock>
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+
+                <TableRow>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray">STPT</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">1</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">2</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">3</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">4</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">5</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">6</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">7</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">8</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">9</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">10</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">11</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">12</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">13</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">14</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">15</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">16</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">17</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">18</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">19</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">20</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">21</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">22</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">23</Paragraph>
+                        <Paragraph BorderBrush="Black" BorderThickness="1" TextAlignment="Center">24</Paragraph>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph BorderBrush="Black" BorderThickness="1" Background="LightGray"
+                                   TextAlignment="Center">
+                            Action
+                        </Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}">TOS</Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}">Heading</Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}">Distance</Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}">Airspeed</Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}">Altitude</Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}">Min Fuel</Paragraph>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+
+                    <TableCell Style="{StaticResource DefaultTableCellStyle}">
+                        <Paragraph Style="{StaticResource HeaderParagraphStyle}">Formation</Paragraph>
+                        <!-- TODO: Change Textboxes here to comboboxes with autoprediction and all standard formations -->
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <ComboBox IsEditable="True">
+                                <ComboBoxItem>-</ComboBoxItem>
+                                <ComboBoxItem>Arrowhead</ComboBoxItem>
+                                <ComboBoxItem>Box</ComboBoxItem>
+                                <ComboBoxItem>Res Cell</ComboBoxItem>
+                                <ComboBoxItem>Spread</ComboBoxItem>
+                                <ComboBoxItem>Stack</ComboBoxItem>
+                                <ComboBoxItem>Trail</ComboBoxItem>
+                                <ComboBoxItem>Wedge</ComboBoxItem>
+                            </ComboBox>
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                        <BlockUIContainer Style="{StaticResource DefaultBlockUIContainerStyle}">
+                            <TextBox Style="{StaticResource DefaultTableTextBoxStyle}" />
+                        </BlockUIContainer>
+                    </TableCell>
+                </TableRow>
+            </TableRowGroup>
+        </Table>
+    </FlowDocument>
+
+</Page>
