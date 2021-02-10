@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
+using System.Numerics;
 using System.Runtime.CompilerServices;
+using System.Windows.Media.Media3D;
 
 namespace Falcon.Core.Data
 {
@@ -346,6 +348,26 @@ namespace Falcon.Core.Data
         public static bool operator !=(Vector3S left, Vector3S right)
         {
             return !left.Equals(right);
+        }
+
+        public static unsafe implicit operator Vector3(Vector3S value)
+        {
+            return *(Vector3*)&value;
+        }
+
+        public static unsafe implicit operator Vector3S(Vector3 value)
+        {
+            return *(Vector3S*) &value;
+        }
+
+        public static unsafe implicit operator Vector3D(Vector3S value)
+        {
+            return *(Vector3D*) &value;
+        }
+
+        public static unsafe implicit operator Vector3S(Vector3D value)
+        {
+            return *(Vector3S*) &value;
         }
 
         #endregion
