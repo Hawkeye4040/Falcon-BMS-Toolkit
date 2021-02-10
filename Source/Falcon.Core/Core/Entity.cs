@@ -1,4 +1,6 @@
-﻿namespace Falcon.Core
+﻿using Falcon.Core.Data;
+
+namespace Falcon.Core
 {
     /// <summary>
     ///     Base class for most map objects in BMS.
@@ -12,13 +14,7 @@
 
         public ushort EntityType { get; protected set; }
 
-        public short X { get; set; }
-
-        public short Y { get; set; }
-
-        public short Z { get; set; }
-
-        // TODO: Determine if an Int16 3-dimensional vector struct will better store Entity Coordinates so as to wire up an Event when Position of the entity changes.
+        public Vector3S Position { get; set; }
 
         public uint SpotTime { get; set; }
 

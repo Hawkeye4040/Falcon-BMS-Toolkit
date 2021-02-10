@@ -1,5 +1,7 @@
 ﻿using System;
 
+using Falcon.Core.Data;
+
 namespace Falcon.Core
 {
     public sealed class Waypoint : ICloneable
@@ -16,13 +18,7 @@ namespace Falcon.Core
 
         #region Properties
 
-        // TODO: Determine if an Int16 3-dimensional vector struct will better store Entity Coordinates so as to wire up an Event when Position of the entity changes.
-
-        public short X { get; set; }
-
-        public short Y { get; set; }
-
-        public short Z { get; set; }
+        public Vector3S Position { get; set; }
 
         public uint Arrival { get; set; }
 
