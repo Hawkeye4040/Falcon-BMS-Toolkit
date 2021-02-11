@@ -3,7 +3,7 @@
   <TemplateData>
     <Name>Kneeboard Page Template</Name>
     <Description>Kneeboard Page template for Falcon Planner.</Description>
-    <Icon>Falcon.Template.KneeboardPage.ico</Icon>
+    <Icon>BMS_Cs.ico</Icon>
     <TemplateID>450c9e2f-2e53-4358-ba73-76ce77618c79</TemplateID>
     <ProjectType>CSharp</ProjectType>
     <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
