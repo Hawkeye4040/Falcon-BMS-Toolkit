@@ -4,8 +4,9 @@
         <Identity Id="Falcon.VSIX.ab21e865-f08f-49ee-a446-f9dca75159b3" Version="1.0" Language="en-US" Publisher="Matthew &quot;Hawkeye&quot; Williamson" />
         <DisplayName>Falcon.VSIX</DisplayName>
         <Description xml:space="preserve">Visual Studio Extension for Falcon BMS development.</Description>
+        <Icon>BMS_VS2019.ico</Icon>
     </Metadata>
-    <Installation>
+    <Installation InstalledByMsi="true">
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0, 17.0)" />
     </Installation>
     <Dependencies>

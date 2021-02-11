@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -6,11 +7,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Falcon.Template.KneeboardPage")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Kneeboard Page Template for Falcon Planner.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Matthew Williamson")]
+[assembly: AssemblyCompany("Matthew 'Hawkeye' Williamson")]
 [assembly: AssemblyProduct("Falcon.Template.KneeboardPage")]
-[assembly: AssemblyCopyright("Copyright © Matthew Williamson 2021")]
+[assembly: AssemblyCopyright("Copyright © 2021 Matthew 'Hawkeye' Williamson")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -34,3 +35,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("en-US")]
