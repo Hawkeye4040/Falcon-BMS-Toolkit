@@ -2,8 +2,9 @@
 <xs:schema id="BMSproj"
     targetNamespace="http://tempuri.org/BMSproj.xsd"
     elementFormDefault="qualified"
-    xmlns="http://tempuri.org/BMSproj.xsd"
-    xmlns:mstns="http://tempuri.org/BMSproj.xsd"
+    
+    xmlns="Falcon/Core/IO/Schemas/BMSproj.xsd"
+    xmlns:mstns="Falcon/Core/IO/Schemas/BMSproj.xsd"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
 >
   <xs:complexType name="Project">
@@ -12,7 +13,7 @@
       <xs:element name="Description" minOccurs="0" maxOccurs="1" type="xs:string" />
     </xs:sequence>
 
-    <xs:attribute name="Name" type="xs:string" use="required"/>
+    <xs:attribute name="Name" type="xs:string" use="required" />
     
   </xs:complexType>
 </xs:schema>
