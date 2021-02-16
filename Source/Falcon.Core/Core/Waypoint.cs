@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 using Falcon.Core.Data;
 
@@ -45,4 +47,50 @@ namespace Falcon.Core
 
         #endregion
     }
+
+    public sealed class WaypointChangedEventArgs : EventArgs
+    {
+        #region Properties
+
+        public Waypoint OldWaypoint { get; }
+
+        public Waypoint NewWaypoint { get; }
+
+        #endregion
+
+        #region Constructors
+
+        public WaypointChangedEventArgs(Waypoint oldWaypoint, Waypoint newWaypoint)
+        {
+            OldWaypoint = oldWaypoint;
+            NewWaypoint = newWaypoint;
+        }
+
+        #endregion
+    }
+
+    public sealed class WaypointsChangedEventArgs : EventArgs
+    {
+        public List<Waypoint> OldWaypoints { get; }
+
+        public List<Waypoint> NewWaypoints { get; }
+
+        public List<Waypoint> AddedWaypoints =>
+            NewWaypoints.Where(waypoint => !OldWaypoints.Contains(waypoint)).ToList();
+
+        public List<Waypoint> RemovedWaypoints =>
+            OldWaypoints.Where(waypoint => !NewWaypoints.Contains(waypoint)).ToList();
+
+        public WaypointsChangedEventArgs(IEnumerable<Waypoint> oldWaypoints, IEnumerable<Waypoint> newWaypoints)
+        {
+            OldWaypoints = new List<Waypoint>();
+            OldWaypoints.AddRange(oldWaypoints);
+            NewWaypoints = new List<Waypoint>();
+            NewWaypoints.AddRange(newWaypoints);
+        }
+    }
+
+    public delegate void OnWaypointChanged(object sender, WaypointChangedEventArgs e);
+
+    public delegate void OnWaypointsChanged(object sender, WaypointsChangedEventArgs e);
 }

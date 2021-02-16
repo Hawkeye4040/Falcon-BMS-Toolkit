@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Falcon.Core
 {
@@ -81,4 +82,56 @@ namespace Falcon.Core
 
         #endregion
     }
+
+    public sealed class PackageChangedEventArgs : EventArgs
+    {
+        #region Properties
+
+        public Package OldPackage { get; }
+
+        public Package NewPackage { get; }
+
+        #endregion
+
+        #region Constructors
+
+        public PackageChangedEventArgs(Package oldPackage, Package newPackage)
+        {
+            OldPackage = oldPackage;
+            NewPackage = newPackage;
+        }
+
+        #endregion
+    }
+
+    public sealed class PackagesChangedEventArgs : EventArgs
+    {
+        #region Properties
+
+        public List<Package> OldPackages { get; }
+
+        public List<Package> NewPackages { get; }
+
+        public List<Package> AddedPackages => NewPackages.Where(package => !OldPackages.Contains(package)).ToList();
+
+        public List<Package> RemovedPackages => OldPackages.Where(package => !NewPackages.Contains(package)).ToList();
+
+        #endregion
+
+        #region Constructors
+
+        public PackagesChangedEventArgs(IEnumerable<Package> oldPackages, IEnumerable<Package> newPackages)
+        {
+            OldPackages = new List<Package>();
+            OldPackages.AddRange(oldPackages);
+            NewPackages = new List<Package>();
+            NewPackages.AddRange(newPackages);
+        }
+
+        #endregion
+    }
+
+    public delegate void OnPackageChanged(object sender, PackageChangedEventArgs e);
+
+    public delegate void OnPackagesChanged(object sender, PackagesChangedEventArgs e);
 }
