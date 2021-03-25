@@ -6,7 +6,7 @@ using Falcon.Core.Data;
 
 namespace Falcon.Core
 {
-    public sealed class Waypoint : ICloneable
+    public sealed class Waypoint : ICloneable, IEquatable<Waypoint>
     {
         #region Fields
 
@@ -45,6 +45,11 @@ namespace Falcon.Core
             throw new NotImplementedException();
         }
 
+        public bool Equals(Waypoint? other)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 
@@ -71,6 +76,8 @@ namespace Falcon.Core
 
     public sealed class WaypointsChangedEventArgs : EventArgs
     {
+        #region Properties
+
         public List<Waypoint> OldWaypoints { get; }
 
         public List<Waypoint> NewWaypoints { get; }
@@ -81,6 +88,10 @@ namespace Falcon.Core
         public List<Waypoint> RemovedWaypoints =>
             OldWaypoints.Where(waypoint => !NewWaypoints.Contains(waypoint)).ToList();
 
+        #endregion
+
+        #region Constructors
+
         public WaypointsChangedEventArgs(IEnumerable<Waypoint> oldWaypoints, IEnumerable<Waypoint> newWaypoints)
         {
             OldWaypoints = new List<Waypoint>();
@@ -88,6 +99,8 @@ namespace Falcon.Core
             NewWaypoints = new List<Waypoint>();
             NewWaypoints.AddRange(newWaypoints);
         }
+
+        #endregion
     }
 
     public delegate void OnWaypointChanged(object sender, WaypointChangedEventArgs e);

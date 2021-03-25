@@ -34,7 +34,7 @@ namespace Falcon.Core
 
         protected Entity()
         {
-            
+            Position = Vector3S.Zero;
         }
 
         #endregion

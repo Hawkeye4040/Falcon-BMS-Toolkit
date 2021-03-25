@@ -46,6 +46,7 @@ namespace Falcon.Core
 
         #endregion
     }
+
     public sealed class FlightsChangedEventArgs : EventArgs
     {
         #region Properties

@@ -1,5 +1,8 @@
-﻿namespace Falcon.Resources
+﻿using System;
+
+namespace Falcon.Resources
 {
+    [Serializable]
     public enum F4ResourceTypes : uint
     {
         Unknown = 0,

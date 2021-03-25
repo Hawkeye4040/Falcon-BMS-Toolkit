@@ -13,19 +13,19 @@ namespace Falcon.Core.Utilities
         //  ManagementEventWatcher accepts a query (in our case queries regarding process startup and
         //  termination) and fires an event to an event handler method.
 
-        private ManagementEventWatcher ProcessStartMonitor;
+        private readonly ManagementEventWatcher ProcessStartMonitor;
 
-        private ManagementEventWatcher ProcessStopMonitor;
+        private readonly ManagementEventWatcher ProcessStopMonitor;
 
         //  process tracking dictionary associates process IDs with process file names.
 
-        private Dictionary<int, string> TrackedProcesses;
+        private readonly Dictionary<int, string> TrackedProcesses;
 
         //  Issued callbacks whenever a process starts or stops.
 
-        private Callback OnProcessStartedCallback;
+        private readonly Callback OnProcessStartedCallback;
 
-        private Callback OnProcessStoppedCallback;
+        private readonly Callback OnProcessStoppedCallback;
 
         #endregion
 
@@ -53,13 +53,12 @@ namespace Falcon.Core.Utilities
                 OnProcessStartedCallback = onProcessStartedCallback;
             }
 
-            if (onProcessStoppedCallback != null)
-            {
-                ProcessStopMonitor = new ManagementEventWatcher("SELECT * FROM Win32_ProcessStopTrace");
-                ProcessStopMonitor.EventArrived += OnProcessStopped;
+            if (onProcessStoppedCallback == null) return;
 
-                OnProcessStoppedCallback = onProcessStoppedCallback;
-            }
+            ProcessStopMonitor = new ManagementEventWatcher("SELECT * FROM Win32_ProcessStopTrace");
+            ProcessStopMonitor.EventArrived += OnProcessStopped;
+
+            OnProcessStoppedCallback = onProcessStoppedCallback;
         }
 
         #endregion
@@ -139,9 +138,9 @@ namespace Falcon.Core.Utilities
                 if (TrackedProcesses.ContainsKey(processId)) TrackedProcesses.Remove(processId);
             }
 
-            catch (Exception)
+            catch (Exception e)
             {
-                // TODO: Log Exception.
+                Diagnostics.Log(e);
             }
         }
 

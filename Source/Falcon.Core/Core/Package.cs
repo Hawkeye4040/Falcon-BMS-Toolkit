@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace Falcon.Core
 {
-    public sealed class Package : ICloneable
+    public sealed class Package : ICloneable, IFormattable, IEquatable<Package>
     {
         #region Properties
 
-        public int Number { get; set; }
+        public int Number { get; }
 
-        public string Task { get; set; }
+        public string Task { get; }
 
         public List<Flight> Flights { get; }
 
@@ -75,9 +75,32 @@ namespace Falcon.Core
             return Flights.Remove(flight);
         }
 
+        public override bool Equals(object obj)
+        {
+            return ReferenceEquals(this, obj) || obj is Package other && Equals(other);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Number, Task, Flights);
+        }
+
         public object Clone()
         {
             throw new NotImplementedException();
+        }
+
+        public bool Equals(Package other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+
+            return Number == other.Number && Task == other.Task && Equals(Flights, other.Flights);
+        }
+
+        public string ToString(string? format, IFormatProvider? formatProvider)
+        {
+            return $"PKG #:{Number}, {Task}";
         }
 
         #endregion
