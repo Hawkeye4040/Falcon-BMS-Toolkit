@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Falcon.Core
 {
@@ -27,11 +28,31 @@ namespace Falcon.Core
 
     public sealed class AircraftDefinition
     {
+        #region Fields
+
+        public static readonly List<AircraftDefinition> AircraftDefinitions;
+
+        #endregion
+
         #region Properties
 
         public string Model { get; }
 
         public Dictionary<Station, Ordnance> LoadoutConfiguration { get; }
+
+        static AircraftDefinition()
+        {
+            AircraftDefinitions = new List<AircraftDefinition>();
+            InitializeAircraftDefinitions();
+        }
+
+        private static async void InitializeAircraftDefinitions()
+        {
+            await Task.Run(() =>
+            {
+                // TODO: Initialize aircraft definitions from file here.
+            });
+        }
 
         #endregion
 

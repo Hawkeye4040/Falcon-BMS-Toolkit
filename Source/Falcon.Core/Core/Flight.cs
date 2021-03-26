@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Falcon.Core
@@ -12,7 +13,7 @@ namespace Falcon.Core
 
         public Package Package { get; set; }
 
-        public List<Pilot> Pilots { get; set; }
+        public ObservableCollection<Pilot> Pilots { get; }
 
         #endregion
 
@@ -20,7 +21,21 @@ namespace Falcon.Core
 
         public Flight()
         {
-            Pilots = new List<Pilot>(4);
+            Pilots = new ObservableCollection<Pilot>(4);
+        }
+
+        #endregion
+
+        #region Methods
+
+        public void Add(Pilot pilot)
+        {
+            Pilots.Add(pilot);
+        }
+
+        public void Add(IEnumerable<Pilot> pilots)
+        {
+            Pilots.AddRange(pilots);
         }
 
         #endregion

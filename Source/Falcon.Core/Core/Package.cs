@@ -70,6 +70,11 @@ namespace Falcon.Core
             Flights.Add(flight);
         }
 
+        public void Add(IEnumerable<Flight> flights)
+        {
+            Flights.AddRange(flights);
+        }
+
         public bool Remove(Flight flight)
         {
             return Flights.Remove(flight);
@@ -85,10 +90,12 @@ namespace Falcon.Core
             return HashCode.Combine(Number, Task, Flights);
         }
 
-        public object Clone()
+        public Package Clone()
         {
-            throw new NotImplementedException();
+            return new Package(Number, Task, Flights);
         }
+
+        object ICloneable.Clone() => Clone();
 
         public bool Equals(Package other)
         {
@@ -100,7 +107,7 @@ namespace Falcon.Core
 
         public string ToString(string? format, IFormatProvider? formatProvider)
         {
-            return $"PKG #:{Number}, {Task}";
+            return $"PKG #:{Number}, {Task}"; // TODO: Incorporate format provider parameter here.
         }
 
         #endregion
