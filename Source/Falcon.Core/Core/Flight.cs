@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Falcon.Core.Collections;
+using Falcon.Core.Events;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -13,7 +15,7 @@ namespace Falcon.Core
 
         public Package Package { get; set; }
 
-        public ObservableCollection<Pilot> Pilots { get; }
+        public ObservableList<Pilot> Pilots { get; }
 
         #endregion
 
@@ -21,7 +23,7 @@ namespace Falcon.Core
 
         public Flight()
         {
-            Pilots = new ObservableCollection<Pilot>(4);
+            Pilots = new ObservableList<Pilot>(4);
         }
 
         #endregion
@@ -41,55 +43,7 @@ namespace Falcon.Core
         #endregion
     }
 
-    public sealed class FlightChangedEventArgs : EventArgs
-    {
-        #region Properties
+    public delegate void OnFlightsChanged(object sender, ValueChangedEventArgs<Flight> e);
 
-        public Flight OldFlight { get; }
-
-        public Flight NewFlight { get; }
-
-        #endregion
-
-        #region Constructors
-
-        public FlightChangedEventArgs(Flight oldFlight, Flight newFlight)
-        {
-            OldFlight = oldFlight;
-            NewFlight = newFlight;
-        }
-
-        #endregion
-    }
-
-    public sealed class FlightsChangedEventArgs : EventArgs
-    {
-        #region Properties
-
-        public List<Flight> OldFlights { get; }
-
-        public List<Flight> NewFlights { get; }
-
-        public List<Flight> AddedFlights => NewFlights.Where(flight => !OldFlights.Contains(flight)).ToList();
-
-        public List<Flight> RemovedFlights => OldFlights.Where(flight => !NewFlights.Contains(flight)).ToList();
-
-        #endregion
-
-        #region Constructors
-
-        public FlightsChangedEventArgs(IEnumerable<Flight> oldFlights, IEnumerable<Flight> newFlights)
-        {
-            OldFlights = new List<Flight>();
-            OldFlights.AddRange(oldFlights);
-            NewFlights = new List<Flight>();
-            NewFlights.AddRange(newFlights);
-        }
-
-        #endregion
-    }
-
-    public delegate void OnFlightsChanged(object sender, FlightsChangedEventArgs e);
-
-    public delegate void OnFlightChanged(object sender, FlightChangedEventArgs e);
+    public delegate void OnFlightChanged(object sender, ValuesChangedEventArgs<Flight> e);
 }
