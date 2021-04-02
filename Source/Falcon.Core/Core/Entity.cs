@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Falcon.Core.Data;
+using Falcon.Core.Events;
 
 namespace Falcon.Core
 {
@@ -40,55 +41,7 @@ namespace Falcon.Core
         #endregion
     }
 
-    public sealed class EntityChangedEventArgs : EventArgs
-    {
-        #region Properties
+    public delegate void OnEntityChanged(object sender, ValueChangedEventArgs<Entity> e);
 
-        public Entity OldEntity { get; }
-
-        public Entity NewEntity { get; }
-
-        #endregion
-
-        #region Constructors
-
-        public EntityChangedEventArgs(Entity oldEntity, Entity newEntity)
-        {
-            OldEntity = oldEntity;
-            NewEntity = newEntity;
-        }
-
-        #endregion
-    }
-
-    public sealed class EntitiesChangedEventArgs : EventArgs
-    {
-        #region Properties
-
-        public List<Entity> OldEntities { get; }
-
-        public List<Entity> NewEntities { get; }
-
-        public List<Entity> AddedEntities => NewEntities.Where(entity => !OldEntities.Contains(entity)).ToList();
-
-        public List<Entity> RemovedEntities => OldEntities.Where(entity => !NewEntities.Contains(entity)).ToList();
-
-        #endregion
-
-        #region Constructors
-
-        public EntitiesChangedEventArgs(IEnumerable<Entity> oldEntities, IEnumerable<Entity> newEntities)
-        {
-            OldEntities = new List<Entity>();
-            OldEntities.AddRange(oldEntities);
-            NewEntities = new List<Entity>();
-            NewEntities.AddRange(newEntities);
-        }
-
-        #endregion
-    }
-
-    public delegate void OnEntityChanged(object sender, EntityChangedEventArgs e);
-
-    public delegate void OnEntitiesChanged(object sender, EntitiesChangedEventArgs e);
+    public delegate void OnEntitiesChanged(object sender, ValuesChangedEventArgs<Entity> e);
 }

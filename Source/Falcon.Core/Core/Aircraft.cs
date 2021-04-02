@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Falcon.Core.Events;
 
 namespace Falcon.Core
 {
@@ -58,4 +59,8 @@ namespace Falcon.Core
 
         // TODO: Determine if this property should be a pure key-value pair or a custom implementation of IDictionary.
     }
+
+    public delegate void OnAircraftChanged(object sender, ValueChangedEventArgs<Aircraft> e);
+
+    public delegate void OnAircraftsChanged(object sender, ValuesChangedEventArgs<Aircraft> e);
 }

@@ -106,6 +106,11 @@ namespace Falcon.Core.Collections
             Items.Add(item);
         }
 
+        public void AddRange(IEnumerable<T> items)
+        {
+            Items.AddRange(items);
+        }
+
         public bool Contains(T item)
         {
             return Items.Contains(item);

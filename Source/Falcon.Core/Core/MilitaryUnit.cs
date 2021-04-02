@@ -1,4 +1,6 @@
-﻿namespace Falcon.Core
+﻿using Falcon.Core.Events;
+
+namespace Falcon.Core
 {
     public abstract class MilitaryUnit : Entity
     {
@@ -44,4 +46,8 @@
     {
 
     }
+
+    public delegate void OnMilitaryUnitChanged(object sender, ValueChangedEventArgs<MilitaryUnit> e);
+
+    public delegate void OnMilitaryUnitsChanged(object sender, ValuesChangedEventArgs<MilitaryUnit> e);
 }

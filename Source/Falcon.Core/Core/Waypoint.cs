@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Falcon.Core.Data;
+using Falcon.Core.Events;
 
 namespace Falcon.Core
 {
@@ -103,7 +104,7 @@ namespace Falcon.Core
         #endregion
     }
 
-    public delegate void OnWaypointChanged(object sender, WaypointChangedEventArgs e);
+    public delegate void OnWaypointChanged(object sender, ValueChangedEventArgs<Waypoint> e);
 
-    public delegate void OnWaypointsChanged(object sender, WaypointsChangedEventArgs e);
+    public delegate void OnWaypointsChanged(object sender, ValuesChangedEventArgs<Waypoint> e);
 }
