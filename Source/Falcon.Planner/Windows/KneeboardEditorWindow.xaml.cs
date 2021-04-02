@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows.Threading;
 
 namespace Falcon.Planner.Windows
 {
@@ -9,12 +8,23 @@ namespace Falcon.Planner.Windows
     /// </summary>
     public partial class KneeboardEditorWindow
     {
-        // TODO: Fix memory leak resources not being freed from RAM when this window is closed.
         #region Constructors
 
         public KneeboardEditorWindow()
         {
             Initialize();
+        }
+
+        private async Task InitializeDocuments()
+        {
+            StatusTextBlock.Text = "Initializing Documents";
+
+            await Task.Run(() =>
+            {
+
+            });
+
+            StatusTextBlock.Text = "Documents Initialized";
         }
 
         #endregion
@@ -24,6 +34,8 @@ namespace Falcon.Planner.Windows
         private async void Initialize()
         {
             await Dispatcher.InvokeAsync(InitializeComponent);
+
+            await InitializeDocuments();
         }
 
         private void CloseWindowCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)

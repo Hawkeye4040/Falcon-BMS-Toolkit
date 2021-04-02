@@ -194,7 +194,7 @@
                 <TableRow>
                     <TableCell BorderBrush="Black" BorderThickness="1" ColumnSpan="6">
                         <BlockUIContainer>
-                            <TextBox x:Name="NotesTextBox"  SpellCheck.IsEnabled="True" MinLines="9" MaxLines="9" MinHeight="450"/>
+                            <TextBox x:Name="NotesTextBox"  SpellCheck.IsEnabled="True" MinLines="9" MaxLines="9" MinHeight="450" />
                         </BlockUIContainer>
                     </TableCell>
                 </TableRow>

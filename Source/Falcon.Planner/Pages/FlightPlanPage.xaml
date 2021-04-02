@@ -8,7 +8,7 @@
       Title="Flight Plan">
 
     <!-- TODO: Change Table Row Groups to individual Tables to allow for adjusting and using different column widths between sections. Ensure seamless transition. -->
-    <FlowDocument Background="AliceBlue" Foreground="Black" ColumnWidth="2480">
+    <FlowDocument Background="AliceBlue" Foreground="Black" ColumnWidth="2480" IsColumnWidthFlexible="False" PageWidth="2480" >
         <Table CellSpacing="0">
             <Table.Columns>
                 <TableColumn Width="30" />

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="clr-namespace:Falcon.UI;assembly=Falcon.UI"
+        xmlns:pages="clr-namespace:Falcon.Planner.Pages"
         mc:Ignorable="d"
         Title="Kneeboard Editor"
         WindowState="Maximized"
@@ -106,7 +107,7 @@
                     </TabItem.Header>
 
                     <TabItem.Content>
-                        <FlowDocumentReader HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ViewingMode="Page">
+                        <FlowDocumentReader x:Name="BriefingDocumentReader" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ViewingMode="Page">
                             
                         </FlowDocumentReader>
                     </TabItem.Content>
@@ -201,7 +202,7 @@
 
         <Grid x:Name="StatusPanel" Grid.Row="2" Background="DodgerBlue">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Foreground="AliceBlue" Text="Ready" FontSize="20" Padding="15,1,15,2" />
+                <TextBlock x:Name="StatusTextBlock" Foreground="AliceBlue" Text="Ready" FontSize="20" Padding="15,1,15,2" />
             </StackPanel>
         </Grid>
     </Grid>
