@@ -3,7 +3,7 @@
 namespace Falcon.Resources
 {
     [Serializable]
-    public enum F4ResourceTypes : uint
+    public enum FalconResourceTypes : uint
     {
         Unknown = 0,
         ImageResource = 100, // 0x00000064
