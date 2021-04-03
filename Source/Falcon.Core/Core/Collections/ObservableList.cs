@@ -20,17 +20,15 @@ namespace Falcon.Core.Collections
 
         public bool IsFixedSize => true;
 
-        public bool IsReadOnly => false;
-
         public List<T> Items { get; protected set; }
 
         int ICollection.Count => Count;
 
         int ICollection<T>.Count => Count;
 
-        bool ICollection<T>.IsReadOnly => IsReadOnly;
+        bool ICollection<T>.IsReadOnly => false;
 
-        bool IList.IsReadOnly => IsReadOnly;
+        bool IList.IsReadOnly => false;
 
         #endregion
 
