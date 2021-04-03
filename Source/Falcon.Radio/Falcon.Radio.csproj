@@ -12,6 +12,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Speech" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Falcon.Core\Falcon.Core.csproj" />
     <ProjectReference Include="..\Falcon.UI\Falcon.UI.csproj" />
   </ItemGroup>
