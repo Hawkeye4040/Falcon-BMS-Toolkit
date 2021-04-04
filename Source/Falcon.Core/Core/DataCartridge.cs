@@ -585,7 +585,153 @@ namespace Falcon.Core
 
         public sealed class WeaponsConfig
         {
+            #region Properties
 
+            public BombProfile BombProfile1 { get; }
+
+            public BombProfile BombProfile2 { get; }
+
+            public AAMissileProfile AAMProfile { get; }
+
+            public AGMissileProfile AGMProfile { get; }
+
+            #endregion
+
+            #region Constructors
+
+            public WeaponsConfig()
+            {
+                BombProfile1 = new BombProfile();
+
+                BombProfile2 = new BombProfile
+                {
+                    SubMode = BombProfile.SubModes.CCIP,
+                    FuzeMode = BombProfile.FuzeModes.NOSE,
+                    ImpactSpacing = 175,
+                    Angle = 45,
+                    C2BurstAltitude = 2000,
+                    ReleasePulses = 2
+                };
+
+                AAMProfile = new AAMissileProfile();
+
+                AGMProfile = new AGMissileProfile();
+            }
+
+            #endregion
+
+            #region Classes
+
+            public sealed class BombProfile
+            {
+                public uint ImpactSpacing { get; set; } = 100;
+
+                public uint ReleasePulses { get; set; }
+
+                public int Angle { get; set; }
+
+                public float C1ArmingDelay1 { get; set; } = 1.0f;
+
+                public float C1ArmingDelay2 { get; set; } = 2.0f;
+
+                public float C2ArmingDelay1 { get; set; } = 1.5f;
+
+                public uint C2BurstAltitude { get; set; } = 1000;
+
+                public SubModes SubMode { get; set; } = SubModes.CCRP;
+
+                public FuzeModes FuzeMode { get; set; } = FuzeModes.NOSE;
+
+                public PairingModes PairingMode { get; set; } = PairingModes.SGL;
+
+                public enum SubModes
+                {
+                    CCRP,
+                    CCIP
+                }
+
+                public enum FuzeModes
+                {
+                    NOSE
+                }
+
+                public enum PairingModes
+                {
+                    SGL,
+                    PAIR
+                }
+            }
+
+            public sealed class AAMissileProfile
+            {
+                public SidewinderScanModes ScanMode { get; } = SidewinderScanModes.SPOT;
+
+                public SidewinderTDBP TDBP { get; } = SidewinderTDBP.TD;
+
+                public AMRAAMTargetSize TargetSize { get; } = AMRAAMTargetSize.UNKNOWN;
+
+                public enum SidewinderScanModes
+                {
+                    SPOT,
+                    SCAN
+                }
+
+                public enum SidewinderTDBP
+                {
+                    TD,
+                    BP
+                } // TODO: Rename enum and label members.
+
+                public enum AMRAAMTargetSize
+                {
+                    UNKNOWN
+                }
+            }
+
+            public sealed class AGMissileProfile
+            {
+                private uint _autoPowerWaypoint;
+                public AutoPowerModes AutoPowerMode { get; } = AutoPowerModes.OFF;
+
+                public AutoPowerDirections AutoPowerDirection { get; } = AutoPowerDirections.North;
+
+                public uint AutoPowerWaypoint
+                {
+                    get => _autoPowerWaypoint;
+                    set
+                    {
+                        if (value == 0)
+                            _autoPowerWaypoint = 1;
+
+                        else if (value > 0 && value < 25)
+                            _autoPowerWaypoint = value;
+
+                        else if (value > 25)
+                            _autoPowerWaypoint = 24;
+                    }
+                }
+
+                public AGMissileProfile()
+                {
+                    AutoPowerWaypoint = 1;
+                }
+
+                public enum AutoPowerModes
+                {
+                    ON,
+                    OFF
+                }
+
+                public enum AutoPowerDirections
+                {
+                    North,
+                    East,
+                    South,
+                    West
+                }
+            }
+
+            #endregion
         }
 
         #endregion
