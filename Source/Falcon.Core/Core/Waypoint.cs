@@ -42,9 +42,9 @@ namespace Falcon.Core
 
         public uint Departure { get; set; }
 
-        public byte Action { get; set; }
+        public byte Action { get; set; } // TODO: Convert to enum Action : byte
 
-        public byte Formation { get; set; }
+        public byte Formation { get; set; } // TODO: Convert to enum Formation : byte
 
         public uint Flags { get; set; }
 
@@ -56,10 +56,12 @@ namespace Falcon.Core
 
         #region Methods
 
-        public object Clone()
+        public Waypoint Clone()
         {
             throw new NotImplementedException();
         }
+
+        object ICloneable.Clone() => Clone();
 
         public bool Equals(Waypoint other)
         {

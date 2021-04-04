@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Falcon.Core
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public sealed class DataCartridge : IFormattable, IEquatable<DataCartridge>, ICloneable
+    [SuppressMessage("ReSharper", "StructCanBeMadeReadOnly")]
+    public struct DataCartridge : IFormattable, IEquatable<DataCartridge>, ICloneable
     {
         #region Constructors
 
@@ -25,23 +26,21 @@ namespace Falcon.Core
 
         #endregion
 
-        // TODO: Decide if also implementing IComparable will be necessary/appropriate here.
-
         #region Properties
 
         public string Id { get; }
 
-        public EWSConfig EWS { get; }
+        public EWSConfig EWS { get; set; }
 
-        public MFDConfig MFD { get; }
+        public MFDConfig MFD { get; set; }
 
-        public RadioConfig Radio { get; }
+        public RadioConfig Radio { get; set; }
 
-        public NavigationConfig Navigation { get; }
+        public NavigationConfig Navigation { get; set; }
 
-        public SystemsConfig Systems { get; }
+        public SystemsConfig Systems { get; set; }
 
-        public WeaponsConfig Weapons { get; }
+        public WeaponsConfig Weapons { get; set; }
 
         #endregion
 
@@ -88,31 +87,22 @@ namespace Falcon.Core
             throw new NotImplementedException();
         }
 
+        // TODO: Add asynchronous method(s) to share DTC files with others accounting for uniqueId's and changing the file name following the user.ini convention.
+
         #endregion
 
         #region Classes
 
         public sealed class EWSConfig
         {
-            #region Constructors
-
-            public EWSConfig()
-            {
-                ChaffBingoQuantity = 10;
-                FlareBingoQuantity = 10;
-                REQJAM = true;
-                REQCTR = true;
-                Feedback = true;
-                Bingo = true;
-                CMDS = new CMDSConfig();
-            }
-
-            #endregion
-
             #region Classes
 
             public sealed class CMDSConfig
             {
+                public CMDSModes Mode { get; set; } = CMDSModes.Off;
+
+                public uint ProgramNumber { get; } = 1; // TODO: Clamp this value to appropriate ranges or change to another fixed enum.
+
                 public enum CMDSModes
                 {
                     Off,
@@ -120,39 +110,25 @@ namespace Falcon.Core
                     Semi,
                     Auto
                 }
-
-                public CMDSConfig()
-                {
-                    Mode = CMDSModes.Off;
-                    ProgramNumber = 1;
-                }
-
-                public CMDSModes Mode { get; }
-
-                public uint
-                    ProgramNumber
-                {
-                    get;
-                } // TODO: Clamp this value to appropriate ranges or change to another fixed enum.
             }
 
             #endregion
 
             #region Properties
 
-            public uint ChaffBingoQuantity { get; }
+            public uint ChaffBingoQuantity { get; set; } = 10;
 
-            public uint FlareBingoQuantity { get; }
+            public uint FlareBingoQuantity { get; set; } = 10;
 
-            public bool REQJAM { get; }
+            public bool REQJAM { get; set; } = true;
 
-            public bool REQCTR { get; }
+            public bool REQCTR { get; set; } = true;
 
-            public bool Feedback { get; }
+            public bool Feedback { get; set; } = true;
 
-            public bool Bingo { get; }
+            public bool Bingo { get; set; } = true;
 
-            public CMDSConfig CMDS { get; }
+            public CMDSConfig CMDS { get; set; } = new CMDSConfig();
 
             #endregion
         }
@@ -167,7 +143,8 @@ namespace Falcon.Core
                 WPN,
                 TGP,
                 HAD,
-                SMS
+                SMS,
+                TCN
             }
 
             #region Constructors
@@ -592,6 +569,12 @@ namespace Falcon.Core
                 {
                     Steerpoints = new List<Waypoint>(24);
                     PPT = new List<Waypoint>(15);
+                    Bullseye = new Waypoint(); // TODO: Initialize default instance of Waypoint Bullseye.
+                    Line1 = new List<Waypoint>();
+                    Line2 = new List<Waypoint>();
+                    Line3 = new List<Waypoint>();
+                    Line4 = new List<Waypoint>(); // TODO: Set appropriate capacities for line waypoint collections.
+                    Open = new List<Waypoint>(); // TODO: Set Capacity for this waypoint collection.
                 });
             }
 
@@ -603,23 +586,54 @@ namespace Falcon.Core
 
             public List<Waypoint> PPT { get; private set; }
 
+            public Waypoint Bullseye { get; private set; }
+
+            public List<Waypoint> Line1 { get; private set; }
+
+            public List<Waypoint> Line2 { get; private set; }
+
+            public List<Waypoint> Line3 { get; private set; }
+
+            public List<Waypoint> Line4 { get; private set; }
+
+            public List<Waypoint> Open { get; private set; }
+
+            #endregion
+
+            #region Methods
+
+            public static List<Waypoint> GetAllLines(DataCartridge dtc)
+            {
+                List<Waypoint> allLines = new List<Waypoint>();
+
+                allLines.AddRange(dtc.Navigation.Line1);
+                allLines.AddRange(dtc.Navigation.Line2);
+                allLines.AddRange(dtc.Navigation.Line3);
+                allLines.AddRange(dtc.Navigation.Line4);
+
+                return allLines;
+            }
+
+            public static List<Waypoint> GetAllLines(NavigationConfig navConfig)
+            {
+                List<Waypoint> allLines = new List<Waypoint>();
+
+                allLines.AddRange(navConfig.Line1);
+                allLines.AddRange(navConfig.Line2);
+                allLines.AddRange(navConfig.Line3);
+                allLines.AddRange(navConfig.Line4);
+
+                return allLines;
+            }
+
             #endregion
         }
 
         public sealed class SystemsConfig
         {
-            #region Constructors
-
-            public SystemsConfig()
-            {
-                MasterArmMode = MasterArmModes.OFF;
-            }
-
-            #endregion
-
             #region Properties
 
-            public MasterArmModes MasterArmMode { get; }
+            public MasterArmModes MasterArmMode { get; set; } = MasterArmModes.OFF;
 
             #endregion
 
@@ -627,6 +641,10 @@ namespace Falcon.Core
 
             public sealed class HUDConfig
             {
+                public HUDColors Color { get; set; } = HUDColors.Green;
+
+                public uint Brightness { get; set; } = 1;
+
                 public enum DEDModes
                 {
                     DED
@@ -635,6 +653,7 @@ namespace Falcon.Core
                 public enum FPMModes
                 {
                     FPM,
+                    [SuppressMessage("ReSharper", "IdentifierTypo")] 
                     ATTFPM
                 }
 
@@ -652,35 +671,21 @@ namespace Falcon.Core
                 {
                     ON
                 }
-
-                public HUDColors Color { get; }
-
-                public uint Brightness { get; }
             }
 
             public sealed class ICPConfig
             {
-                public ICPConfig()
-                {
-                    CurrentMasterMode = MasterModes.Nav;
-                    AllowMSL = 10000;
-                    AllowAGL = 300;
-                    AllowTFadv = 400;
-                    Wingspan = 35;
-                    BingoFuelQuantity = 2500;
-                }
+                public MasterModes CurrentMasterMode { get; set; } = MasterModes.Nav;
 
-                public MasterModes CurrentMasterMode { get; }
+                public uint AllowMSL { get; set; } = 10000;
 
-                public uint AllowMSL { get; }
+                public uint AllowAGL { get; set; } = 300;
 
-                public uint AllowAGL { get; }
+                public uint AllowTFadv { get; set; } = 400;
 
-                public uint AllowTFadv { get; }
+                public uint Wingspan { get; set; } = 35;
 
-                public uint Wingspan { get; }
-
-                public uint BingoFuelQuantity { get; }
+                public uint BingoFuelQuantity { get; set; } = 2500;
 
                 internal static uint GetWingspanForAircraftModel(string modelId)
                 {
@@ -775,13 +780,13 @@ namespace Falcon.Core
 
             #region Properties
 
-            public BombProfile BombProfile1 { get; }
+            public BombProfile BombProfile1 { get; set; }
 
-            public BombProfile BombProfile2 { get; }
+            public BombProfile BombProfile2 { get; set; }
 
-            public AAMissileProfile AAMProfile { get; }
+            public AAMissileProfile AAMProfile { get; set; }
 
-            public AGMissileProfile AGMProfile { get; }
+            public AGMissileProfile AGMProfile { get; set; }
 
             #endregion
 
@@ -844,31 +849,18 @@ namespace Falcon.Core
                 {
                     TD,
                     BP
-                } // TODO: Rename enum and label members.
+                } 
+                // TODO: Rename enum and label members.
 
-                public SidewinderScanModes ScanMode { get; } = SidewinderScanModes.SPOT;
+                public SidewinderScanModes ScanMode { get; set; } = SidewinderScanModes.SPOT;
 
-                public SidewinderTDBP TDBP { get; } = SidewinderTDBP.TD;
+                public SidewinderTDBP TDBP { get; set; } = SidewinderTDBP.TD;
 
-                public AMRAAMTargetSize TargetSize { get; } = AMRAAMTargetSize.UNKNOWN;
+                public AMRAAMTargetSize TargetSize { get; set; } = AMRAAMTargetSize.UNKNOWN;
             }
 
             public sealed class AGMissileProfile
             {
-                public enum AutoPowerDirections
-                {
-                    North,
-                    East,
-                    South,
-                    West
-                }
-
-                public enum AutoPowerModes
-                {
-                    ON,
-                    OFF
-                }
-
                 private uint _autoPowerWaypoint;
 
                 public AGMissileProfile()
@@ -876,9 +868,9 @@ namespace Falcon.Core
                     AutoPowerWaypoint = 1;
                 }
 
-                public AutoPowerModes AutoPowerMode { get; } = AutoPowerModes.OFF;
+                public AutoPowerModes AutoPowerMode { get; set; } = AutoPowerModes.OFF;
 
-                public AutoPowerDirections AutoPowerDirection { get; } = AutoPowerDirections.North;
+                public AutoPowerDirections AutoPowerDirection { get; set; } = AutoPowerDirections.North;
 
                 public uint AutoPowerWaypoint
                 {
@@ -894,6 +886,20 @@ namespace Falcon.Core
                         else if (value > 25)
                             _autoPowerWaypoint = 24;
                     }
+                }
+
+                public enum AutoPowerDirections
+                {
+                    North,
+                    East,
+                    South,
+                    West
+                }
+
+                public enum AutoPowerModes
+                {
+                    ON,
+                    OFF
                 }
             }
 
