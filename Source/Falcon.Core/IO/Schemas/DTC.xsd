@@ -1,9 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="DTC"
-    targetNamespace="http://tempuri.org/DTC.xsd"
-    elementFormDefault="qualified"
-    xmlns="http://tempuri.org/DTC.xsd"
-    xmlns:mstns="http://tempuri.org/DTC.xsd"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+<xs:schema id="DTC" 
+           version="1.0" 
+           xml:lang="en-us"
+           targetNamespace="Falcon:Core:IO:Schemas"
+           elementFormDefault="qualified"
+           xmlns="Falcon:Core:IO:Schemas"
+           xmlns:mstns="http://tempuri.org/DTC.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           schemaLocation="file:///C:/Users/mjwil/source/repos/Falcon-BMS-Toolkit/Source/Falcon.Core/IO/Schemas/DTC.xsd">
+
+  <xs:complexType name="DataCartridge">
+    <xs:sequence>
+      <xs:element name="EWS" type="EWSConfig" minOccurs="1" maxOccurs="1">
+        
+      </xs:element>
+
+      <xs:element name="MFD" type="MFDConfig" minOccurs="1" maxOccurs="1">
+
+      </xs:element>
+
+      <xs:element name="Radio" type="RadioConfig" minOccurs="1" maxOccurs="1">
+
+      </xs:element>
+
+      <xs:element name="Navigation" type="NavigationConfig" minOccurs="1" maxOccurs="1">
+
+      </xs:element>
+
+      <xs:element name="Systems" type="SystemsConfig" minOccurs="1" maxOccurs="1">
+
+      </xs:element>
+
+      <xs:element name="Weapons" type="WeaponsConfig" minOccurs="1" maxOccurs="1">
+
+      </xs:element>
+    </xs:sequence>
+
+    <xs:attribute name="Id" type="xs:string" />
+  </xs:complexType>
+
+  <xs:complexType name="EWSConfig">
+    <xs:sequence>
+      <xs:element name="ChaffBingoQuantity" type="xs:int" minOccurs="1" maxOccurs="1" />
+      <xs:element name="FlareBingoQuantity" type="xs:int" minOccurs="1" maxOccurs="1" />
+      <xs:element name="REQJAM" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+      <xs:element name="REQCTR" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Feedback" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Bingo" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CMDS" type="CMDSConfig" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CMDSConfig">
+    <xs:sequence>
+      <xs:element name="CMDSMode" type="CMDSModes" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="Program" type="xs:int" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="CMDSModes">
+    <xs:restriction>
+      <xs:enumeration value="Off"/>
+      <xs:enumeration value="On"/>
+      <xs:enumeration value="Manual"/>
+      <xs:enumeration value="Semi"/>
+      <xs:enumeration value="Auto"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="MFDConfig">
+
+  </xs:complexType>
+
+  <xs:complexType name="RadioConfig">
+
+  </xs:complexType>
+
+  <xs:complexType name="NavigationConfig">
+
+  </xs:complexType>
+
+  <xs:complexType name="SystemsConfig">
+
+  </xs:complexType>
+
+  <xs:complexType name="WeaponsConfig">
+
+  </xs:complexType>
 </xs:schema>
