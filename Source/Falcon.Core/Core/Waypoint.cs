@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
 using Falcon.Core.Data;
 using Falcon.Core.Events;
 
@@ -46,59 +43,9 @@ namespace Falcon.Core
             throw new NotImplementedException();
         }
 
-        public bool Equals(Waypoint? other)
+        public bool Equals(Waypoint other)
         {
             throw new NotImplementedException();
-        }
-
-        #endregion
-    }
-
-    public sealed class WaypointChangedEventArgs : EventArgs
-    {
-        #region Properties
-
-        public Waypoint OldWaypoint { get; }
-
-        public Waypoint NewWaypoint { get; }
-
-        #endregion
-
-        #region Constructors
-
-        public WaypointChangedEventArgs(Waypoint oldWaypoint, Waypoint newWaypoint)
-        {
-            OldWaypoint = oldWaypoint;
-            NewWaypoint = newWaypoint;
-        }
-
-        #endregion
-    }
-
-    public sealed class WaypointsChangedEventArgs : EventArgs
-    {
-        #region Properties
-
-        public List<Waypoint> OldWaypoints { get; }
-
-        public List<Waypoint> NewWaypoints { get; }
-
-        public List<Waypoint> AddedWaypoints =>
-            NewWaypoints.Where(waypoint => !OldWaypoints.Contains(waypoint)).ToList();
-
-        public List<Waypoint> RemovedWaypoints =>
-            OldWaypoints.Where(waypoint => !NewWaypoints.Contains(waypoint)).ToList();
-
-        #endregion
-
-        #region Constructors
-
-        public WaypointsChangedEventArgs(IEnumerable<Waypoint> oldWaypoints, IEnumerable<Waypoint> newWaypoints)
-        {
-            OldWaypoints = new List<Waypoint>();
-            OldWaypoints.AddRange(oldWaypoints);
-            NewWaypoints = new List<Waypoint>();
-            NewWaypoints.AddRange(newWaypoints);
         }
 
         #endregion
