@@ -8,7 +8,7 @@ namespace Falcon.Core
     {
         #region Properties
 
-        public int Number { get; }
+        public uint Number { get; }
 
         public string Task { get; }
 
@@ -25,21 +25,21 @@ namespace Falcon.Core
             Flights = new List<Flight>();
         }
 
-        public Package(int number)
+        public Package(uint number)
         {
             Number = number;
             Task = string.Empty;
             Flights = new List<Flight>();
         }
 
-        public Package(int number, string task)
+        public Package(uint number, string task)
         {
             Number = number;
             Task = task;
             Flights = new List<Flight>();
         }
 
-        public Package(int number, string task, IEnumerable<Flight> flights)
+        public Package(uint number, string task, IEnumerable<Flight> flights)
         {
             Number = number;
             Task = task;
@@ -60,7 +60,7 @@ namespace Falcon.Core
             return pilots;
         }
 
-        private static int GeneratePackageNumber()
+        private static uint GeneratePackageNumber()
         {
             throw new NotImplementedException();
         }
@@ -100,12 +100,13 @@ namespace Falcon.Core
         public bool Equals(Package other)
         {
             if (ReferenceEquals(null, other)) return false;
+
             if (ReferenceEquals(this, other)) return true;
 
             return Number == other.Number && Task == other.Task && Equals(Flights, other.Flights);
         }
 
-        public string ToString(string? format, IFormatProvider? formatProvider)
+        public string ToString(string format, IFormatProvider formatProvider)
         {
             return $"PKG #:{Number}, {Task}"; // TODO: Incorporate format provider parameter here.
         }
