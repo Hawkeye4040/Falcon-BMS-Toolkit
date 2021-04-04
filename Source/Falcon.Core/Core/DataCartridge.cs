@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
@@ -8,6 +9,22 @@ namespace Falcon.Core
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public sealed class DataCartridge : IFormattable, IEquatable<DataCartridge>, ICloneable
     {
+        #region Constructors
+
+        public DataCartridge(string id)
+        {
+            Id = id;
+
+            EWS = new EWSConfig();
+            MFD = new MFDConfig();
+            Radio = new RadioConfig();
+            Navigation = new NavigationConfig();
+            Systems = new SystemsConfig();
+            Weapons = new WeaponsConfig();
+        }
+
+        #endregion
+
         // TODO: Decide if also implementing IComparable will be necessary/appropriate here.
 
         #region Properties
@@ -28,22 +45,6 @@ namespace Falcon.Core
 
         #endregion
 
-        #region Constructors
-
-        public DataCartridge(string id)
-        {
-            Id = id;
-            
-            EWS = new EWSConfig();
-            MFD = new MFDConfig();
-            Radio = new RadioConfig();
-            Navigation = new NavigationConfig();
-            Systems = new SystemsConfig();
-            Weapons = new WeaponsConfig();
-        }
-
-        #endregion
-
         #region Methods
 
         public DataCartridge Clone()
@@ -51,7 +52,10 @@ namespace Falcon.Core
             throw new NotImplementedException();
         }
 
-        object ICloneable.Clone() => Clone();
+        object ICloneable.Clone()
+        {
+            return Clone();
+        }
 
         public bool Equals(DataCartridge other)
         {
@@ -65,30 +69,21 @@ namespace Falcon.Core
 
         public async Task<bool> Save()
         {
-            await Task.Run(() =>
-            {
-                
-            });
+            await Task.Run(() => { });
 
             throw new NotImplementedException();
         }
 
         public async Task<bool> Load()
         {
-            await Task.Run(() =>
-            {
-                
-            });
+            await Task.Run(() => { });
 
             throw new NotImplementedException();
         }
 
         public async Task<bool> Backup()
         {
-            await Task.Run(() =>
-            {
-                
-            });
+            await Task.Run(() => { });
 
             throw new NotImplementedException();
         }
@@ -99,24 +94,6 @@ namespace Falcon.Core
 
         public sealed class EWSConfig
         {
-            #region Properties
-
-            public uint ChaffBingoQuantity { get; }
-
-            public uint FlareBingoQuantity { get; }
-
-            public bool REQJAM { get; }
-
-            public bool REQCTR { get; }
-
-            public bool Feedback { get; }
-
-            public bool Bingo { get; }
-
-            public CMDSConfig CMDS { get; }
-
-            #endregion
-
             #region Constructors
 
             public EWSConfig()
@@ -136,40 +113,62 @@ namespace Falcon.Core
 
             public sealed class CMDSConfig
             {
-                public CMDSModes Mode { get; }
-
-                public uint ProgramNumber { get; } // TODO: Clamp this value to appropriate ranges or change to another fixed enum.
-
-                public CMDSConfig()
-                {
-
-                    Mode = CMDSModes.Off;
-                    ProgramNumber = 1;
-                }
-
                 public enum CMDSModes
                 {
                     Off,
                     Manual,
                     Semi,
-                    Auto,
+                    Auto
                 }
+
+                public CMDSConfig()
+                {
+                    Mode = CMDSModes.Off;
+                    ProgramNumber = 1;
+                }
+
+                public CMDSModes Mode { get; }
+
+                public uint
+                    ProgramNumber
+                {
+                    get;
+                } // TODO: Clamp this value to appropriate ranges or change to another fixed enum.
             }
+
+            #endregion
+
+            #region Properties
+
+            public uint ChaffBingoQuantity { get; }
+
+            public uint FlareBingoQuantity { get; }
+
+            public bool REQJAM { get; }
+
+            public bool REQCTR { get; }
+
+            public bool Feedback { get; }
+
+            public bool Bingo { get; }
+
+            public CMDSConfig CMDS { get; }
 
             #endregion
         }
 
         public sealed class MFDConfig
         {
-            #region Properties
-
-            public bool ShowBullseye { get; }
-
-            public AGMasterModes AGModes { get; }
-
-            public AAMasterModes AAModes { get; }
-
-            #endregion
+            public enum MFDModes
+            {
+                None,
+                HSD,
+                FCR,
+                WPN,
+                TGP,
+                HAD,
+                SMS
+            }
 
             #region Constructors
 
@@ -187,13 +186,20 @@ namespace Falcon.Core
 
             public async Task<bool> Backup()
             {
-                await Task.Run(() =>
-                {
-
-                });
+                await Task.Run(() => { });
 
                 throw new NotImplementedException();
             }
+
+            #endregion
+
+            #region Properties
+
+            public bool ShowBullseye { get; }
+
+            public AGMasterModes AGModes { get; }
+
+            public AAMasterModes AAModes { get; }
 
             #endregion
 
@@ -201,14 +207,6 @@ namespace Falcon.Core
 
             public sealed class AGMasterModes
             {
-                public MFD MFD1 { get; }
-
-                public MFD MFD2 { get; }
-
-                public MFD MFD3 { get; }
-
-                public MFD MFD4 { get; }
-
                 public AGMasterModes()
                 {
                     MFD1 = new MFD();
@@ -230,10 +228,7 @@ namespace Falcon.Core
                     MFD3 = mfd3;
                     MFD4 = mfd4;
                 }
-            }
 
-            public sealed class AAMasterModes
-            {
                 public MFD MFD1 { get; }
 
                 public MFD MFD2 { get; }
@@ -241,7 +236,10 @@ namespace Falcon.Core
                 public MFD MFD3 { get; }
 
                 public MFD MFD4 { get; }
+            }
 
+            public sealed class AAMasterModes
+            {
                 public AAMasterModes()
                 {
                     MFD1 = new MFD();
@@ -263,10 +261,7 @@ namespace Falcon.Core
                     MFD3 = mfd3;
                     MFD4 = mfd4;
                 }
-            }
 
-            public sealed class NavMasterModes
-            {
                 public MFD MFD1 { get; }
 
                 public MFD MFD2 { get; }
@@ -274,7 +269,10 @@ namespace Falcon.Core
                 public MFD MFD3 { get; }
 
                 public MFD MFD4 { get; }
+            }
 
+            public sealed class NavMasterModes
+            {
                 public NavMasterModes()
                 {
                     MFD1 = new MFD();
@@ -296,10 +294,7 @@ namespace Falcon.Core
                     MFD3 = mfd3;
                     MFD4 = mfd4;
                 }
-            }
 
-            public sealed class MSLOVRDModes
-            {
                 public MFD MFD1 { get; }
 
                 public MFD MFD2 { get; }
@@ -307,7 +302,10 @@ namespace Falcon.Core
                 public MFD MFD3 { get; }
 
                 public MFD MFD4 { get; }
+            }
 
+            public sealed class MSLOVRDModes
+            {
                 public MSLOVRDModes()
                 {
                     MFD1 = new MFD();
@@ -329,10 +327,7 @@ namespace Falcon.Core
                     MFD3 = mfd3;
                     MFD4 = mfd4;
                 }
-            }
 
-            public sealed class DGFTOVRDModes
-            {
                 public MFD MFD1 { get; }
 
                 public MFD MFD2 { get; }
@@ -340,7 +335,10 @@ namespace Falcon.Core
                 public MFD MFD3 { get; }
 
                 public MFD MFD4 { get; }
+            }
 
+            public sealed class DGFTOVRDModes
+            {
                 public DGFTOVRDModes()
                 {
                     MFD1 = new MFD();
@@ -362,16 +360,18 @@ namespace Falcon.Core
                     MFD3 = mfd3;
                     MFD4 = mfd4;
                 }
+
+                public MFD MFD1 { get; }
+
+                public MFD MFD2 { get; }
+
+                public MFD MFD3 { get; }
+
+                public MFD MFD4 { get; }
             }
 
             public sealed class MFD
             {
-                public MFDModes LeftMFDMode { get; }
-
-                public MFDModes MiddleMFDMode { get; }
-
-                public MFDModes RightMFDMode { get; }
-
                 public MFD()
                 {
                     LeftMFDMode = MFDModes.None;
@@ -385,38 +385,196 @@ namespace Falcon.Core
                     MiddleMFDMode = middle;
                     RightMFDMode = right;
                 }
-            }
 
+                public MFDModes LeftMFDMode { get; }
+
+                public MFDModes MiddleMFDMode { get; }
+
+                public MFDModes RightMFDMode { get; }
+            }
 
             #endregion
-
-            public enum MFDModes
-            {
-                None,
-                HSD,
-                FCR,
-                WPN,
-                TGP,
-                HAD,
-                SMS
-            }
         }
 
         public sealed class RadioConfig
         {
+            public RadioPresetList UHF { get; }
 
+            public RadioPresetList VHF { get; }
+
+            public TACANConfig TACAN { get; }
+
+            public ILSConfig ILS { get; }
+
+            public RadioConfig()
+            {
+                UHF = new RadioPresetList();
+                VHF = new RadioPresetList();
+                TACAN = new TACANConfig();
+                ILS = new ILSConfig();
+            }
+
+            public async Task<bool> Load()
+            {
+                await Task.Run(() =>
+                {
+
+                });
+
+                throw new NotImplementedException();
+            }
+
+            public async Task<bool> Save()
+            {
+                await Task.Run(() =>
+                {
+
+                });
+
+                throw new NotImplementedException();
+            }
+
+            public sealed class RadioPresetList : IList<RadioPreset>
+            {
+                #region Fields
+
+                private readonly List<RadioPreset> presets;
+
+                #endregion
+
+                #region Properties
+
+                public int Count => presets.Count;
+
+                bool ICollection<RadioPreset>.IsReadOnly => false;
+
+                #endregion
+
+                #region Indexers
+
+                public RadioPreset this[int index]
+                {
+                    get => presets[index];
+                    set => presets.Insert(index, value);
+                }
+
+                #endregion
+
+                #region Constructors
+
+                public RadioPresetList()
+                {
+                    presets = new List<RadioPreset>(20);
+                }
+
+                #endregion
+
+                #region Methods
+
+                public IEnumerator<RadioPreset> GetEnumerator()
+                {
+                    return presets.GetEnumerator();
+                }
+
+                IEnumerator IEnumerable.GetEnumerator()
+                {
+                    return GetEnumerator();
+                }
+
+                public void Add(RadioPreset preset)
+                {
+                    presets.Add(preset);
+                }
+
+                public void Clear()
+                {
+                    presets.Clear();
+                }
+
+                public bool Contains(RadioPreset preset)
+                {
+                    return presets.Contains(preset);
+                }
+
+                public void CopyTo(RadioPreset[] array, int arrayIndex)
+                {
+                    presets.CopyTo(array, arrayIndex);
+                }
+
+                public bool Remove(RadioPreset preset)
+                {
+                    return presets.Remove(preset);
+                }
+
+                public int IndexOf(RadioPreset preset)
+                {
+                    return presets.IndexOf(preset);
+                }
+
+                public void Insert(int index, RadioPreset preset)
+                {
+                    presets.Insert(index, preset);
+                }
+
+                public void RemoveAt(int index)
+                {
+                    presets.RemoveAt(index);
+                }
+
+                #endregion
+            }
+
+            public sealed class TACANConfig
+            {
+                public uint Channel { get; } = 101; // TODO: Clamp TACAN channel value to acceptable ranges.
+
+                public TACANBands Band { get; } = TACANBands.X;
+
+                public TACANFunctionalModes FunctionalMode { get; } = TACANFunctionalModes.TR;
+
+                public enum TACANBands
+                {
+                    X,
+                    Y
+                }
+
+                public enum TACANFunctionalModes
+                {
+                    TR,
+                    AATR
+                }
+            }
+
+            public sealed class ILSConfig
+            {
+                private float _frequency;
+
+                private uint _course;
+                
+                public float Frequency
+                {
+                    get => _frequency;
+                    set => _frequency = value;
+                } 
+
+                // TODO: apply clamping and decimal rounding as needed to ensure this value conforms to BMS standards.
+
+                public uint Course
+                {
+                    get => _course;
+                    set
+                    {
+                        if (value >= 360)
+                            _course = 0;
+
+                        _course = value;
+                    }
+                }
+            }
         }
 
         public sealed class NavigationConfig
         {
-            #region Properties
-
-            public List<Waypoint> Steerpoints { get; private set; }
-
-            public List<Waypoint> PPT { get; private set; }
-
-            #endregion
-
             #region Constructors
 
             public NavigationConfig()
@@ -438,16 +596,18 @@ namespace Falcon.Core
             }
 
             #endregion
+
+            #region Properties
+
+            public List<Waypoint> Steerpoints { get; private set; }
+
+            public List<Waypoint> PPT { get; private set; }
+
+            #endregion
         }
 
         public sealed class SystemsConfig
         {
-            #region Properties
-
-            public MasterArmModes MasterArmMode { get; }
-
-            #endregion
-
             #region Constructors
 
             public SystemsConfig()
@@ -457,27 +617,19 @@ namespace Falcon.Core
 
             #endregion
 
+            #region Properties
+
+            public MasterArmModes MasterArmMode { get; }
+
+            #endregion
+
             #region Classes
 
             public sealed class HUDConfig
             {
-                public HUDColors Color { get; }
-
-                public uint Brightness { get; }
-
-                public enum HUDColors
+                public enum DEDModes
                 {
-                    Green
-                }
-
-                public enum SymWheelPositions
-                {
-                    ON
-                }
-
-                public enum HUDScales
-                {
-                    VAH
+                    DED
                 }
 
                 public enum FPMModes
@@ -486,14 +638,38 @@ namespace Falcon.Core
                     ATTFPM
                 }
 
-                public enum DEDModes
+                public enum HUDColors
                 {
-                    DED
+                    Green
                 }
+
+                public enum HUDScales
+                {
+                    VAH
+                }
+
+                public enum SymWheelPositions
+                {
+                    ON
+                }
+
+                public HUDColors Color { get; }
+
+                public uint Brightness { get; }
             }
 
             public sealed class ICPConfig
             {
+                public ICPConfig()
+                {
+                    CurrentMasterMode = MasterModes.Nav;
+                    AllowMSL = 10000;
+                    AllowAGL = 300;
+                    AllowTFadv = 400;
+                    Wingspan = 35;
+                    BingoFuelQuantity = 2500;
+                }
+
                 public MasterModes CurrentMasterMode { get; }
 
                 public uint AllowMSL { get; }
@@ -505,17 +681,6 @@ namespace Falcon.Core
                 public uint Wingspan { get; }
 
                 public uint BingoFuelQuantity { get; }
-
-                public ICPConfig()
-                {
-                    CurrentMasterMode = MasterModes.Nav;
-                    AllowMSL = 10000;
-                    AllowAGL = 300;
-                    AllowTFadv = 400;
-                    Wingspan = 35;
-                    BingoFuelQuantity = 2500;
-
-                }
 
                 internal static uint GetWingspanForAircraftModel(string modelId)
                 {
@@ -538,14 +703,14 @@ namespace Falcon.Core
                         "F-14" => 64,
                         "F-15" => 43,
                         "F-16" => 32,
-                        "F-18" =>37,
+                        "F-18" => 37,
                         "F/A-18" => 37,
                         "M2000" => 30,
                         "Tornado" => 46,
                         _ => throw new ArgumentOutOfRangeException(nameof(modelId))
                     };
 
-                    return (uint)wingspan;
+                    return (uint) wingspan;
                 }
             }
 
@@ -585,18 +750,6 @@ namespace Falcon.Core
 
         public sealed class WeaponsConfig
         {
-            #region Properties
-
-            public BombProfile BombProfile1 { get; }
-
-            public BombProfile BombProfile2 { get; }
-
-            public AAMissileProfile AAMProfile { get; }
-
-            public AGMissileProfile AGMProfile { get; }
-
-            #endregion
-
             #region Constructors
 
             public WeaponsConfig()
@@ -620,10 +773,39 @@ namespace Falcon.Core
 
             #endregion
 
+            #region Properties
+
+            public BombProfile BombProfile1 { get; }
+
+            public BombProfile BombProfile2 { get; }
+
+            public AAMissileProfile AAMProfile { get; }
+
+            public AGMissileProfile AGMProfile { get; }
+
+            #endregion
+
             #region Classes
 
             public sealed class BombProfile
             {
+                public enum FuzeModes
+                {
+                    NOSE
+                }
+
+                public enum PairingModes
+                {
+                    SGL,
+                    PAIR
+                }
+
+                public enum SubModes
+                {
+                    CCRP,
+                    CCIP
+                }
+
                 public uint ImpactSpacing { get; set; } = 100;
 
                 public uint ReleasePulses { get; set; }
@@ -643,32 +825,14 @@ namespace Falcon.Core
                 public FuzeModes FuzeMode { get; set; } = FuzeModes.NOSE;
 
                 public PairingModes PairingMode { get; set; } = PairingModes.SGL;
-
-                public enum SubModes
-                {
-                    CCRP,
-                    CCIP
-                }
-
-                public enum FuzeModes
-                {
-                    NOSE
-                }
-
-                public enum PairingModes
-                {
-                    SGL,
-                    PAIR
-                }
             }
 
             public sealed class AAMissileProfile
             {
-                public SidewinderScanModes ScanMode { get; } = SidewinderScanModes.SPOT;
-
-                public SidewinderTDBP TDBP { get; } = SidewinderTDBP.TD;
-
-                public AMRAAMTargetSize TargetSize { get; } = AMRAAMTargetSize.UNKNOWN;
+                public enum AMRAAMTargetSize
+                {
+                    UNKNOWN
+                }
 
                 public enum SidewinderScanModes
                 {
@@ -682,15 +846,36 @@ namespace Falcon.Core
                     BP
                 } // TODO: Rename enum and label members.
 
-                public enum AMRAAMTargetSize
-                {
-                    UNKNOWN
-                }
+                public SidewinderScanModes ScanMode { get; } = SidewinderScanModes.SPOT;
+
+                public SidewinderTDBP TDBP { get; } = SidewinderTDBP.TD;
+
+                public AMRAAMTargetSize TargetSize { get; } = AMRAAMTargetSize.UNKNOWN;
             }
 
             public sealed class AGMissileProfile
             {
+                public enum AutoPowerDirections
+                {
+                    North,
+                    East,
+                    South,
+                    West
+                }
+
+                public enum AutoPowerModes
+                {
+                    ON,
+                    OFF
+                }
+
                 private uint _autoPowerWaypoint;
+
+                public AGMissileProfile()
+                {
+                    AutoPowerWaypoint = 1;
+                }
+
                 public AutoPowerModes AutoPowerMode { get; } = AutoPowerModes.OFF;
 
                 public AutoPowerDirections AutoPowerDirection { get; } = AutoPowerDirections.North;
@@ -709,25 +894,6 @@ namespace Falcon.Core
                         else if (value > 25)
                             _autoPowerWaypoint = 24;
                     }
-                }
-
-                public AGMissileProfile()
-                {
-                    AutoPowerWaypoint = 1;
-                }
-
-                public enum AutoPowerModes
-                {
-                    ON,
-                    OFF
-                }
-
-                public enum AutoPowerDirections
-                {
-                    North,
-                    East,
-                    South,
-                    West
                 }
             }
 

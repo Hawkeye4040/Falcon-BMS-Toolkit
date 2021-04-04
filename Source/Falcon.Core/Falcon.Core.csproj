@@ -7,6 +7,7 @@
     <Authors>Matthew 'Hawkeye' Williamson</Authors>
     <RepositoryUrl>https://github.com/Hawkeye4040/Falcon-BMS-Toolkit</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
+    <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
