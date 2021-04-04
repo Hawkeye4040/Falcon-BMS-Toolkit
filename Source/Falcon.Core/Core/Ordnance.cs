@@ -35,5 +35,5 @@ namespace Falcon.Core
 
     // TODO: Create a class for TGP's, Fuel Tanks and objects falling in the "other" category.
 
-    public delegate void OnOrdnanceChanged(object sender, ValuesChangedEventArgs<Ordnance> e);
+    public delegate void OnOrdnanceChanged(object sender, ValueChangedEventArgs<Ordnance> e);
 }

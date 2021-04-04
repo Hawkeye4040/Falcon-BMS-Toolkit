@@ -18,6 +18,8 @@ namespace Falcon.Core
 
         private Vector3S _position => Position;
 
+        private double _elevation => Elevation;
+
         private uint _arrival => Arrival;
 
         private uint _departure => Departure;
@@ -37,6 +39,8 @@ namespace Falcon.Core
         #region Properties
 
         public Vector3S Position { get; set; }
+
+        public double Elevation { get; set; }
 
         public uint Arrival { get; set; }
 
@@ -69,9 +73,7 @@ namespace Falcon.Core
 
             if (ReferenceEquals(this, other)) return true;
 
-            return Position.Equals(other.Position) && Arrival == other.Arrival && Departure == other.Departure &&
-                   Action == other.Action && Formation == other.Formation && Flags == other.Flags &&
-                   Speed == other.Speed && Target == other.Target;
+            return Position.Equals(other.Position) && Elevation.Equals(other.Elevation) && Arrival == other.Arrival && Departure == other.Departure && Action == other.Action && Formation == other.Formation && Flags == other.Flags && Speed == other.Speed && Target == other.Target;
         }
 
         public override bool Equals(object obj)
@@ -81,7 +83,19 @@ namespace Falcon.Core
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(_position, _arrival, _departure, _action, _formation, _flags, _speed, _target); // TODO: Ensure private computed properties return a proper hash code.
+            HashCode hashCode = new HashCode();
+
+            hashCode.Add(_position);
+            hashCode.Add(_elevation);
+            hashCode.Add(_arrival);
+            hashCode.Add(_departure);
+            hashCode.Add(_action);
+            hashCode.Add(_formation);
+            hashCode.Add(_flags);
+            hashCode.Add(_speed);
+            hashCode.Add(_target);
+
+            return hashCode.ToHashCode();
         }
 
         #endregion

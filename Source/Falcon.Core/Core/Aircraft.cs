@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Falcon.Core.Events;
 
@@ -62,5 +63,6 @@ namespace Falcon.Core
 
     public delegate void OnAircraftChanged(object sender, ValueChangedEventArgs<Aircraft> e);
 
+    [SuppressMessage("ReSharper", "IdentifierTypo")]
     public delegate void OnAircraftsChanged(object sender, ValuesChangedEventArgs<Aircraft> e);
 }

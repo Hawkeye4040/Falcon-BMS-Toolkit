@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace Falcon.Core
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    [SuppressMessage("ReSharper", "StructCanBeMadeReadOnly")]
-    public struct DataCartridge : IFormattable, IEquatable<DataCartridge>, ICloneable
+    public sealed class DataCartridge : IFormattable, IEquatable<DataCartridge>, ICloneable
     {
         #region Constructors
 

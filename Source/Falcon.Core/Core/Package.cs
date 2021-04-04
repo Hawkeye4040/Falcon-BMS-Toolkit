@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Falcon.Core.Events;
 
 namespace Falcon.Core
@@ -99,16 +100,26 @@ namespace Falcon.Core
 
         public bool Equals(Package other)
         {
-            if (ReferenceEquals(null, other)) return false;
+            if (other is null) return false;
 
             if (ReferenceEquals(this, other)) return true;
 
             return Number == other.Number && Task == other.Task && Equals(Flights, other.Flights);
         }
 
+        public override string ToString()
+        {
+            return string.Format(CultureInfo.CurrentCulture, $"PKG #:{Number}, {Task}");
+        }
+
+        public string ToString(IFormatProvider formatProvider)
+        {
+            return string.Format(formatProvider, $"PKG #:{Number}, {Task}");
+        }
+
         public string ToString(string format, IFormatProvider formatProvider)
         {
-            return $"PKG #:{Number}, {Task}"; // TODO: Incorporate format provider parameter here.
+            return format == null ? ToString(formatProvider) : string.Format(formatProvider, format, $"PKG #:{Number}, {Task}");
         }
 
         #endregion

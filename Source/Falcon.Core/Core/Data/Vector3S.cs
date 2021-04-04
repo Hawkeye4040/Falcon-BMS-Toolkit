@@ -272,7 +272,7 @@ namespace Falcon.Core.Data
             return new [] {X, Y, Z};
         }
 
-        public string ToString(string? format, IFormatProvider? formatProvider)
+        public string ToString(string format, IFormatProvider formatProvider)
         {
             return format == null ? ToString(formatProvider) : string.Format(formatProvider, format, X.ToString(format, CultureInfo.CurrentCulture), Y.ToString(format, CultureInfo.CurrentCulture), Z.ToString(format, CultureInfo.CurrentCulture));
         }
@@ -287,14 +287,15 @@ namespace Falcon.Core.Data
             if (format == null)
                 return ToString();
 
-            return string.Format(CultureInfo.CurrentCulture, "X:{0} Y:{1} Z:{2}",
+            return string.Format(CultureInfo.CurrentCulture, $"X:{X} Y:{Y} Z:{Z}",
                 X.ToString(format, CultureInfo.CurrentCulture),
-                Y.ToString(format, CultureInfo.CurrentCulture), Z.ToString(format, CultureInfo.CurrentCulture));
+                Y.ToString(format, CultureInfo.CurrentCulture), 
+                Z.ToString(format, CultureInfo.CurrentCulture));
         }
 
         public string ToString(IFormatProvider formatProvider)
         {
-            return string.Format(formatProvider, "X:{0} Y:{1} Z:{2}", X, Y, Z);
+            return string.Format(formatProvider, $"X:{X} Y:{Y} Z:{Z}");
         }
 
         public override int GetHashCode()
