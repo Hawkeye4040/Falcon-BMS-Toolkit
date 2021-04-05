@@ -4,9 +4,7 @@ using Falcon.Core.Events;
 
 namespace Falcon.Core
 {
-    // TODO: Determine if Waypoint should be changed to struct as it's intended behavior is more like a value type than a reference type.
-
-    public sealed class Waypoint : ICloneable, IEquatable<Waypoint>
+    public struct Waypoint : ICloneable, IEquatable<Waypoint>
     {
         #region Fields
 
@@ -46,9 +44,9 @@ namespace Falcon.Core
 
         public uint Departure { get; set; }
 
-        public byte Action { get; set; } // TODO: Convert to enum Action : byte
+        public byte Action { get; set; } // TODO: Convert to enum Actions : byte
 
-        public byte Formation { get; set; } // TODO: Convert to enum Formation : byte
+        public byte Formation { get; set; } // TODO: Convert to enum Formations : byte
 
         public uint Flags { get; set; }
 
@@ -69,22 +67,19 @@ namespace Falcon.Core
 
         public bool Equals(Waypoint other)
         {
-            if (other is null) return false;
-
-            if (ReferenceEquals(this, other)) return true;
-
-            return Position.Equals(other.Position) && Elevation.Equals(other.Elevation) && Arrival == other.Arrival && Departure == other.Departure && Action == other.Action && Formation == other.Formation && Flags == other.Flags && Speed == other.Speed && Target == other.Target;
+            return Position.Equals(other.Position) && Elevation.Equals(other.Elevation) && Arrival == other.Arrival &&
+                   Departure == other.Departure && Action == other.Action && Formation == other.Formation &&
+                   Flags == other.Flags && Speed == other.Speed && Target == other.Target;
         }
 
         public override bool Equals(object obj)
         {
-            return Equals(obj as Waypoint);
+            return obj != null && Equals((Waypoint)obj);
         }
 
         public override int GetHashCode()
         {
             HashCode hashCode = new HashCode();
-
             hashCode.Add(_position);
             hashCode.Add(_elevation);
             hashCode.Add(_arrival);
@@ -94,14 +89,17 @@ namespace Falcon.Core
             hashCode.Add(_flags);
             hashCode.Add(_speed);
             hashCode.Add(_target);
-
             return hashCode.ToHashCode();
         }
 
         #endregion
     }
 
+    #region Delegates
+
     public delegate void OnWaypointChanged(object sender, ValueChangedEventArgs<Waypoint> e);
 
     public delegate void OnWaypointsChanged(object sender, ValuesChangedEventArgs<Waypoint> e);
+
+    #endregion
 }
