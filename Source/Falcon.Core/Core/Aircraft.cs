@@ -28,6 +28,10 @@ namespace Falcon.Core
         #endregion
     }
 
+    /// <summary>
+    ///     Represents a type definition for an <see cref="Aircraft"/>.
+    /// </summary>
+    /// <seealso cref="Aircraft"/>
     public sealed class AircraftDefinition
     {
         #region Fields
@@ -40,7 +44,13 @@ namespace Falcon.Core
 
         public string Model { get; }
 
+        // TODO: Determine if Loadout Configuration should be a pure key-value pair or a custom implementation of IDictionary.
         public Dictionary<Station, Ordnance> LoadoutConfiguration { get; }
+
+        public AircraftDefinition(string model)
+        {
+            Model = model;
+        }
 
         static AircraftDefinition()
         {
@@ -57,8 +67,6 @@ namespace Falcon.Core
         }
 
         #endregion
-
-        // TODO: Determine if this property should be a pure key-value pair or a custom implementation of IDictionary.
     }
 
     public delegate void OnAircraftChanged(object sender, ValueChangedEventArgs<Aircraft> e);

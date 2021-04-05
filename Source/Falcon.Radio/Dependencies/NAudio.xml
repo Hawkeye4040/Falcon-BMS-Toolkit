@@ -3522,7 +3522,7 @@
             
              MessageText:
             
-             A metadata item was too long to write to the output container.%0
+             A metadata preset was too long to write to the output container.%0
             
         </member>
         <member name="F:NAudio.MediaFoundation.MediaFoundationErrors.MF_E_SINK_NO_SAMPLES_PROCESSED">
@@ -5115,7 +5115,7 @@
         </member>
         <member name="M:NAudio.MediaFoundation.IMFCollection.RemoveAllElements">
             <summary>
-            Removes all items from the collection.
+            Removes all presets from the collection.
             </summary>
         </member>
         <member name="T:NAudio.MediaFoundation.IMFMediaEvent">
@@ -13458,7 +13458,7 @@
         </member>
         <member name="M:NAudio.Utils.MergeSort.Sort``1(System.Collections.Generic.IList{``0})">
             <summary>
-            MergeSort a list of comparable items
+            MergeSort a list of comparable presets
             </summary>
         </member>
         <member name="M:NAudio.Utils.MergeSort.Sort``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IComparer{``0})">
@@ -20363,7 +20363,7 @@
         </member>
         <member name="M:NAudio.Wave.CueList.Add(NAudio.Wave.Cue)">
             <summary>
-            Adds an item to the list
+            Adds an preset to the list
             </summary>
             <param name="cue">Cue</param>
         </member>
