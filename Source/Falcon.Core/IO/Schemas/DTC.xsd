@@ -6,35 +6,18 @@
            targetNamespace="Falcon:Core:IO:Schemas"
            elementFormDefault="qualified"
            xmlns="Falcon:Core:IO:Schemas"
-           xmlns:mstns="http://tempuri.org/DTC.xsd"
+           xmlns:mstns="Falcon:Core:IO:Schemas"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            schemaLocation="file:///C:/Users/mjwil/source/repos/Falcon-BMS-Toolkit/Source/Falcon.Core/IO/Schemas/DTC.xsd">
 
   <xs:complexType name="DataCartridge">
     <xs:sequence>
-      <xs:element name="EWS" type="EWSConfig" minOccurs="1" maxOccurs="1">
-        
-      </xs:element>
-
-      <xs:element name="MFD" type="MFDConfig" minOccurs="1" maxOccurs="1">
-
-      </xs:element>
-
-      <xs:element name="Radio" type="RadioConfig" minOccurs="1" maxOccurs="1">
-
-      </xs:element>
-
-      <xs:element name="Navigation" type="NavigationConfig" minOccurs="1" maxOccurs="1">
-
-      </xs:element>
-
-      <xs:element name="Systems" type="SystemsConfig" minOccurs="1" maxOccurs="1">
-
-      </xs:element>
-
-      <xs:element name="Weapons" type="WeaponsConfig" minOccurs="1" maxOccurs="1">
-
-      </xs:element>
+      <xs:element name="EWS" type="EWSConfig" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="MFD" type="MFDConfig" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="Radio" type="RadioConfig" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="Navigation" type="NavigationConfig" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="Systems" type="SystemsConfig" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="Weapons" type="WeaponsConfig" minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
 
     <xs:attribute name="Id" type="xs:string" />
@@ -70,12 +53,58 @@
   </xs:simpleType>
 
   <xs:complexType name="MFDConfig">
-
+    <xs:sequence>
+      <xs:element name="ShowBullseye" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+      
+    </xs:sequence>
   </xs:complexType>
+
+  <xs:simpleType name="MFDModes">
+    <xs:restriction>
+      <xs:enumeration value="None"/>
+      <xs:enumeration value="HSD"/>
+      <xs:enumeration value="FCR"/>
+      <xs:enumeration value="WPN"/>
+      <xs:enumeration value="TGP"/>
+      <xs:enumeration value="HAD"/>
+      <xs:enumeration value="SMS"/>
+      <xs:enumeration value="TCN"/>
+    </xs:restriction>
+  </xs:simpleType>
 
   <xs:complexType name="RadioConfig">
+    <xs:sequence>
+      <xs:element name="UHF" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Band" type="RadioBands" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="Frequency" type="xs:float" minOccurs="1" maxOccurs="1"/>
+          </xs:sequence>
+          <xs:attribute name="Name" type="xs:string" use="optional" />
+        </xs:complexType>
+      </xs:element>
 
+      <xs:element name="VHF" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Band" type="RadioBands" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="Frequency" type="xs:float" minOccurs="1" maxOccurs="1"/>
+          </xs:sequence>
+          <xs:attribute name="Name" type="xs:string" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      
+    </xs:sequence>
   </xs:complexType>
+
+  
+
+  <xs:simpleType name="RadioBands">
+    <xs:restriction>
+      <xs:enumeration value="UHF"/>
+      <xs:enumeration value="VHF"/>
+    </xs:restriction>
+  </xs:simpleType>
 
   <xs:complexType name="NavigationConfig">
 

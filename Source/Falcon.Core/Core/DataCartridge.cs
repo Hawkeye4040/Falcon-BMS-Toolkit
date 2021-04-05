@@ -45,6 +45,11 @@ namespace Falcon.Core
 
         #region Methods
 
+        public static string GenerateId()
+        {
+            throw new NotImplementedException();
+        }
+
         public DataCartridge Clone()
         {
             throw new NotImplementedException();
@@ -56,6 +61,16 @@ namespace Falcon.Core
         }
 
         public bool Equals(DataCartridge other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as DataCartridge);
+        }
+
+        public override int GetHashCode()
         {
             throw new NotImplementedException();
         }
@@ -94,6 +109,24 @@ namespace Falcon.Core
 
         public sealed class EWSConfig
         {
+            #region Properties
+
+            public uint ChaffBingoQuantity { get; set; } = 10;
+
+            public uint FlareBingoQuantity { get; set; } = 10;
+
+            public bool REQJAM { get; set; } = true;
+
+            public bool REQCTR { get; set; } = true;
+
+            public bool Feedback { get; set; } = true;
+
+            public bool Bingo { get; set; } = true;
+
+            public CMDSConfig CMDS { get; set; } = new CMDSConfig();
+
+            #endregion
+
             #region Classes
 
             public sealed class CMDSConfig
@@ -111,23 +144,34 @@ namespace Falcon.Core
                 }
             }
 
-            #endregion
+            public sealed class EWSProgram
+            {
+                public ChaffProgram Chaff { get; set; }
 
-            #region Properties
+                public FlareProgram Flare { get; set; }
 
-            public uint ChaffBingoQuantity { get; set; } = 10;
+                public sealed class ChaffProgram
+                {
+                    public uint BurstQuantity { get; set; }
 
-            public uint FlareBingoQuantity { get; set; } = 10;
+                    public float BurstInterval { get; set; }
 
-            public bool REQJAM { get; set; } = true;
+                    public uint SequenceQuantity { get; set; }
 
-            public bool REQCTR { get; set; } = true;
+                    public float SequenceInterval { get; set; }
+                }
 
-            public bool Feedback { get; set; } = true;
+                public sealed class FlareProgram
+                {
+                    public uint BurstQuantity { get; set; }
 
-            public bool Bingo { get; set; } = true;
+                    public float BurstInterval { get; set; }
 
-            public CMDSConfig CMDS { get; set; } = new CMDSConfig();
+                    public uint SequenceQuantity { get; set; }
+
+                    public float SequenceInterval { get; set; }
+                }
+            }
 
             #endregion
         }
@@ -849,7 +893,9 @@ namespace Falcon.Core
                     TD,
                     BP
                 } 
+
                 // TODO: Rename enum and label members.
+                // TODO: Complete adding enum members for all Data Cartridge enums.
 
                 public SidewinderScanModes ScanMode { get; set; } = SidewinderScanModes.SPOT;
 
