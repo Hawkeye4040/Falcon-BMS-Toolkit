@@ -3,10 +3,56 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Falcon.Editor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Falcon Editor" 
+        Width="1920" Height="1080"
+        Background="{DynamicResource Menu.Static.Background}">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
+        <Menu Style="{DynamicResource MainMenuStyle}">
+            <MenuItem Header="File">
+                <MenuItem Header="New">
+
+                </MenuItem>
+                <MenuItem Header="Open">
+
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Save"/>
+                <MenuItem Header="Save As"/>
+                <MenuItem Header="Save All"/>
+                <Separator/>
+                <MenuItem Header="Settings"/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Undo"/>
+                <MenuItem Header="Redo"/>
+                <Separator/>
+                <MenuItem Header="Cut"/>
+                <MenuItem Header="Copy"/>
+                <MenuItem Header="Paste"/>
+                <Separator/>
+                <MenuItem Header="Duplicate"/>
+                <MenuItem Header="Delete"/>
+                <Separator/>
+                <MenuItem Header="Select All"/> 
+            </MenuItem>
+            <MenuItem Header="View">
+                <MenuItem Header="Project Explorer"/>
+            </MenuItem>
+            <MenuItem Header="Tools">
+
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="Documentation"/>
+                <MenuItem Header="About"/>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
