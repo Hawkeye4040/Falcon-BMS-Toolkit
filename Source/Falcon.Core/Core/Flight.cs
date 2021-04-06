@@ -40,7 +40,7 @@ namespace Falcon.Core
         #endregion
     }
 
-    public delegate void OnFlightsChanged(object sender, ValueChangedEventArgs<Flight> e);
+    public delegate void OnFlightChanged(object sender, ValueChangedEventArgs<Flight> e);
 
-    public delegate void OnFlightChanged(object sender, ValuesChangedEventArgs<Flight> e);
+    public delegate void OnFlightsChanged(object sender, ValuesChangedEventArgs<Flight> e);
 }
