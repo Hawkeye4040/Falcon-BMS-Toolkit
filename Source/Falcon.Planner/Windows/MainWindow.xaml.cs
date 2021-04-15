@@ -28,6 +28,26 @@ namespace Falcon.Planner.Windows
             window.ShowDialog();
         }
 
+        private void OpenMissionPlanCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            string fileName = string.Empty;
+
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                Multiselect = false,
+                DefaultExt = ".fmp",
+                FileName = "Mission Plan",
+                Filter = "Mission Plan File (.fmp)|*.fmp"
+            };
+
+            bool? result = dialog.ShowDialog();
+
+            if (result == true)
+            {
+                fileName = dialog.FileName;
+            }
+        }
+
         private void OpenDTCCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             string fileName = string.Empty;
@@ -44,7 +64,6 @@ namespace Falcon.Planner.Windows
 
             if (result == true)
             {
-                
                 fileName = dialog.FileName;
             }
         }
@@ -74,8 +93,5 @@ namespace Falcon.Planner.Windows
         }
 
         #endregion
-
-
-        
     }
 }

@@ -11,6 +11,7 @@
         WindowState="Maximized">
     <Window.CommandBindings>
         <CommandBinding Command="ui:MenuCommands.NewMissionPlan" Executed="NewMissionPlanCommand_OnExecuted" />
+        <CommandBinding Command="ui:MenuCommands.OpenMissionPlan" Executed="OpenMissionPlanCommand_OnExecuted" />
         <CommandBinding Command="ui:MenuCommands.OpenDTC" Executed="OpenDTCCommand_OnExecuted" />
         <CommandBinding Command="ui:MenuCommands.Exit" Executed="ExitCommand_OnExecuted" />
 
@@ -34,7 +35,7 @@
                 </MenuItem>
 
                 <MenuItem Header="Open" Template="{StaticResource SubMenuItemControlTemplate}">
-                    <MenuItem Header="Mission Plan" ToolTip="Open an existing mission plan"/>
+                    <MenuItem Header="Mission Plan (FMP)" Command="ui:MenuCommands.OpenMissionPlan" ToolTip="Open an existing mission plan"/>
                     <MenuItem Header="Data Cartridge (DTC)" Command="ui:MenuCommands.OpenDTC" ToolTip="Open a data cartridge (.dtc) file"/>
                 </MenuItem>
 
