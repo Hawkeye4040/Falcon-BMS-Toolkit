@@ -25,6 +25,7 @@ namespace Falcon.Planner.Windows
         private void NewMissionPlanCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             MissionPlanTemplatesWindow window = new MissionPlanTemplatesWindow();
+
             window.ShowDialog();
         }
 
@@ -58,6 +59,46 @@ namespace Falcon.Planner.Windows
                 DefaultExt = ".dtc",
                 FileName = "Data Cartridge",
                 Filter = "Data Cartridge Files (.dtc)|*.dtc"
+            };
+
+            bool? result = dialog.ShowDialog();
+
+            if (result == true)
+            {
+                fileName = dialog.FileName;
+            }
+        }
+
+        private void OpenCampaignCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            string fileName = string.Empty;
+
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                Multiselect = false,
+                DefaultExt = ".cam",
+                FileName = "",
+                Filter = "Campaign Files (.cam)|*.cam"
+            };
+
+            bool? result = dialog.ShowDialog();
+
+            if (result == true)
+            {
+                fileName = dialog.FileName;
+            }
+        }
+
+        private void OpenTacticalEngagementCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            string fileName = string.Empty;
+
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                Multiselect = false,
+                DefaultExt = ".tac",
+                FileName = "",
+                Filter = "Tactical Engagement Files (.tac)|*.tac"
             };
 
             bool? result = dialog.ShowDialog();

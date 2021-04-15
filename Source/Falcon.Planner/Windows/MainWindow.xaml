@@ -13,6 +13,8 @@
         <CommandBinding Command="ui:MenuCommands.NewMissionPlan" Executed="NewMissionPlanCommand_OnExecuted" />
         <CommandBinding Command="ui:MenuCommands.OpenMissionPlan" Executed="OpenMissionPlanCommand_OnExecuted" />
         <CommandBinding Command="ui:MenuCommands.OpenDTC" Executed="OpenDTCCommand_OnExecuted" />
+        <CommandBinding Command="ui:MenuCommands.OpenCampaign" Executed="OpenCampaignCommand_OnExecuted" />
+        <CommandBinding Command="ui:MenuCommands.OpenTacticalEngagement" Executed="OpenTacticalEngagementCommand_OnExecuted"/>
         <CommandBinding Command="ui:MenuCommands.Exit" Executed="ExitCommand_OnExecuted" />
 
         <CommandBinding Command="ui:MenuCommands.Kneeboard" Executed="KneeboardCommand_OnExecuted" />
@@ -37,6 +39,9 @@
                 <MenuItem Header="Open" Template="{StaticResource SubMenuItemControlTemplate}">
                     <MenuItem Header="Mission Plan (FMP)" Command="ui:MenuCommands.OpenMissionPlan" ToolTip="Open an existing mission plan"/>
                     <MenuItem Header="Data Cartridge (DTC)" Command="ui:MenuCommands.OpenDTC" ToolTip="Open a data cartridge (.dtc) file"/>
+                    <Separator/>
+                    <MenuItem Header="Campaign" Command="ui:MenuCommands.OpenCampaign" ToolTip="Opens a Campaign (.cam) file"/>
+                    <MenuItem Header="Tactical Engagement" Command="ui:MenuCommands.OpenTacticalEngagement" ToolTip="Opens a Tactical Engagement (.tac) file"/>
                 </MenuItem>
 
                 <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
