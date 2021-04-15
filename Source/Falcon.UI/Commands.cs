@@ -4,6 +4,27 @@ using System.Windows.Input;
 
 namespace Falcon.UI
 {
+    public static class CommonCommands
+    {
+        #region Fields
+
+        public static readonly RoutedUICommand Confirm = new RoutedUICommand
+        (
+            "Confirm",
+            "ConfirmCommand",
+            typeof(CommonCommands)
+        );
+
+        public static readonly RoutedUICommand Cancel = new RoutedUICommand
+        (
+            "Cancel",
+            "CancelCommand",
+            typeof(CommonCommands)
+        );
+
+        #endregion
+    }
+
     public static class MenuCommands
     {
         #region Fields
