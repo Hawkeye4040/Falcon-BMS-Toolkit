@@ -10,6 +10,7 @@
         Background="#353535"
         WindowState="Maximized">
     <Window.CommandBindings>
+        <CommandBinding Command="ui:MenuCommands.OpenDTC" Executed="OpenDTCCommand_OnExecuted" />
         <CommandBinding Command="ui:MenuCommands.Exit" Executed="ExitCommand_OnExecuted" />
 
         <CommandBinding Command="ui:MenuCommands.Kneeboard" Executed="KneeboardCommand_OnExecuted" />
@@ -33,7 +34,7 @@
 
                 <MenuItem Header="Open" Template="{StaticResource SubMenuItemControlTemplate}">
                     <MenuItem Header="Mission Plan" />
-                    <MenuItem Header="Data Cartridge (DTC)" />
+                    <MenuItem Header="Data Cartridge (DTC)" Command="ui:MenuCommands.OpenDTC" />
                 </MenuItem>
 
                 <Separator Style="{StaticResource MainMenuSeparatorStyle}" />

@@ -2,12 +2,14 @@
 using System.Windows;
 using System.Windows.Input;
 
+using Microsoft.Win32;
+
 namespace Falcon.Planner.Windows
 {
     /// <summary>
     ///     Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow
+    public sealed partial class MainWindow
     {
         #region Constructors
 
@@ -19,6 +21,27 @@ namespace Falcon.Planner.Windows
         #endregion
 
         #region Methods
+
+        private void OpenDTCCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            string fileName = string.Empty;
+
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                Multiselect = false,
+                DefaultExt = ".dtc",
+                FileName = "Data Cartridge",
+                Filter = "Data Cartridge Files (.dtc)|*.dtc"
+            };
+
+            bool? result = dialog.ShowDialog();
+
+            if (result == true)
+            {
+                
+                fileName = dialog.FileName;
+            }
+        }
 
         private void KneeboardCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
@@ -45,5 +68,7 @@ namespace Falcon.Planner.Windows
         }
 
         #endregion
+
+        
     }
 }
