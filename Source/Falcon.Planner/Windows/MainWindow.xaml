@@ -10,6 +10,7 @@
         Background="#353535"
         WindowState="Maximized">
     <Window.CommandBindings>
+        <CommandBinding Command="ui:MenuCommands.NewMissionPlan" Executed="NewMissionPlanCommand_OnExecuted" />
         <CommandBinding Command="ui:MenuCommands.OpenDTC" Executed="OpenDTCCommand_OnExecuted" />
         <CommandBinding Command="ui:MenuCommands.Exit" Executed="ExitCommand_OnExecuted" />
 
@@ -29,19 +30,19 @@
             <MenuItem Header="File" Template="{StaticResource MenuItemControlTemplate}">
 
                 <MenuItem Header="New" Template="{StaticResource SubMenuItemControlTemplate}">
-                    <MenuItem Header="Mission Plan" />
+                    <MenuItem Header="Mission Plan" Command="ui:MenuCommands.NewMissionPlan" ToolTip="Creates a new mission plan from template"/>
                 </MenuItem>
 
                 <MenuItem Header="Open" Template="{StaticResource SubMenuItemControlTemplate}">
-                    <MenuItem Header="Mission Plan" />
-                    <MenuItem Header="Data Cartridge (DTC)" Command="ui:MenuCommands.OpenDTC" />
+                    <MenuItem Header="Mission Plan" ToolTip="Open an existing mission plan"/>
+                    <MenuItem Header="Data Cartridge (DTC)" Command="ui:MenuCommands.OpenDTC" ToolTip="Open a data cartridge (.dtc) file"/>
                 </MenuItem>
 
                 <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
-                <MenuItem Header="Connect" ToolTip="Connect to a Team Server for a Wing/Squadron" Icon="{StaticResource Icons.Connect}"/>
-                <MenuItem Header="Settings" Icon="{StaticResource Icons.Settings}" />
+                <MenuItem Header="Connect" ToolTip="Connect to a team server for a wing/squadron" Icon="{StaticResource Icons.Connect}"/>
+                <MenuItem Header="Settings" Icon="{StaticResource Icons.Settings}" ToolTip="Opens the settings window"/>
                 <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
-                <MenuItem Header="Exit" Icon="{StaticResource Icons.Exit}" Command="ui:MenuCommands.Exit" />
+                <MenuItem Header="Exit" Icon="{StaticResource Icons.Exit}" Command="ui:MenuCommands.Exit" ToolTip="Exits the application"/>
             </MenuItem>
 
             <MenuItem Header="Edit" Template="{StaticResource MenuItemControlTemplate}">
@@ -56,7 +57,7 @@
             </MenuItem>
 
             <MenuItem Header="View" Template="{StaticResource MenuItemControlTemplate}">
-                <MenuItem Header="Kneeboard" Command="ui:MenuCommands.Kneeboard" />
+                <MenuItem Header="Kneeboard" Command="ui:MenuCommands.Kneeboard" ToolTip="Opens the kneeboard editor window"/>
             </MenuItem>
 
             <MenuItem Header="Help" Template="{StaticResource MenuItemControlTemplate}">

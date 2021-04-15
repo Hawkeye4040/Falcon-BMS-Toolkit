@@ -1,0 +1,49 @@
+﻿<Window x:Class="Falcon.Planner.Windows.MissionPlanTemplatesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="clr-namespace:Falcon.UI;assembly=Falcon.UI"
+        mc:Ignorable="d"
+        Title="Mission Plan Templates"
+        Background="#353535"
+        Width="800" Height="450"
+        WindowStyle="ToolWindow"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="ui:CommonCommands.Cancel" Executed="CancelCommandOnExecuted" />
+        <CommandBinding Command="ui:CommonCommands.Confirm" Executed="ConfirmCommandOnExecuted" />
+    </Window.CommandBindings>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Grid.Column="0" Grid.Row="0" ItemWidth="125" ItemHeight="125" HorizontalAlignment="Stretch" >
+            <Image Margin="10,10,0,0"></Image>
+            <Image Margin="10,10,0,0"></Image>
+        </WrapPanel>
+
+        <Grid Grid.Column="1" Grid.Row="0" Width="200">
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="AliceBlue" Text="Template Details" FontSize="16" Margin="0,10,0,0"/>
+
+                <TextBox Background="{x:Null}" IsReadOnly="True" Text="Template Description" Foreground="AliceBlue" BorderBrush="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,10,5,0" TextAlignment="Left"/>
+            </StackPanel>
+            
+        </Grid>
+
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,150,10">
+            <Button Content="Cancel" Width="75" Command="ui:CommonCommands.Cancel" />
+            <Button Content="Ok" Width="75" Command="ui:CommonCommands.Confirm" Margin="25,0,0,0"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>

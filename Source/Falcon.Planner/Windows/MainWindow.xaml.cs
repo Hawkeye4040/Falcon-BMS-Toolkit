@@ -22,6 +22,12 @@ namespace Falcon.Planner.Windows
 
         #region Methods
 
+        private void NewMissionPlanCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            MissionPlanTemplatesWindow window = new MissionPlanTemplatesWindow();
+            window.ShowDialog();
+        }
+
         private void OpenDTCCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             string fileName = string.Empty;
@@ -68,6 +74,7 @@ namespace Falcon.Planner.Windows
         }
 
         #endregion
+
 
         
     }
