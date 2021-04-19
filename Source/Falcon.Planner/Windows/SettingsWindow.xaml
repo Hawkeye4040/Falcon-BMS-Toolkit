@@ -1,0 +1,34 @@
+﻿<Window x:Class="Falcon.Planner.Windows.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Settings"
+        Background="#353535"
+        Width="1400" Height="800"
+        WindowStyle="ToolWindow">
+    <Grid>
+        <ScrollViewer>
+            <StackPanel>
+                <GroupBox Header="Directories" Foreground="AliceBlue" FontSize="24" Margin="25,50,25,0" Padding="10">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10,25,10,0">
+                            <TextBlock Text="Falcon Installation Directory" Foreground="AliceBlue" ToolTip="The root directory that Falcon BMS is installed to. Default is C:/Program Files/Falcon BMS x.xx/" />
+                            <TextBox Width="750" Margin="15,0,0,0"/>
+                            <Button x:Name="InstallationDirectoryBrowserButton" Padding="10,2,10,2" Content="Browse" Margin="15,0,0,0" Click="InstallationDirectoryBrowserButton_OnClick" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="10,25,10,0">
+                            <TextBlock Text="Planning Data Directory" Foreground="AliceBlue" ToolTip="The root directory that this application stores its planning data."/>
+                            <TextBox Width="750" Margin="15,0,0,0"/>
+                            <Button x:Name="PlanningDataDirectoryBrowserButton" Content="Browse" Padding="10,2,10,2" Margin="15,0,0,0" Click="InstallationDirectoryBrowserButton_OnClick" />
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                
+                
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
