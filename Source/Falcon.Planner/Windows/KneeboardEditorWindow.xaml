@@ -4,9 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="clr-namespace:Falcon.UI;assembly=Falcon.UI"
-        xmlns:pages="clr-namespace:Falcon.Planner.Pages"
         mc:Ignorable="d"
-        Title="Kneeboard Editor"
+        Title="KneeboardEditor Editor"
         WindowState="Maximized"
         Width="1920" Height="1080"
         Background="#353535">
@@ -29,7 +28,7 @@
                 </MenuItem>
                 <MenuItem Header="Open" Template="{StaticResource SubMenuItemControlTemplate}">
                     <MenuItem Header="Data Card" Icon="{StaticResource Icons.BinaryFile}" />
-                    <MenuItem Header="Kneeboard Package" Icon="{StaticResource Icons.Package}" />
+                    <MenuItem Header="KneeboardEditor Package" Icon="{StaticResource Icons.Package}" />
                 </MenuItem>
                 <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
                 <MenuItem Header="Save" Icon="{StaticResource Icons.Save}" />
@@ -55,7 +54,7 @@
             <MenuItem Header="View" Template="{StaticResource MenuItemControlTemplate}" />
 
             <MenuItem Header="Build" Template="{StaticResource MenuItemControlTemplate}">
-                <MenuItem Header="Kneeboard Package" Icon="{StaticResource Icons.Package}" />
+                <MenuItem Header="KneeboardEditor Package" Icon="{StaticResource Icons.Package}" />
                 <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
                 <MenuItem Header="Build &amp; Send to BMS" Icon="{StaticResource Icons.BMS}" />
             </MenuItem>
