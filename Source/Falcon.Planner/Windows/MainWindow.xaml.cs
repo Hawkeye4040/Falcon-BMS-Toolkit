@@ -1,6 +1,10 @@
-﻿using System.Linq;
+﻿using System.Collections.Specialized;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+
+using Falcon.Core.Collections;
+using Falcon.Core.Events;
 
 using Microsoft.Win32;
 
@@ -11,16 +15,67 @@ namespace Falcon.Planner.Windows
     /// </summary>
     public sealed partial class MainWindow
     {
+        #region Fields
+
+        /// <summary>
+        ///     The backing field for the <see cref="ActiveSelection" /> property.
+        /// </summary>
+        private object _activeSelection;
+
+        #endregion
+
+        #region Properties
+
+        public object ActiveSelection
+        {
+            get => _activeSelection;
+            set
+            {
+                ValueChangedEventArgs<object> e = new ValueChangedEventArgs<object>(_activeSelection, value);
+
+                _activeSelection = value;
+
+                if (e.OldValue != e.NewValue)
+                    ActiveSelectionChanged?.Invoke(this, e);
+            }
+        }
+
+        public ObservableList<object> Selection { get; set; }
+
+        #endregion
+
         #region Constructors
 
         public MainWindow()
         {
             InitializeComponent();
+
+            Selection = new ObservableList<object>();
+
+            Selection.CollectionChanged += Selection_CollectionChanged;
+            ActiveSelectionChanged += MainWindow_ActiveSelectionChanged;
         }
 
         #endregion
 
+        #region Events
+
+        public event OnValueChanged<object> ActiveSelectionChanged;
+
+        #endregion
+
         #region Methods
+
+        private void MainWindow_ActiveSelectionChanged(object sender, ValueChangedEventArgs<object> e)
+        {
+            
+        }
+
+        private void Selection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+        }
+
+        // File Menu Command Event Handlers
 
         private void NewMissionPlanCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
@@ -43,10 +98,7 @@ namespace Falcon.Planner.Windows
 
             bool? result = dialog.ShowDialog();
 
-            if (result == true)
-            {
-                fileName = dialog.FileName;
-            }
+            if (result == true) fileName = dialog.FileName;
         }
 
         private void OpenDTCCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
@@ -63,10 +115,7 @@ namespace Falcon.Planner.Windows
 
             bool? result = dialog.ShowDialog();
 
-            if (result == true)
-            {
-                fileName = dialog.FileName;
-            }
+            if (result == true) fileName = dialog.FileName;
         }
 
         private void OpenCampaignCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
@@ -83,10 +132,7 @@ namespace Falcon.Planner.Windows
 
             bool? result = dialog.ShowDialog();
 
-            if (result == true)
-            {
-                fileName = dialog.FileName;
-            }
+            if (result == true) fileName = dialog.FileName;
         }
 
         private void OpenTacticalEngagementCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
@@ -103,17 +149,29 @@ namespace Falcon.Planner.Windows
 
             bool? result = dialog.ShowDialog();
 
-            if (result == true)
-            {
-                fileName = dialog.FileName;
-            }
+            if (result == true) fileName = dialog.FileName;
         }
 
-        private void KneeboardCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
+        private void SettingsCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            SettingsWindow window = new SettingsWindow();
+            window.ShowDialog();
+        }
+
+        private void ExitCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            // TODO: Add logic to check for unsaved changes before calling exit.
+
+            Application.Current.Shutdown(0);
+        }
+
+        // View Menu Command Event Handlers
+
+        private void KneeboardEditorCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (Application.Current.Windows.OfType<KneeboardEditorWindow>().Any())
             {
-                Window window = Application.Current.Windows.OfType<KneeboardEditorWindow>().FirstOrDefault();
+                KneeboardEditorWindow window = Application.Current.Windows.OfType<KneeboardEditorWindow>().FirstOrDefault();
 
                 window?.Activate();
             }
@@ -126,11 +184,36 @@ namespace Falcon.Planner.Windows
             }
         }
 
-        private void ExitCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
+        private void OpenDataCartridgeEditorCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            // TODO: Add logic to check for unsaved changes before calling exit.
+            if (Application.Current.Windows.OfType<DataCartridgeEditorWindow>().Any())
+            {
+                DataCartridgeEditorWindow window = Application.Current.Windows.OfType<DataCartridgeEditorWindow>()
+                    .FirstOrDefault();
 
-            Application.Current.Shutdown(0);
+                window?.Activate();
+            }
+            else
+            {
+                DataCartridgeEditorWindow window = new DataCartridgeEditorWindow();
+
+                window.Show();
+            }
+        }
+
+        // ATO Command Event Handlers
+
+        private void ViewPackageCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            ATOPackageViewWindow window = new ATOPackageViewWindow();
+            window.Show();
+        }
+
+        private void ViewFlightCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            ATOFlightViewWindow window = new ATOFlightViewWindow();
+
+            window.Show();
         }
 
         #endregion

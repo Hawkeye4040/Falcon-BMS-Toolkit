@@ -4,6 +4,28 @@ using System.Windows.Input;
 
 namespace Falcon.UI
 {
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
+    public static class ATOCommands
+    {
+        #region Fields
+
+        public static readonly RoutedUICommand ViewPackage = new RoutedUICommand
+        (
+            "View Package",
+            "ViewPackageCommand",
+            typeof(ATOCommands)
+        );
+
+        public static readonly RoutedUICommand ViewFlight = new RoutedUICommand
+        (
+            "View Flight",
+            "ViewFlightCommand",
+            typeof(ATOCommands)
+        );
+
+        #endregion
+    }
+
     public static class CommonCommands
     {
         #region Fields
@@ -47,7 +69,7 @@ namespace Falcon.UI
 
         public static readonly RoutedUICommand NewKneeboard = new RoutedUICommand
         (
-            "New Kneeboard",
+            "New KneeboardEditor",
             "NewKneeboardCommand",
             typeof(MenuCommands)
         );
@@ -208,10 +230,17 @@ namespace Falcon.UI
 
         // View Menu
 
-        public static readonly RoutedUICommand Kneeboard = new RoutedUICommand
+        public static readonly RoutedUICommand KneeboardEditor = new RoutedUICommand
         (
-            "Kneeboard",
+            "KneeboardEditor",
             "ViewKneeboardCommand",
+            typeof(MenuCommands)
+        );
+
+        public static readonly RoutedUICommand DataCartridgeEditor = new RoutedUICommand
+        (
+            "Data Cartridge",
+            "DataCartridgeEditor",
             typeof(MenuCommands)
         );
 

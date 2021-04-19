@@ -7,17 +7,27 @@
         mc:Ignorable="d"
         Title="Falcon Planner"
         Width="1920" Height="1080"
-        Background="#353535"
+        Background="#252525"
         WindowState="Maximized">
     <Window.CommandBindings>
+
+        <!-- File Menu -->
         <CommandBinding Command="ui:MenuCommands.NewMissionPlan" Executed="NewMissionPlanCommand_OnExecuted" />
         <CommandBinding Command="ui:MenuCommands.OpenMissionPlan" Executed="OpenMissionPlanCommand_OnExecuted" />
         <CommandBinding Command="ui:MenuCommands.OpenDTC" Executed="OpenDTCCommand_OnExecuted" />
         <CommandBinding Command="ui:MenuCommands.OpenCampaign" Executed="OpenCampaignCommand_OnExecuted" />
         <CommandBinding Command="ui:MenuCommands.OpenTacticalEngagement" Executed="OpenTacticalEngagementCommand_OnExecuted"/>
+        <CommandBinding Command="ui:MenuCommands.Settings" Executed="SettingsCommand_OnExecuted"/>
         <CommandBinding Command="ui:MenuCommands.Exit" Executed="ExitCommand_OnExecuted" />
 
-        <CommandBinding Command="ui:MenuCommands.Kneeboard" Executed="KneeboardCommand_OnExecuted" />
+        <!-- View Kneeboard -->
+        <CommandBinding Command="ui:MenuCommands.KneeboardEditor" Executed="KneeboardEditorCommand_OnExecuted" />
+        <CommandBinding Command="ui:MenuCommands.DataCartridgeEditor" Executed="OpenDataCartridgeEditorCommand_OnExecuted"/>
+
+        <!-- ATO -->
+        <CommandBinding Command="ui:ATOCommands.ViewPackage" Executed="ViewPackageCommand_OnExecuted" />
+        <CommandBinding Command="ui:ATOCommands.ViewFlight" Executed="ViewFlightCommand_OnExecuted" />
+
     </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
@@ -46,7 +56,7 @@
 
                 <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
                 <MenuItem Header="Connect" ToolTip="Connect to a team server for a wing/squadron" Icon="{StaticResource Icons.Connect}"/>
-                <MenuItem Header="Settings" Icon="{StaticResource Icons.Settings}" ToolTip="Opens the settings window"/>
+                <MenuItem Header="Settings" Command="ui:MenuCommands.Settings" Icon="{StaticResource Icons.Settings}" ToolTip="Opens the settings window"/>
                 <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
                 <MenuItem Header="Exit" Icon="{StaticResource Icons.Exit}" Command="ui:MenuCommands.Exit" ToolTip="Exits the application"/>
             </MenuItem>
@@ -63,7 +73,8 @@
             </MenuItem>
 
             <MenuItem Header="View" Template="{StaticResource MenuItemControlTemplate}">
-                <MenuItem Header="Kneeboard" Command="ui:MenuCommands.Kneeboard" ToolTip="Opens the kneeboard editor window"/>
+                <MenuItem Header="KneeboardEditor" Command="ui:MenuCommands.KneeboardEditor" ToolTip="Opens the kneeboard editor window" />
+                <MenuItem Header="Data Cartridge" Command="ui:MenuCommands.DataCartridgeEditor" ToolTip="Opens the Data Cartridge editor window" />
             </MenuItem>
 
             <MenuItem Header="Help" Template="{StaticResource MenuItemControlTemplate}">
@@ -88,7 +99,104 @@
         <TabControl Grid.Row="2" Style="{DynamicResource DocumentTabControlStyle}">
             <TabItem Header="ATO" Style="{DynamicResource DocumentTabItemStyle}">
 
+                <!-- ReSharper disable once InconsistentNaming -->
+                <TreeView x:Name="ATOTreeView" Style="{DynamicResource ATOTreeViewStyle}">
+
+                    <!-- ReSharper disable once InconsistentNaming -->
+                    <TreeViewItem x:Name="ATOCategory_OCA" Header="Offensive Counter Air">
+                        <TreeViewItem x:Name="PackageListItem">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="View" Command="ui:ATOCommands.ViewPackage" ToolTip="Opens this package in the package viewer"/>
+                                            <Separator />
+                                            <MenuItem Header="Go To Map" ToolTip="Opens the map and navigates to this package's location"/>
+                                            <MenuItem Header="Delete" ToolTip="Deletes this package" />
+                                        </ContextMenu>
+                                    </StackPanel.ContextMenu>
+                                    <TextBlock x:Name="PackageNameTextBlock" Text="PKG# 879 - Sweep" Margin="0,2,150,0" />
+                                    <!-- ReSharper disable once InconsistentNaming -->
+                                    <TextBlock x:Name="PackageTOTTextBlock" Text="TOT 19:05:00z" />
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                            <!-- ReSharper disable once InconsistentNaming -->
+                            <Border x:Name="ATOFlightCard" BorderBrush="{DynamicResource Menu.Static.Foreground}" BorderThickness="1">
+                                <StackPanel>
+                                    <StackPanel.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="View" Command="ui:ATOCommands.ViewFlight" ToolTip="Opens this flight in the flight viewer" />
+                                            <Separator/>
+                                            <MenuItem Header="Join" ToolTip="Joins the first available slot on this flight (if any)" />
+                                            <Separator/>
+                                            <MenuItem Header="Delete" ToolTip="Deletes this flight" />
+                                        </ContextMenu>
+                                    </StackPanel.ContextMenu>
+                                    <StackPanel Orientation="Horizontal" Margin="0,1,0,1">
+                                        <Rectangle Fill="{StaticResource Icons.Aircraft.F16}" Width="64" Height="64" />
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal" Margin="0,0,0,1">
+                                                <TextBlock x:Name="FlightTypeLabel" Text="Sweep" Padding="2,1,2,1" />
+                                                <TextBlock x:Name="CallsignLabel" Text="Falcon 3" Margin="150,0,0,0" Padding="2,1,2,1" />
+                                                <TextBlock x:Name="TakeoffTimeLabel" Text="T/O 16:03:00z" Margin="50,0,0,0" Padding="2,1,2,1" />
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal" Margin="0,0,0,1">
+                                                <TextBlock x:Name="AircraftCountLabel" Text="4" Margin="5,0,0,0" Padding="2,1,1,0"/>
+                                                <TextBlock x:Name="AircraftTypeLabel" Text="F-16CM-50" Margin="5,0,0,0" Padding="2,1,2,1" />
+                                                <TextBlock x:Name="SquadronLabel" Text="44th Fighter Squadron" Margin="100,0,0,0" Padding="2,1,2,1" />
+                                            </StackPanel>
+                                            <TextBlock x:Name="AirbaseLabel" Text="Casale Airbase" />
+                                            <StackPanel Orientation="Horizontal" Margin="0,0,0,1">
+                                                <TextBlock Text="Comms" Padding="2,1,2,1" />
+                                                <TextBlock Text="UHF" Margin="15,0,0,0" Padding="2,1,2,1" />
+                                                <!-- ReSharper disable once InconsistentNaming -->
+                                                <TextBlock x:Name="UHFFrequencyLabel" Text="225.250 MHz" Margin="10,0,0,0" Padding="2,1,2,1" />
+                                                <TextBlock Text="VHF" Margin="15,0,0,0" Padding="2,1,2,1" />
+                                                <!-- ReSharper disable once InconsistentNaming -->
+                                                <TextBlock x:Name="VHFFrequencyLabel" Text="148.750 MHz" Margin="10,0,0,0" Padding="2,1,2,1" />
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </TreeViewItem>
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Name="ATOCategory_Airstrike" Header="Airstrike">
+
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Name="ATOCategory_AI" Header="Air Interdiction">
+
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Name="ATOCategory_SEAD" Header="Suppression of Enemy Air Defenses">
+
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Name="ATOCategory_CAS" Header="Close Air Support">
+
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Name="ATOCategory_DCA" Header="Defensive Counter Air">
+
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Name="ATOCategory_CCCI" Header="Command Control Communications Intelligence">
+
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Name="ATOCategory_CounterSea" Header="Counter-sea">
+
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Name="ATOCategory_Support" Header="Support">
+
+                    </TreeViewItem>
+                </TreeView>
             </TabItem>
+
             <TabItem Header="Tactical Reference" Style="{DynamicResource DocumentTabItemStyle}">
                 <TabControl Style="{DynamicResource DocumentTabControlStyle}">
                     <TabItem Header="Aircraft" Style="{DynamicResource DocumentTabItemStyle}">
@@ -243,10 +351,33 @@
                     </TabItem>
                 </TabControl>
             </TabItem>
+
             <TabItem Header="Map" Style="{DynamicResource DocumentTabItemStyle}">
 
             </TabItem>
-        </TabControl>
 
+            <TabItem Header="Briefing" Style="{DynamicResource DocumentTabItemStyle}">
+                <ScrollViewer Grid.Column="0">
+                    <Grid Background="{DynamicResource Menu.Static.Background}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Situation" FontSize="36" Margin="25,10,0,10"/>
+                            <RichTextBox x:Name="SituationTextBox" MinHeight="500" Background="{x:Null}" Foreground="AliceBlue" Margin="5,0,5,0" />
+                            <TextBlock Text="Mission Objectives" FontSize="36" Margin="25,10,0,10" />
+                            <RichTextBox x:Name="ObjectivesTextBox" MinHeight="500" Background="{x:Null}" Foreground="AliceBlue" Margin="5,0,5,0" />
+                        </StackPanel>
+                        
+                </Grid>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="Loadout" Style="{DynamicResource DocumentTabItemStyle}">
+
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

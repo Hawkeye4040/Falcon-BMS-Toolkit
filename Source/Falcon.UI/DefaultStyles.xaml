@@ -551,4 +551,41 @@
         <Setter Property="Height" Value="24" />
     </Style>
 
+    <!-- Tree Views -->
+
+    <!-- ReSharper disable once InconsistentNaming -->
+    <Style x:Key="ATOTreeViewStyle" TargetType="{x:Type TreeView}">
+        <Setter Property="Background" Value="{DynamicResource Menu.Static.Background}" />
+        <Setter Property="Foreground" Value="{DynamicResource Menu.Static.Foreground}"/>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="TreeViewItem"> <!-- Package Type Style -->
+                    <Setter Property="Foreground" Value="{DynamicResource Menu.Static.Foreground}"/>
+                    <Setter Property="ItemContainerStyle">
+                        <Setter.Value>
+                            <Style TargetType="TreeViewItem"> <!-- Package Style -->
+                                <Setter Property="Foreground" Value="{DynamicResource Menu.Static.Foreground}"/>
+                                <Setter Property="ItemContainerStyle">
+                                    <Setter.Value>
+                                        <Style TargetType="TreeViewItem"> <!-- Flight Style -->
+                                            <Setter Property="Foreground" Value="{DynamicResource Menu.Static.Foreground}"/>
+                                        </Style>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- List Views -->
+
+    <!-- ReSharper disable once InconsistentNaming -->
+    <Style x:Key="ATOListViewStyle" TargetType="{x:Type ListView}">
+        <Setter Property="Foreground" Value="{DynamicResource Menu.Static.Foreground}" />
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>
+    </Style>
+
 </ResourceDictionary>

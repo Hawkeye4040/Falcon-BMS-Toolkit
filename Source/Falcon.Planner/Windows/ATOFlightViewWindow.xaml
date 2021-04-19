@@ -1,0 +1,16 @@
+﻿<Window x:Class="Falcon.Planner.Windows.ATOFlightViewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Flight - Unassigned"
+        Background="{DynamicResource Menu.Static.Background}"
+        Width="600" Height="450">
+    <Grid>
+        <Rectangle x:Name="FlightLeadSlot" Width="32" Height="32" Fill="{StaticResource Icons.Aircraft.F16}" Margin="80,158,488,244" ToolTip="Flight Lead"/>
+        <Rectangle x:Name="FlightWingSlot" Width="32" Height="32" Fill="{StaticResource Icons.Aircraft.F16}" Margin="30,201,538,201" ToolTip="Flight Wing"/>
+        <Rectangle x:Name="ElementLeadSlot" Width="32" Height="32" Fill="{StaticResource Icons.Aircraft.F16}" Margin="129,201,439,201" ToolTip="Element Lead"/>
+        <Rectangle x:Name="ElementWingSlot" Width="32" Height="32" Fill="{StaticResource Icons.Aircraft.F16}" Margin="80,245,488,157" ToolTip="Element Wing" />
+    </Grid>
+</Window>
