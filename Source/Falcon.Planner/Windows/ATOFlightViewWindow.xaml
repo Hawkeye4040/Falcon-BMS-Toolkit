@@ -3,14 +3,44 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="clr-namespace:Falcon.UI;assembly=Falcon.UI"
         mc:Ignorable="d"
         Title="Flight - Unassigned"
         Background="{DynamicResource Menu.Static.Background}"
-        Width="600" Height="450">
+        Width="450" Height="300">
+    <Window.CommandBindings>
+        <CommandBinding Command="ui:ATOCommands.ViewPackage" Executed="ViewPackageCommand_OnExecuted" />
+        <CommandBinding Command="ui:ATOCommands.ViewDTC" Executed="ViewDTCCommand_OnExecuted"/>
+        <CommandBinding Command="ui:ATOCommands.ViewFlightPlan" Executed="ViewFlightPlanCommand_OnExecuted" />
+        <CommandBinding Command="ui:ATOCommands.ViewLoadout" Executed="ViewLoadoutCommand_OnExecuted" />
+        <CommandBinding Command="ui:ATOCommands.ViewSquadron" Executed="ViewSquadronCommand_OnExecuted" />
+    </Window.CommandBindings>
     <Grid>
-        <Rectangle x:Name="FlightLeadSlot" Width="32" Height="32" Fill="{StaticResource Icons.Aircraft.F16}" Margin="80,158,488,244" ToolTip="Flight Lead"/>
-        <Rectangle x:Name="FlightWingSlot" Width="32" Height="32" Fill="{StaticResource Icons.Aircraft.F16}" Margin="30,201,538,201" ToolTip="Flight Wing"/>
-        <Rectangle x:Name="ElementLeadSlot" Width="32" Height="32" Fill="{StaticResource Icons.Aircraft.F16}" Margin="129,201,439,201" ToolTip="Element Lead"/>
-        <Rectangle x:Name="ElementWingSlot" Width="32" Height="32" Fill="{StaticResource Icons.Aircraft.F16}" Margin="80,245,488,157" ToolTip="Element Wing" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Column="0" Width="200" Height="200">
+            <TextBlock x:Name="FlightCallsignTextBlock" Text="Falcon 3" Foreground="AliceBlue" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" />
+
+            <Button x:Name="FlightLeadSlotButton" Width="32" Height="32" ToolTip="Flight Lead"
+                    Background="{StaticResource Icons.Aircraft.F16}" Margin="84,30,84,138" MouseDown="FlightLeadSlotButton_OnMouseDown"/>
+            <Button x:Name="FlightWingSlotButton" Width="32" Height="32" Background="{StaticResource Icons.Aircraft.F16}"
+                    ToolTip="Flight Wing" Margin="25,84,143,84" MouseDown="FlightWingSlotButton_OnMouseDown"/>
+            <Button x:Name="ElementLeadSlotButton" Width="32" Height="32" Background="{StaticResource Icons.Aircraft.F16}"
+                     ToolTip="Element Lead" Margin="143,84,25,84" MouseDown="ElementLeadSlotButton_OnMouseDown"/>
+            <Button x:Name="ElementWingSlotButton" Width="32" Height="32" Background="{StaticResource Icons.Aircraft.F16}"
+                     ToolTip="Element Wing" Margin="84,138,84,30" MouseDown="ElementWingSlotButton_OnMouseDown" />
+        </Grid>
+
+        <StackPanel Grid.Column="1">
+            <Button x:Name="ViewPackageButton" Margin="0,30,0,0"  Command="ui:ATOCommands.ViewPackage" Content="View Package" HorizontalAlignment="Center" VerticalAlignment="Top" Padding="10,2,10,2"/>
+            <!-- ReSharper disable once InconsistentNaming -->
+            <Button x:Name="ViewDTCButton" Margin="0,10,0,0" Command="ui:ATOCommands.ViewDTC" Content="View DTC" HorizontalAlignment="Center" VerticalAlignment="Top" Padding="10,2,10,2" />
+            <Button x:Name="ViewFlightPlanButton" Command="ui:ATOCommands.ViewFlightPlan" Margin="0,10,0,0" Content="View Flight Plan" HorizontalAlignment="Center" VerticalAlignment="Top" Padding="10,2,10,2" />
+            <Button x:Name="ViewLoadoutButton" Margin="0,10,0,0" Command="ui:ATOCommands.ViewLoadout" Content="View Loadout" HorizontalAlignment="Center" VerticalAlignment="Top" Padding="10,2,10,2" />
+            <Button x:Name="ViewSquadronButton" Margin="0,10,0,0" Command="ui:ATOCommands.ViewSquadron" Content="View Squadron" HorizontalAlignment="Center" VerticalAlignment="Top" Padding="10,2,10,2" />
+        </StackPanel>
     </Grid>
 </Window>

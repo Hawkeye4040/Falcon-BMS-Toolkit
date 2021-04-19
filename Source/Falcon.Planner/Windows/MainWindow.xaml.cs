@@ -5,6 +5,7 @@ using System.Windows.Input;
 
 using Falcon.Core.Collections;
 using Falcon.Core.Events;
+using Falcon.UI;
 
 using Microsoft.Win32;
 
@@ -65,6 +66,16 @@ namespace Falcon.Planner.Windows
         #endregion
 
         #region Methods
+
+        private void ATOFlightCard_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                ATOCommands.ViewFlight.Execute(ATOFlightCard, ATOFlightCard);
+
+                //BUG: new window does not activate, Main window retains focus on double click only.
+            }
+        }
 
         private void MainWindow_ActiveSelectionChanged(object sender, ValueChangedEventArgs<object> e)
         {
@@ -193,6 +204,7 @@ namespace Falcon.Planner.Windows
 
                 window?.Activate();
             }
+
             else
             {
                 DataCartridgeEditorWindow window = new DataCartridgeEditorWindow();
@@ -206,6 +218,7 @@ namespace Falcon.Planner.Windows
         private void ViewPackageCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             ATOPackageViewWindow window = new ATOPackageViewWindow();
+
             window.Show();
         }
 
@@ -217,5 +230,7 @@ namespace Falcon.Planner.Windows
         }
 
         #endregion
+
+        
     }
 }

@@ -15,7 +15,7 @@
         </Grid.ColumnDefinitions>
 
         <ScrollViewer>
-            <ListView Background="{x:Null}" Margin="5,30,5,15" Foreground="{DynamicResource Menu.Static.Foreground}" Style="{DynamicResource ATOListViewStyle}">
+            <ListView Background="{x:Null}" Margin="5,30,5,15" Style="{DynamicResource ATOListViewStyle}">
 
                 <Border x:Name="ATOFlightCard" Margin="5,10,5,0"
                         BorderBrush="{DynamicResource Menu.Static.Foreground}" BorderThickness="1">

@@ -16,13 +16,15 @@
         <CommandBinding Command="ui:MenuCommands.OpenMissionPlan" Executed="OpenMissionPlanCommand_OnExecuted" />
         <CommandBinding Command="ui:MenuCommands.OpenDTC" Executed="OpenDTCCommand_OnExecuted" />
         <CommandBinding Command="ui:MenuCommands.OpenCampaign" Executed="OpenCampaignCommand_OnExecuted" />
-        <CommandBinding Command="ui:MenuCommands.OpenTacticalEngagement" Executed="OpenTacticalEngagementCommand_OnExecuted"/>
-        <CommandBinding Command="ui:MenuCommands.Settings" Executed="SettingsCommand_OnExecuted"/>
+        <CommandBinding Command="ui:MenuCommands.OpenTacticalEngagement"
+                        Executed="OpenTacticalEngagementCommand_OnExecuted" />
+        <CommandBinding Command="ui:MenuCommands.Settings" Executed="SettingsCommand_OnExecuted" />
         <CommandBinding Command="ui:MenuCommands.Exit" Executed="ExitCommand_OnExecuted" />
 
         <!-- View Kneeboard -->
         <CommandBinding Command="ui:MenuCommands.KneeboardEditor" Executed="KneeboardEditorCommand_OnExecuted" />
-        <CommandBinding Command="ui:MenuCommands.DataCartridgeEditor" Executed="OpenDataCartridgeEditorCommand_OnExecuted"/>
+        <CommandBinding Command="ui:MenuCommands.DataCartridgeEditor"
+                        Executed="OpenDataCartridgeEditorCommand_OnExecuted" />
 
         <!-- ATO -->
         <CommandBinding Command="ui:ATOCommands.ViewPackage" Executed="ViewPackageCommand_OnExecuted" />
@@ -31,11 +33,11 @@
     </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Menu Style="{StaticResource MainMenuStyle}" Grid.Row="0">
@@ -43,22 +45,30 @@
             <MenuItem Header="File" Template="{StaticResource MenuItemControlTemplate}">
 
                 <MenuItem Header="New" Template="{StaticResource SubMenuItemControlTemplate}">
-                    <MenuItem Header="Mission Plan" Command="ui:MenuCommands.NewMissionPlan" ToolTip="Creates a new mission plan from template"/>
+                    <MenuItem Header="Mission Plan" Command="ui:MenuCommands.NewMissionPlan"
+                              ToolTip="Creates a new mission plan from template" />
                 </MenuItem>
 
                 <MenuItem Header="Open" Template="{StaticResource SubMenuItemControlTemplate}">
-                    <MenuItem Header="Mission Plan (FMP)" Command="ui:MenuCommands.OpenMissionPlan" ToolTip="Open an existing mission plan"/>
-                    <MenuItem Header="Data Cartridge (DTC)" Command="ui:MenuCommands.OpenDTC" ToolTip="Open a data cartridge (.dtc) file"/>
-                    <Separator/>
-                    <MenuItem Header="Campaign" Command="ui:MenuCommands.OpenCampaign" ToolTip="Opens a Campaign (.cam) file"/>
-                    <MenuItem Header="Tactical Engagement" Command="ui:MenuCommands.OpenTacticalEngagement" ToolTip="Opens a Tactical Engagement (.tac) file"/>
+                    <MenuItem Header="Mission Plan (FMP)" Command="ui:MenuCommands.OpenMissionPlan"
+                              ToolTip="Open an existing mission plan" />
+                    <MenuItem Header="Data Cartridge (DTC)" Command="ui:MenuCommands.OpenDTC"
+                              ToolTip="Open a data cartridge (.dtc) file" />
+                    <Separator />
+                    <MenuItem Header="Campaign" Command="ui:MenuCommands.OpenCampaign"
+                              ToolTip="Opens a Campaign (.cam) file" />
+                    <MenuItem Header="Tactical Engagement" Command="ui:MenuCommands.OpenTacticalEngagement"
+                              ToolTip="Opens a Tactical Engagement (.tac) file" />
                 </MenuItem>
 
                 <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
-                <MenuItem Header="Connect" ToolTip="Connect to a team server for a wing/squadron" Icon="{StaticResource Icons.Connect}"/>
-                <MenuItem Header="Settings" Command="ui:MenuCommands.Settings" Icon="{StaticResource Icons.Settings}" ToolTip="Opens the settings window"/>
+                <MenuItem Header="Connect" ToolTip="Connect to a team server for a wing/squadron"
+                          Icon="{StaticResource Icons.Connect}" />
+                <MenuItem Header="Settings" Command="ui:MenuCommands.Settings" Icon="{StaticResource Icons.Settings}"
+                          ToolTip="Opens the settings window" />
                 <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
-                <MenuItem Header="Exit" Icon="{StaticResource Icons.Exit}" Command="ui:MenuCommands.Exit" ToolTip="Exits the application"/>
+                <MenuItem Header="Exit" Icon="{StaticResource Icons.Exit}" Command="ui:MenuCommands.Exit"
+                          ToolTip="Exits the application" />
             </MenuItem>
 
             <MenuItem Header="Edit" Template="{StaticResource MenuItemControlTemplate}">
@@ -66,19 +76,22 @@
                 <MenuItem Header="Redo" Icon="{StaticResource Icons.Redo}" />
                 <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
                 <MenuItem Header="Cut" Icon="{StaticResource Icons.Cut}" />
-                <MenuItem Header="Copy" Icon="{StaticResource Icons.Copy}"/>
+                <MenuItem Header="Copy" Icon="{StaticResource Icons.Copy}" />
                 <MenuItem Header="Paste" Icon="{StaticResource Icons.Paste}" />
                 <Separator Style="{StaticResource MainMenuSeparatorStyle}" />
-                <MenuItem Header="Delete" Icon="{StaticResource Icons.Cancel}"/>
+                <MenuItem Header="Delete" Icon="{StaticResource Icons.Cancel}" />
             </MenuItem>
 
             <MenuItem Header="View" Template="{StaticResource MenuItemControlTemplate}">
-                <MenuItem Header="KneeboardEditor" Command="ui:MenuCommands.KneeboardEditor" ToolTip="Opens the kneeboard editor window" />
-                <MenuItem Header="Data Cartridge" Command="ui:MenuCommands.DataCartridgeEditor" ToolTip="Opens the Data Cartridge editor window" />
+                <MenuItem Header="KneeboardEditor" Command="ui:MenuCommands.KneeboardEditor"
+                          ToolTip="Opens the kneeboard editor window" />
+                <MenuItem Header="Data Cartridge" Command="ui:MenuCommands.DataCartridgeEditor"
+                          ToolTip="Opens the Data Cartridge editor window" />
             </MenuItem>
 
             <MenuItem Header="Help" Template="{StaticResource MenuItemControlTemplate}">
-                <MenuItem Header="Documentation" ToolTip="View help documentation" Icon="{StaticResource Icons.Library}"/>
+                <MenuItem Header="Documentation" ToolTip="View help documentation"
+                          Icon="{StaticResource Icons.Library}" />
                 <Separator />
                 <MenuItem Header="Send Feedback" ToolTip="Send feedback to the developers" />
                 <Separator />
@@ -87,7 +100,7 @@
             </MenuItem>
 
         </Menu>
-        
+
         <ToolBar Grid.Row="1" Background="Transparent">
             <Button x:Name="OpenButton" Content="{StaticResource Icons.FolderOpen}" ToolTip="Open" />
             <Button x:Name="SaveButton" Content="{StaticResource Icons.Save}" ToolTip="Save" />
@@ -97,6 +110,7 @@
         </ToolBar>
 
         <TabControl Grid.Row="2" Style="{DynamicResource DocumentTabControlStyle}">
+
             <TabItem Header="ATO" Style="{DynamicResource DocumentTabItemStyle}">
 
                 <!-- ReSharper disable once InconsistentNaming -->
@@ -109,9 +123,11 @@
                                 <StackPanel Orientation="Horizontal">
                                     <StackPanel.ContextMenu>
                                         <ContextMenu>
-                                            <MenuItem Header="View" Command="ui:ATOCommands.ViewPackage" ToolTip="Opens this package in the package viewer"/>
+                                            <MenuItem Header="View" Command="ui:ATOCommands.ViewPackage"
+                                                      ToolTip="Opens this package in the package viewer" />
                                             <Separator />
-                                            <MenuItem Header="Go To Map" ToolTip="Opens the map and navigates to this package's location"/>
+                                            <MenuItem Header="Go To Map"
+                                                      ToolTip="Opens the map and navigates to this package's location" />
                                             <MenuItem Header="Delete" ToolTip="Deletes this package" />
                                         </ContextMenu>
                                     </StackPanel.ContextMenu>
@@ -121,14 +137,18 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                             <!-- ReSharper disable once InconsistentNaming -->
-                            <Border x:Name="ATOFlightCard" BorderBrush="{DynamicResource Menu.Static.Foreground}" BorderThickness="1">
+
+                            <Border x:Name="ATOFlightCard" BorderBrush="{DynamicResource Menu.Static.Foreground}"
+                                    BorderThickness="1" MouseDown="ATOFlightCard_OnMouseDown">
                                 <StackPanel>
                                     <StackPanel.ContextMenu>
                                         <ContextMenu>
-                                            <MenuItem Header="View" Command="ui:ATOCommands.ViewFlight" ToolTip="Opens this flight in the flight viewer" />
-                                            <Separator/>
-                                            <MenuItem Header="Join" ToolTip="Joins the first available slot on this flight (if any)" />
-                                            <Separator/>
+                                            <MenuItem Header="View" Command="ui:ATOCommands.ViewFlight"
+                                                      ToolTip="Opens this flight in the flight viewer" />
+                                            <Separator />
+                                            <MenuItem Header="Join"
+                                                      ToolTip="Joins the first available slot on this flight (if any)" />
+                                            <Separator />
                                             <MenuItem Header="Delete" ToolTip="Deletes this flight" />
                                         </ContextMenu>
                                     </StackPanel.ContextMenu>
@@ -137,23 +157,30 @@
                                         <StackPanel>
                                             <StackPanel Orientation="Horizontal" Margin="0,0,0,1">
                                                 <TextBlock x:Name="FlightTypeLabel" Text="Sweep" Padding="2,1,2,1" />
-                                                <TextBlock x:Name="CallsignLabel" Text="Falcon 3" Margin="150,0,0,0" Padding="2,1,2,1" />
-                                                <TextBlock x:Name="TakeoffTimeLabel" Text="T/O 16:03:00z" Margin="50,0,0,0" Padding="2,1,2,1" />
+                                                <TextBlock x:Name="CallsignLabel" Text="Falcon 3" Margin="150,0,0,0"
+                                                           Padding="2,1,2,1" />
+                                                <TextBlock x:Name="TakeoffTimeLabel" Text="T/O 16:03:00z"
+                                                           Margin="50,0,0,0" Padding="2,1,2,1" />
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal" Margin="0,0,0,1">
-                                                <TextBlock x:Name="AircraftCountLabel" Text="4" Margin="5,0,0,0" Padding="2,1,1,0"/>
-                                                <TextBlock x:Name="AircraftTypeLabel" Text="F-16CM-50" Margin="5,0,0,0" Padding="2,1,2,1" />
-                                                <TextBlock x:Name="SquadronLabel" Text="44th Fighter Squadron" Margin="100,0,0,0" Padding="2,1,2,1" />
+                                                <TextBlock x:Name="AircraftCountLabel" Text="4" Margin="5,0,0,0"
+                                                           Padding="2,1,1,0" />
+                                                <TextBlock x:Name="AircraftTypeLabel" Text="F-16CM-50" Margin="5,0,0,0"
+                                                           Padding="2,1,2,1" />
+                                                <TextBlock x:Name="SquadronLabel" Text="44th Fighter Squadron"
+                                                           Margin="100,0,0,0" Padding="2,1,2,1" />
                                             </StackPanel>
                                             <TextBlock x:Name="AirbaseLabel" Text="Casale Airbase" />
                                             <StackPanel Orientation="Horizontal" Margin="0,0,0,1">
                                                 <TextBlock Text="Comms" Padding="2,1,2,1" />
                                                 <TextBlock Text="UHF" Margin="15,0,0,0" Padding="2,1,2,1" />
                                                 <!-- ReSharper disable once InconsistentNaming -->
-                                                <TextBlock x:Name="UHFFrequencyLabel" Text="225.250 MHz" Margin="10,0,0,0" Padding="2,1,2,1" />
+                                                <TextBlock x:Name="UHFFrequencyLabel" Text="225.250 MHz"
+                                                           Margin="10,0,0,0" Padding="2,1,2,1" />
                                                 <TextBlock Text="VHF" Margin="15,0,0,0" Padding="2,1,2,1" />
                                                 <!-- ReSharper disable once InconsistentNaming -->
-                                                <TextBlock x:Name="VHFFrequencyLabel" Text="148.750 MHz" Margin="10,0,0,0" Padding="2,1,2,1" />
+                                                <TextBlock x:Name="VHFFrequencyLabel" Text="148.750 MHz"
+                                                           Margin="10,0,0,0" Padding="2,1,2,1" />
                                             </StackPanel>
                                         </StackPanel>
 
@@ -163,37 +190,21 @@
                         </TreeViewItem>
                     </TreeViewItem>
 
-                    <TreeViewItem x:Name="ATOCategory_Airstrike" Header="Airstrike">
+                    <TreeViewItem x:Name="ATOCategory_Airstrike" Header="Airstrike" />
 
-                    </TreeViewItem>
+                    <TreeViewItem x:Name="ATOCategory_AI" Header="Air Interdiction" />
 
-                    <TreeViewItem x:Name="ATOCategory_AI" Header="Air Interdiction">
+                    <TreeViewItem x:Name="ATOCategory_SEAD" Header="Suppression of Enemy Air Defenses" />
 
-                    </TreeViewItem>
+                    <TreeViewItem x:Name="ATOCategory_CAS" Header="Close Air Support" />
 
-                    <TreeViewItem x:Name="ATOCategory_SEAD" Header="Suppression of Enemy Air Defenses">
+                    <TreeViewItem x:Name="ATOCategory_DCA" Header="Defensive Counter Air" />
 
-                    </TreeViewItem>
+                    <TreeViewItem x:Name="ATOCategory_CCCI" Header="Command Control Communications Intelligence" />
 
-                    <TreeViewItem x:Name="ATOCategory_CAS" Header="Close Air Support">
+                    <TreeViewItem x:Name="ATOCategory_CounterSea" Header="Counter-sea" />
 
-                    </TreeViewItem>
-
-                    <TreeViewItem x:Name="ATOCategory_DCA" Header="Defensive Counter Air">
-
-                    </TreeViewItem>
-
-                    <TreeViewItem x:Name="ATOCategory_CCCI" Header="Command Control Communications Intelligence">
-
-                    </TreeViewItem>
-
-                    <TreeViewItem x:Name="ATOCategory_CounterSea" Header="Counter-sea">
-
-                    </TreeViewItem>
-
-                    <TreeViewItem x:Name="ATOCategory_Support" Header="Support">
-
-                    </TreeViewItem>
+                    <TreeViewItem x:Name="ATOCategory_Support" Header="Support" />
                 </TreeView>
             </TabItem>
 
@@ -201,183 +212,110 @@
                 <TabControl Style="{DynamicResource DocumentTabControlStyle}">
                     <TabItem Header="Aircraft" Style="{DynamicResource DocumentTabItemStyle}">
                         <TabControl Style="{DynamicResource DocumentTabControlStyle}">
-                            <TabItem Header="Fighters" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Multi-role" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Attack" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Bombers" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Helicopters" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="C3IRSEW" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Support" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
+                            <TabItem Header="Fighters" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Multi-role" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Attack" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Bombers" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Helicopters" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="C3IRSEW" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Support" Style="{DynamicResource DocumentTabItemStyle}" />
                         </TabControl>
                     </TabItem>
                     <TabItem Header="Vehicles" Style="{DynamicResource DocumentTabItemStyle}">
                         <TabControl Style="{DynamicResource DocumentTabControlStyle}">
-                            <TabItem Header="Tanks" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="IFVs/APCs" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Artillery" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="SAMs" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="AAA" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="RADAR/CP" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Support" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
+                            <TabItem Header="Tanks" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="IFVs/APCs" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Artillery" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="SAMs" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="AAA" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="RADAR/CP" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Support" Style="{DynamicResource DocumentTabItemStyle}" />
                         </TabControl>
                     </TabItem>
                     <TabItem Header="Vessels" Style="{DynamicResource DocumentTabItemStyle}">
                         <TabControl Style="{DynamicResource DocumentTabControlStyle}">
-                            <TabItem Header="Carriers" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Cruisers" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Frigates" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Destroyers" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Submarines" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Other" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Support" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
+                            <TabItem Header="Carriers" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Cruisers" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Frigates" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Destroyers" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Submarines" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Other" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Support" Style="{DynamicResource DocumentTabItemStyle}" />
                         </TabControl>
                     </TabItem>
                     <TabItem Header="Missiles" Style="{DynamicResource DocumentTabItemStyle}">
                         <TabControl Style="{DynamicResource DocumentTabControlStyle}">
-                            <TabItem Header="A-A IR" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="A-A RADAR" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="ASMs" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="ARMs" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="AGMs - Other" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="SAMs" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="SSMs" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
+                            <TabItem Header="A-A IR" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="A-A RADAR" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="ASMs" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="ARMs" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="AGMs - Other" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="SAMs" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="SSMs" Style="{DynamicResource DocumentTabItemStyle}" />
                         </TabControl>
                     </TabItem>
                     <TabItem Header="Bombs" Style="{DynamicResource DocumentTabItemStyle}">
                         <TabControl Style="{DynamicResource DocumentTabControlStyle}">
-                            <TabItem Header="General Purpose" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="LGBs" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="GPS/INS" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="CBUs" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Incendiary" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Anti-Runway" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Other" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
+                            <TabItem Header="General Purpose" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="LGBs" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="GPS/INS" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="CBUs" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Incendiary" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Anti-Runway" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Other" Style="{DynamicResource DocumentTabItemStyle}" />
                         </TabControl>
                     </TabItem>
                     <TabItem Header="Stores" Style="{DynamicResource DocumentTabItemStyle}">
                         <TabControl Style="{DynamicResource DocumentTabControlStyle}">
-                            <TabItem Header="Fuel Tanks" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Recon Pods" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="ECMs" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="CM Pods" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="TGT Pods" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Rocket/Gun Pods" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
-                            <TabItem Header="Other Pods" Style="{DynamicResource DocumentTabItemStyle}">
-
-                            </TabItem>
+                            <TabItem Header="Fuel Tanks" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Recon Pods" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="ECMs" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="CM Pods" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="TGT Pods" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Rocket/Gun Pods" Style="{DynamicResource DocumentTabItemStyle}" />
+                            <TabItem Header="Other Pods" Style="{DynamicResource DocumentTabItemStyle}" />
                         </TabControl>
                     </TabItem>
                 </TabControl>
             </TabItem>
 
             <TabItem Header="Map" Style="{DynamicResource DocumentTabItemStyle}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
 
+                    <StackPanel x:Name="MapDetailsPanel" Grid.Column="0" />
+
+                    <Grid Grid.Column="1" MinHeight="985">
+                        <Image x:Name="MapBackground" Margin="15" /> <!-- TODO: Add Korea's map as default placeholder map here. -->
+                    </Grid>
+                </Grid>
             </TabItem>
 
             <TabItem Header="Briefing" Style="{DynamicResource DocumentTabItemStyle}">
                 <ScrollViewer Grid.Column="0">
                     <Grid Background="{DynamicResource Menu.Static.Background}">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        
+
                         <StackPanel Grid.Column="0">
-                            <TextBlock Text="Situation" FontSize="36" Margin="25,10,0,10"/>
-                            <RichTextBox x:Name="SituationTextBox" MinHeight="500" Background="{x:Null}" Foreground="AliceBlue" Margin="5,0,5,0" />
+                            <TextBlock Text="Situation" FontSize="36" Margin="25,10,0,10" />
+                            <RichTextBox x:Name="SituationTextBox" MinHeight="500" Background="{x:Null}"
+                                         Foreground="AliceBlue" Margin="5,0,5,0" />
                             <TextBlock Text="Mission Objectives" FontSize="36" Margin="25,10,0,10" />
-                            <RichTextBox x:Name="ObjectivesTextBox" MinHeight="500" Background="{x:Null}" Foreground="AliceBlue" Margin="5,0,5,0" />
+                            <RichTextBox x:Name="ObjectivesTextBox" MinHeight="500" Background="{x:Null}"
+                                         Foreground="AliceBlue" Margin="5,0,5,0" />
                         </StackPanel>
-                        
-                </Grid>
+
+                    </Grid>
                 </ScrollViewer>
             </TabItem>
 
-            <TabItem Header="Loadout" Style="{DynamicResource DocumentTabItemStyle}">
-
-            </TabItem>
+            <TabItem Header="Loadout" Style="{DynamicResource DocumentTabItemStyle}" />
         </TabControl>
     </Grid>
 </Window>

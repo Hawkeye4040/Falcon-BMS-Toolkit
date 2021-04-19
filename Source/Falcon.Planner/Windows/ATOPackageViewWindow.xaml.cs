@@ -1,27 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Diagnostics.CodeAnalysis;
+
+using Falcon.Core;
 
 namespace Falcon.Planner.Windows
 {
     /// <summary>
-    /// Interaction logic for ATOPackageViewWindow.xaml
+    ///     Interaction logic for ATOPackageViewWindow.xaml
     /// </summary>
-    public partial class ATOPackageViewWindow : Window
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
+    public sealed partial class ATOPackageViewWindow
     {
-        public ATOPackageViewWindow()
+        #region Properties
+
+        public Package Package { get; private set; }
+
+        #endregion
+
+        #region Constructors
+
+        internal ATOPackageViewWindow()
         {
             InitializeComponent();
+
+            Title = "PKG# N/A";
         }
+
+        public ATOPackageViewWindow(Package package)
+        {
+            InitializeComponent();
+
+            Package = package;
+
+            Title = $"PKG# {Package.Number}";
+        }
+
+        #endregion
     }
 }

@@ -23,6 +23,14 @@ namespace Falcon.UI
             typeof(ATOCommands)
         );
 
+        public static readonly RoutedUICommand ViewDTC = new RoutedUICommand("View DTC", "ViewDTCCommand", typeof(ATOCommands));
+
+        public static readonly RoutedUICommand ViewSquadron = new RoutedUICommand("View Squadron", "ViewSquadronCommand", typeof(ATOCommands));
+
+        public static readonly RoutedUICommand ViewLoadout = new RoutedUICommand("View Loadout", "ViewLoadoutCommand", typeof(ATOCommands));
+
+        public static readonly RoutedUICommand ViewFlightPlan = new RoutedUICommand("View Flight Plan", "ViewFlightPlanCommand", typeof(ATOCommands));
+
         #endregion
     }
 
