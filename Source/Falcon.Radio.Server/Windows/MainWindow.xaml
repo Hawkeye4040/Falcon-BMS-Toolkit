@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Falcon Radio - Server"
-        Background="{DynamicResource }"
-        Width="800" Height="450" >
+        Background="{DynamicResource Menu.Static.Background}"
+        Width="800" Height="450">
     <Grid>
 
     </Grid>
