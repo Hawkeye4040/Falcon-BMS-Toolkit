@@ -27,7 +27,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VSIX", "VSIX", "{2D1F2628-C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{2BC4EAA7-31BC-48AF-AEBF-9E4EC15D5D5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falcon.Tests", "..\..\Source\Falcon.Tests\Falcon.Tests.csproj", "{54F0E76C-2CAE-4727-8665-C7312B9A0A78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Falcon.Tests", "..\..\Source\Falcon.Tests\Falcon.Tests.csproj", "{54F0E76C-2CAE-4727-8665-C7312B9A0A78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falcon.Radio.Server", "..\..\Source\Falcon.Radio.Server\Falcon.Radio.Server.csproj", "{2D357B18-CD44-45E6-8B62-A4CD3C61E550}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{54F0E76C-2CAE-4727-8665-C7312B9A0A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54F0E76C-2CAE-4727-8665-C7312B9A0A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54F0E76C-2CAE-4727-8665-C7312B9A0A78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D357B18-CD44-45E6-8B62-A4CD3C61E550}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D357B18-CD44-45E6-8B62-A4CD3C61E550}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D357B18-CD44-45E6-8B62-A4CD3C61E550}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D357B18-CD44-45E6-8B62-A4CD3C61E550}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +92,7 @@ Global
 		{D18006E6-7735-47E6-97EB-D7CC3FAE80D9} = {2D1F2628-C98A-447E-BC29-62A6ECAEBBF0}
 		{2D1F2628-C98A-447E-BC29-62A6ECAEBBF0} = {D52A0C4E-4005-4C3B-9427-582757622408}
 		{54F0E76C-2CAE-4727-8665-C7312B9A0A78} = {4936393D-FEB8-439E-82C9-F8235EA16D62}
+		{2D357B18-CD44-45E6-8B62-A4CD3C61E550} = {2BC4EAA7-31BC-48AF-AEBF-9E4EC15D5D5D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A1B4B9DE-6681-45DF-9798-911BA59F2B0B}
