@@ -34,6 +34,11 @@ namespace Falcon.UI
         #endregion
     }
 
+    public static class BriefingCommands
+    {
+        
+    }
+
     public static class CommonCommands
     {
         #region Fields
@@ -49,6 +54,13 @@ namespace Falcon.UI
         (
             "Cancel",
             "CancelCommand",
+            typeof(CommonCommands)
+        );
+
+        public static readonly RoutedUICommand Fullscreen = new RoutedUICommand
+        (
+            "Fullscreen",
+            "FullscreenCommand",
             typeof(CommonCommands)
         );
 
@@ -176,6 +188,13 @@ namespace Falcon.UI
             "CloseWindowCommand",
             typeof(MenuCommands),
             new InputGestureCollection(new List<InputGesture> {new KeyGesture(Key.X, ModifierKeys.Alt)})
+        );
+
+        public static readonly RoutedUICommand Close = new RoutedUICommand
+        (
+            "Close",
+            "CloseCommand",
+            typeof(MenuCommands)
         );
 
         public static readonly RoutedUICommand Exit = new RoutedUICommand
