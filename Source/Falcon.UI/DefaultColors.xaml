@@ -10,6 +10,8 @@
     <!-- ReSharper disable once InconsistentNaming -->
     <SolidColorBrush x:Key="BMS.White" Color="#FFD7D7D7" />
 
+    <SolidColorBrush x:Key="Radio.Static.Foreground" Color="#FF5C8D16" />
+
     <SolidColorBrush x:Key="Menu.Static.Background" Color="#FF454545" />
     <SolidColorBrush x:Key="Menu.Static.Foreground" Color="AliceBlue" />
 

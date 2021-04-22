@@ -4,15 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Falcon Radio" Height="450" Width="800"
+        Title="Falcon Radio"
+        Width="800" Height="350"
         Background="#353535"
-        WindowStyle="ToolWindow"
-        ResizeMode="NoResize">
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
 
     <Window.CommandBindings>
 
     </Window.CommandBindings>
-
     <Window.Resources>
         <Style x:Key="TextBlockStyle">
             <Setter Property="TextBlock.Foreground" Value="AliceBlue"/>
@@ -79,13 +80,13 @@
             </Setter>
         </Style>
 
+        <!-- TODO: Move styles to Falcon.UI.dll -->
     </Window.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Menu Style="{StaticResource MainMenuStyle}">
@@ -116,7 +117,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <Border Background="#252525" BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="5" HorizontalAlignment="Stretch" Width="275">
                     <StackPanel Margin="15,5,15,5">
-                        <TextBlock Foreground="AliceBlue" Text="Declare" />
+                        <TextBlock Foreground="{DynamicResource Radio.Static.Foreground}" Text="Declare" />
                     </StackPanel>
                 </Border>
 
@@ -133,7 +134,6 @@
 
                     <TextBlock Text="OFF" Foreground="AliceBlue" FontSize="8" Height="12" Width="15"/>
                 </StackPanel>
-
 
                 <StackPanel Width="100">
                     <TextBlock Text="Voice Control" FontSize="10" Style="{StaticResource TextBlockStyle}" Height="Auto"/>
@@ -161,8 +161,6 @@
                     </ComboBox>
                 </StackPanel>
             </StackPanel>
-
-
         </Grid>
     </Grid>
 </Window>
