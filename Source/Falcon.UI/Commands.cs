@@ -23,20 +23,23 @@ namespace Falcon.UI
             typeof(ATOCommands)
         );
 
-        public static readonly RoutedUICommand ViewDTC = new RoutedUICommand("View DTC", "ViewDTCCommand", typeof(ATOCommands));
+        public static readonly RoutedUICommand ViewDTC =
+            new RoutedUICommand("View DTC", "ViewDTCCommand", typeof(ATOCommands));
 
-        public static readonly RoutedUICommand ViewSquadron = new RoutedUICommand("View Squadron", "ViewSquadronCommand", typeof(ATOCommands));
+        public static readonly RoutedUICommand ViewSquadron =
+            new RoutedUICommand("View Squadron", "ViewSquadronCommand", typeof(ATOCommands));
 
-        public static readonly RoutedUICommand ViewLoadout = new RoutedUICommand("View Loadout", "ViewLoadoutCommand", typeof(ATOCommands));
+        public static readonly RoutedUICommand ViewLoadout =
+            new RoutedUICommand("View Loadout", "ViewLoadoutCommand", typeof(ATOCommands));
 
-        public static readonly RoutedUICommand ViewFlightPlan = new RoutedUICommand("View Flight Plan", "ViewFlightPlanCommand", typeof(ATOCommands));
+        public static readonly RoutedUICommand ViewFlightPlan =
+            new RoutedUICommand("View Flight Plan", "ViewFlightPlanCommand", typeof(ATOCommands));
 
         #endregion
     }
 
     public static class BriefingCommands
     {
-        
     }
 
     public static class CommonCommands
@@ -310,6 +313,59 @@ namespace Falcon.UI
             "About",
             "AboutCommand",
             typeof(MenuCommands)
+        );
+
+        #endregion
+    }
+
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
+    [SuppressMessage("ReSharper", "IdentifierTypo")]
+    public static class RadioCommands
+    {
+        #region Fields
+
+        public static readonly RoutedUICommand PushToTalkEnable = new RoutedUICommand
+        (
+            "Push-to-Talk",
+            "PushToTalkEnableCommand",
+            typeof(RadioCommands)
+        );
+
+        public static readonly RoutedUICommand HaltCommands = new RoutedUICommand
+        (
+            "Halt Commands",
+            "HaltCommandsCommand",
+            typeof(RadioCommands)
+        );
+
+        public static readonly RoutedUICommand PTT2DGlobal = new RoutedUICommand
+        (
+            "PTT 2D Global",
+            "PTT2DGlobalCommand",
+            typeof(RadioCommands),
+            new InputGestureCollection(new List<KeyGesture> {new KeyGesture(Key.F1)})
+        );
+
+        public static readonly RoutedUICommand PTT2DLocal = new RoutedUICommand
+        (
+            "PTT 2D Local",
+            "PTT2DLocalCommand",
+            typeof(RadioCommands),
+            new InputGestureCollection(new List<KeyGesture> {new KeyGesture(Key.F2)})
+        );
+
+        public static RoutedUICommand PTTUHF = new RoutedUICommand
+        (
+            "PTT UHF ",
+            "PTTUHFCommand",
+            typeof(RadioCommands)
+        );
+
+        public static RoutedUICommand PTTVHF = new RoutedUICommand
+        (
+            "PTT VHF",
+            "PTTVHFCommand",
+            typeof(RadioCommands)
         );
 
         #endregion
