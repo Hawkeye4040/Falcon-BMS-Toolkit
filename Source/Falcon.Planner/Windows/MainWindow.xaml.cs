@@ -70,16 +70,22 @@ namespace Falcon.Planner.Windows
         private void ATOFlightCard_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2)
-            {
                 ATOCommands.ViewFlight.Execute(ATOFlightCard, ATOFlightCard);
 
-                //BUG: new window does not activate, Main window retains focus on double click only.
-            }
+            //BUG: new window does not activate, Main window retains focus on double click only.
+        }
+
+        private void ATOTreeView_OnSelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            // TODO: Attempt to get package and flight objects from e.NewValue storing Active Selection as such rather than their parent UI containers.
+
+            ActiveSelection = e.NewValue;
         }
 
         private void MainWindow_ActiveSelectionChanged(object sender, ValueChangedEventArgs<object> e)
         {
-            
+            Selection.Clear();
+            Selection.Add(e.NewValue);
         }
 
         private void Selection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -182,7 +188,8 @@ namespace Falcon.Planner.Windows
         {
             if (Application.Current.Windows.OfType<KneeboardEditorWindow>().Any())
             {
-                KneeboardEditorWindow window = Application.Current.Windows.OfType<KneeboardEditorWindow>().FirstOrDefault();
+                KneeboardEditorWindow window = Application.Current.Windows.OfType<KneeboardEditorWindow>()
+                    .FirstOrDefault();
 
                 window?.Activate();
             }
@@ -230,7 +237,5 @@ namespace Falcon.Planner.Windows
         }
 
         #endregion
-
-        
     }
 }

@@ -114,7 +114,8 @@
             <TabItem Header="ATO" Style="{DynamicResource DocumentTabItemStyle}">
 
                 <!-- ReSharper disable once InconsistentNaming -->
-                <TreeView x:Name="ATOTreeView" Style="{DynamicResource ATOTreeViewStyle}">
+                <TreeView x:Name="ATOTreeView" Style="{DynamicResource ATOTreeViewStyle}"
+                          SelectedItemChanged="ATOTreeView_OnSelectedItemChanged">
 
                     <!-- ReSharper disable once InconsistentNaming -->
                     <TreeViewItem x:Name="ATOCategory_OCA" Header="Offensive Counter Air">
@@ -280,18 +281,24 @@
             </TabItem>
 
             <TabItem Header="Map" Style="{DynamicResource DocumentTabItemStyle}">
-                <Grid>
+
+                <Grid Background="{DynamicResource Menu.Static.Background}">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*" />
                         <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="2*" />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel x:Name="MapDetailsPanel" Grid.Column="0" />
+                    <StackPanel x:Name="MapDetailsPanel" Grid.Column="1" >
+                        <TextBlock Text="Map" Foreground="AliceBlue" Margin="15,10,0,0"/>
+                    </StackPanel>
 
-                    <Grid Grid.Column="1" MinHeight="985">
-                        <Image x:Name="MapBackground" Margin="15" /> <!-- TODO: Add Korea's map as default placeholder map here. -->
-                    </Grid>
+                    <ScrollViewer Grid.Column="0">
+                        <Grid MinHeight="985">
+                            <Image x:Name="MapBackground" Margin="15" Source="../Resources/KoreaMap.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="1000" Height="1000"/>
+                        </Grid>
+                    </ScrollViewer>
                 </Grid>
+
             </TabItem>
 
             <TabItem Header="Briefing" Style="{DynamicResource DocumentTabItemStyle}">
@@ -305,17 +312,32 @@
                         <StackPanel Grid.Column="0">
                             <TextBlock Text="Situation" FontSize="36" Margin="25,10,0,10" />
                             <RichTextBox x:Name="SituationTextBox" MinHeight="500" Background="{x:Null}"
-                                         Foreground="AliceBlue" Margin="5,0,5,0" />
+                                         Foreground="AliceBlue" Margin="5,0,5,0" CaretBrush="AliceBlue" />
                             <TextBlock Text="Mission Objectives" FontSize="36" Margin="25,10,0,10" />
                             <RichTextBox x:Name="ObjectivesTextBox" MinHeight="500" Background="{x:Null}"
-                                         Foreground="AliceBlue" Margin="5,0,5,0" />
+                                         Foreground="AliceBlue" Margin="5,0,5,0" CaretBrush="AliceBlue" />
                         </StackPanel>
 
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="" Foreground="{DynamicResource Menu.Static.Foreground}" />
+                        </StackPanel>
                     </Grid>
                 </ScrollViewer>
             </TabItem>
 
-            <TabItem Header="Loadout" Style="{DynamicResource DocumentTabItemStyle}" />
+            <TabItem Header="Loadout" Style="{DynamicResource DocumentTabItemStyle}">
+                <Grid x:Name="LoadoutPanel" Background="{DynamicResource Menu.Static.Background}"
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

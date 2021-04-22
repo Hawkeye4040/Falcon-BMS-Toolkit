@@ -73,22 +73,30 @@ namespace Falcon.Planner.Windows
 
         private void FlightLeadSlotButton_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            // TODO: Add validation to check if an exact instance of this window viewing the same aircraft is open first.
+            ATOAircraftDetailWindow window = new ATOAircraftDetailWindow();
+            window.Show();
         }
 
         private void FlightWingSlotButton_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            // TODO: Add validation to check if an exact instance of this window viewing the same aircraft is open first.
+            ATOAircraftDetailWindow window = new ATOAircraftDetailWindow();
+            window.Show();
         }
 
         private void ElementLeadSlotButton_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            // TODO: Add validation to check if an exact instance of this window viewing the same aircraft is open first.
+            ATOAircraftDetailWindow window = new ATOAircraftDetailWindow();
+            window.Show();
         }
 
         private void ElementWingSlotButton_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            // TODO: Add validation to check if an exact instance of this window viewing the same aircraft is open first.
+            ATOAircraftDetailWindow window = new ATOAircraftDetailWindow();
+            window.Show();
         }
 
         #endregion

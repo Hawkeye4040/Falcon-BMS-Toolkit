@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         Title="PKG# "
         Background="{DynamicResource Menu.Static.Background}"
-        Width="940" Height="250">
+        Width="800" Height="350">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
-        <ScrollViewer>
+        <ScrollViewer Margin="0,10,0,5">
             <ListView Background="{x:Null}" Margin="5,30,5,15" Style="{DynamicResource ATOListViewStyle}">
 
                 <Border x:Name="ATOFlightCard" Margin="5,10,5,0"

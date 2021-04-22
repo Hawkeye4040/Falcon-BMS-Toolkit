@@ -1,0 +1,44 @@
+﻿<Window x:Class="Falcon.Planner.Windows.BriefingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="clr-namespace:Falcon.UI;assembly=Falcon.UI"
+        mc:Ignorable="d"
+        Title="Mission Briefing"
+        Background="{DynamicResource Menu.Static.Background}"
+        Width="1920" Height="1080">
+    <Window.CommandBindings>
+        <CommandBinding Command="ui:CommonCommands.Fullscreen" Executed="FullscreenCommand_OnExecuted" />
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" Style="{DynamicResource MainMenuStyle}">
+            <MenuItem Header="File">
+                <MenuItem Header="Close" />
+            </MenuItem>
+            <MenuItem Header="View">
+                <MenuItem Header="Full-screen" Command="ui:CommonCommands.Fullscreen" />
+            </MenuItem>
+        </Menu>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+    </Grid>
+</Window>
