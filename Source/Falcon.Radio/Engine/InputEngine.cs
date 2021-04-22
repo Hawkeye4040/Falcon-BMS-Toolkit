@@ -111,7 +111,7 @@ namespace Falcon.Radio.Engine
             if (App.Settings.PushToTalkMode != "Hold" && App.Settings.PushToTalkMode != "Toggle" &&
                 App.Settings.PushToTalkMode != "Single") pushToTalkActive = true;
 
-            //  We have successfully establish an instance of a SAPI engine with a well-formed grammar.
+            //  We have successfully establish an instance of a SAPI engine with well-formed grammar.
 
             IsListening = true;
 
@@ -120,12 +120,9 @@ namespace Falcon.Radio.Engine
 
         public void StopListen()
         {
-            if (speechRecognitionEngine != null)
-            {
-                speechRecognitionEngine.RecognizeAsyncCancel();
-                speechRecognitionEngine.UnloadAllGrammars();
-                speechRecognitionEngine.Dispose();
-            }
+            speechRecognitionEngine?.RecognizeAsyncCancel();
+            speechRecognitionEngine?.UnloadAllGrammars();
+            speechRecognitionEngine?.Dispose();
 
             KeyboardHook.UninstallHook();
             KeyboardHook.KeyDown -= pushToTalkKeyDownHook;
@@ -158,6 +155,7 @@ namespace Falcon.Radio.Engine
 
         private void Recognizer_SpeechRecognitionRejected(object sender, SpeechRecognitionRejectedEventArgs e)
         {
+            // TODO: Change behavior when speech is not recognized.
             UpdateStatusLog("?");
         }
 

@@ -12,6 +12,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Dependencies\**" />
+    <EmbeddedResource Remove="Dependencies\**" />
+    <None Remove="Dependencies\**" />
+    <Page Remove="Dependencies\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Speech" Version="5.0.0" />
   </ItemGroup>
 
