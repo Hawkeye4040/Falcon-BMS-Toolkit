@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Falcon.Core.Collections
 {
+    [SuppressMessage("ReSharper", "ClassCanBeSealed.Global")]
     public class ObservableList<T> : IList<T>, IList, INotifyCollectionChanged, INotifyPropertyChanged
     {
         #region Properties
@@ -124,10 +126,12 @@ namespace Falcon.Core.Collections
             return Items.Remove(item);
         }
 
-        void ICollection<T>.Clear()
+        public virtual void Clear()
         {
             Items.Clear();
         }
+
+        void ICollection<T>.Clear() => Clear();
 
         IEnumerator IEnumerable.GetEnumerator()
         {
@@ -168,10 +172,7 @@ namespace Falcon.Core.Collections
            Items.Remove((T) value);
        }
 
-        void IList.Clear()
-        {
-            Items.Clear();
-        }
+       void IList.Clear() => Clear();
 
         void IList.RemoveAt(int index)
         {
