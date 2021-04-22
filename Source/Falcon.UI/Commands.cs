@@ -70,6 +70,11 @@ namespace Falcon.UI
         #endregion
     }
 
+    public static class EditorCommands
+    {
+
+    }
+
     public static class MenuCommands
     {
         #region Fields
