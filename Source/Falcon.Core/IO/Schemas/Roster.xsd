@@ -7,7 +7,8 @@
             xmlns="Falcon:Core:IO:Schemas"
             xmlns:mstns="Falcon:Core:IO:Schemas"
             xmlns:xs="http://www.w3.org/2001/XMLSchema"
-            schemaLocation="file:///C:/Users/mjwil/source/repos/Falcon-BMS-Toolkit/Source/Falcon.Core/IO/Schemas/Roster.xsd">
+            schemaLocation="file:///C:/Users/mjwil/source/repos/Falcon-BMS-Toolkit/Source/Falcon.Core/IO/Schemas/Roster.xsd"
+            xs:include="Falcon:Core:IO:Schemas">
 
   <xs:complexType name="Roster">
     <xs:attribute name="Id" use="required" type="guid" />
