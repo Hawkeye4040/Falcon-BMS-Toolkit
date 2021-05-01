@@ -1,13 +1,18 @@
-﻿<Window x:Class="Falcon.Radio.Server.Windows.MainWindow"
+﻿<Window x:Class="Falcon.Roster.Windows.ConnectionManagerWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Falcon Radio - Server"
+        Title="Connections"
         Background="{DynamicResource Menu.Static.Background}"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="ToolWindow"
         Width="800" Height="450">
     <Grid>
+        <ListView Background="{x:Null}">
 
+        </ListView>
     </Grid>
 </Window>

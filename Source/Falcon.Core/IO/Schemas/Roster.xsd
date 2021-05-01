@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema  id="Roster"
+            version="1.0"
+            xml:lang="en-us"
+            targetNamespace="Falcon:Core:IO:Schemas"
+            elementFormDefault="qualified"
+            xmlns="Falcon:Core:IO:Schemas"
+            xmlns:mstns="Falcon:Core:IO:Schemas"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            schemaLocation="file:///C:/Users/mjwil/source/repos/Falcon-BMS-Toolkit/Source/Falcon.Core/IO/Schemas/Roster.xsd">
+
+  <xs:complexType name="Roster">
+    <xs:attribute name="Id" use="required" type="guid" />
+  </xs:complexType>
+
+</xs:schema>

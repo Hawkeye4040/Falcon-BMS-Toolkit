@@ -14,21 +14,21 @@ namespace Falcon.Core.Collections
 
         public int Capacity { get; }
 
+        public int Count => Items.Count;
+
+        public List<T> Items { get; protected set; }
+
         public bool IsSynchronized { get; protected set; }
 
         public object SyncRoot { get; protected set; }
-
-        public int Count => Items.Count;
-
-        public bool IsFixedSize => true;
-
-        public List<T> Items { get; protected set; }
 
         int ICollection.Count => Count;
 
         int ICollection<T>.Count => Count;
 
         bool ICollection<T>.IsReadOnly => false;
+
+        public bool IsFixedSize => true;
 
         bool IList.IsReadOnly => false;
 
@@ -45,7 +45,7 @@ namespace Falcon.Core.Collections
         object IList.this[int index]
         {
             get => Items[index];
-            set => Items.Insert(index, (T)value);
+            set => Items.Insert(index, (T) value);
         }
 
         #endregion
@@ -96,19 +96,24 @@ namespace Falcon.Core.Collections
 
         #region Methods
 
+        public void AddRange(IEnumerable<T> items)
+        {
+            Items.AddRange(items);
+        }
+
+        public virtual void Clear()
+        {
+            Items.Clear();
+        }
+
         public void CopyTo(Array array, int index)
         {
-            Items.CopyTo((T[])array, index);
+            Items.CopyTo((T []) array, index);
         }
 
         public void Add(T item)
         {
             Items.Add(item);
-        }
-
-        public void AddRange(IEnumerable<T> items)
-        {
-            Items.AddRange(items);
         }
 
         public bool Contains(T item)
@@ -126,12 +131,10 @@ namespace Falcon.Core.Collections
             return Items.Remove(item);
         }
 
-        public virtual void Clear()
+        void ICollection<T>.Clear()
         {
-            Items.Clear();
+            Clear();
         }
-
-        void ICollection<T>.Clear() => Clear();
 
         IEnumerator IEnumerable.GetEnumerator()
         {
@@ -147,14 +150,14 @@ namespace Falcon.Core.Collections
         {
             if (Count >= Items.Count) return -1;
 
-            Items.Add((T)value);
+            Items.Add((T) value);
 
             return Count - 1;
         }
 
         public bool Contains(object value)
         {
-            return Items.Contains((T)value);
+            return Items.Contains((T) value);
         }
 
         public int IndexOf(object value)
@@ -162,21 +165,24 @@ namespace Falcon.Core.Collections
             return Items.IndexOf((T) value);
         }
 
-        void IList.Insert(int index, object value)
-        {
-            Items.Insert(index, (T)value);
-        }
-
-       void IList.Remove(object value)
-       {
-           Items.Remove((T) value);
-       }
-
-       void IList.Clear() => Clear();
-
-        void IList.RemoveAt(int index)
+        public void RemoveAt(int index)
         {
             Items.RemoveAt(index);
+        }
+
+        void IList.Insert(int index, object value)
+        {
+            Items.Insert(index, (T) value);
+        }
+
+        void IList.Remove(object value)
+        {
+            Items.Remove((T) value);
+        }
+
+        void IList.Clear()
+        {
+            Clear();
         }
 
         public int IndexOf(T item)

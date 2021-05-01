@@ -1,4 +1,4 @@
-﻿namespace Falcon.Radio.Server
+﻿namespace Falcon.Radio.Server.Windows
 {
     /// <summary>
     ///     Interaction logic for MainWindow.xaml

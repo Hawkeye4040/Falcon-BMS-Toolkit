@@ -1,14 +1,77 @@
-﻿<Window x:Class="Falcon.Roster.MainWindow"
+﻿<Window x:Class="Falcon.Roster.Windows.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="clr-namespace:Falcon.UI;assembly=Falcon.UI"
         mc:Ignorable="d"
         Title="Falcon Roster"
         Background="{DynamicResource Menu.Static.Background}"
         WindowState="Maximized"
         Width="1920" Height="1080">
-    <Grid>
 
+    <Window.CommandBindings>
+
+        <!-- File Menu -->
+        <CommandBinding Command="ui:MenuCommands.Save" Executed="SaveCommand_OnExecuted" />
+        <CommandBinding Command="ui:MenuCommands.SaveAs" Executed="SaveAsCommand_OnExecuted" />
+        <CommandBinding Command="ui:MenuCommands.ManageConnections" Executed="ManageConnectionsCommand_OnExecuted" />
+        <CommandBinding Command="ui:MenuCommands.ManageAccount" Executed="ManageAccountCommand_OnExecuted" />
+        <CommandBinding Command="ui:MenuCommands.Settings" Executed="SettingsCommand_OnExecuted" />
+        <CommandBinding Command="ui:MenuCommands.Exit" Executed="ExitCommand_OnExecuted" />
+
+    </Window.CommandBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" Style="{DynamicResource MainMenuStyle}">
+            <MenuItem Header="File">
+                <MenuItem Header="New">
+                    <MenuItem Header="Roster" />
+                    <MenuItem Header="Record" />
+                </MenuItem>
+                <MenuItem Header="Open">
+                    <MenuItem Header="Roster"/>
+                    <MenuItem Header="Record" />
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Save" Command="ui:MenuCommands.Save"/>
+                <MenuItem Header="Save As" Command="ui:MenuCommands.SaveAs"/>
+                <Separator/>
+                <MenuItem Header="Connect" Command="ui:MenuCommands.ManageConnections"/>
+                <MenuItem Header="Account" Command="ui:MenuCommands.ManageAccount" />
+                <Separator/>
+                <MenuItem Header="Settings" Command="ui:MenuCommands.Settings" />
+                <Separator/>
+                <MenuItem Header="Exit" Command="ui:MenuCommands.Exit" />
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Undo"/>
+                <MenuItem Header="Redo"/>
+                <Separator/>
+                <MenuItem Header="Cut"/>
+                <MenuItem Header="Copy"/>
+                <MenuItem Header="Paste"/>
+                <Separator />
+                <MenuItem Header="Delete"/>
+            </MenuItem>
+            <MenuItem Header="View">
+                <MenuItem Header="Roster Explorer"/>
+                <MenuItem Header="Records Explorer"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="Documentation"/>
+                <MenuItem Header="About"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid Grid.Row="1">
+
+        </Grid>
     </Grid>
 </Window>

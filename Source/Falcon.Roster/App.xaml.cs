@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Threading;
 
+using Falcon.Roster.Windows;
+
 namespace Falcon.Roster
 {
     /// <summary>
@@ -46,6 +48,9 @@ namespace Falcon.Roster
 
         private void App_SessionEnding(object sender, SessionEndingCancelEventArgs e)
         {
+            MainWindow _mainWindow = MainWindow as MainWindow;
+
+            // TODO: Attempt to save any changes to any documents on session ending
         }
 
         #endregion

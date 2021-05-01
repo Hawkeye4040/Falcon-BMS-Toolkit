@@ -183,6 +183,13 @@ namespace Falcon.UI
             typeof(MenuCommands)
         );
 
+        public static readonly RoutedUICommand ManageAccount = new RoutedUICommand
+        (
+            "Manage Account",
+            "ManageAccountCommand",
+            typeof(MenuCommands)
+        );
+
         public static readonly RoutedUICommand Settings = new RoutedUICommand
         (
             "Settings",

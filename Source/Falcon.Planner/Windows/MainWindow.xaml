@@ -281,7 +281,6 @@
             </TabItem>
 
             <TabItem Header="Map" Style="{DynamicResource DocumentTabItemStyle}">
-
                 <Grid Background="{DynamicResource Menu.Static.Background}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*" />

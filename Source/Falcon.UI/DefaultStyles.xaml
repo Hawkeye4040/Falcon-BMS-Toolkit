@@ -588,4 +588,8 @@
         <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>
     </Style>
 
+    <Style x:Key="DefaultButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Padding" Value="10,2,10,2" />
+    </Style>
+
 </ResourceDictionary>
