@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -15,15 +16,15 @@ namespace Falcon.Radio.Windows
     {
         #region Fields
 
-        private bool IsMasterPowerEnabled;
+        private bool _isMasterPowerEnabled;
 
-        private bool IsVoiceControlEnabled;
+        private bool _isVoiceControlEnabled;
 
         #endregion
 
         #region Properties
 
-        private bool IsListeningEnabled => IsMasterPowerEnabled && IsVoiceControlEnabled;
+        private bool IsListeningEnabled => _isMasterPowerEnabled && _isVoiceControlEnabled;
 
         #endregion
 
@@ -33,18 +34,17 @@ namespace Falcon.Radio.Windows
         {
             InitializeComponent();
 
-            //App.StartListening(this, EventArgs.Empty);
-
             MMDeviceEnumerator captureDevices = new MMDeviceEnumerator();
 
-            foreach (MMDevice device in captureDevices.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active))
+            foreach (ComboBoxItem item in captureDevices.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active).Select(device => new ComboBoxItem {Content = device.FriendlyName, Tag = device.ID}))
             {
-                ComboBoxItem item = new ComboBoxItem {Content = device.FriendlyName, Tag = device.ID};
-
                 AudioDeviceSelector.Items.Add(item);
             }
 
             AudioDeviceSelector.SelectedIndex = 0;
+
+            if (IsListeningEnabled)
+                App.StartListening(this, EventArgs.Empty);
         }
 
         #endregion
@@ -53,21 +53,21 @@ namespace Falcon.Radio.Windows
 
         private void MasterPowerButton_Checked(object sender, RoutedEventArgs e)
         {
-            IsMasterPowerEnabled = true;
+            _isMasterPowerEnabled = true;
             RadioPowerToggleButton.RenderTransform = new RotateTransform(180);
 
             RadioIndicatorLight.Source =
                 new BitmapImage(new Uri("../Resources/Cockpit Indicator Light.png", UriKind.Relative));
 
-            //  TODO: Fix Indicator light bug.
+            //  BUG: Fix Indicator light issue.
 
             if (IsListeningEnabled) App.StartListening(this, EventArgs.Empty);
         }
 
         private void MasterPowerButton_UnChecked(object sender, RoutedEventArgs e)
         {
-            IsMasterPowerEnabled = true;
-            IsVoiceControlEnabled = false;
+            _isMasterPowerEnabled = true;
+            _isVoiceControlEnabled = false;
             RadioPowerToggleButton.RenderTransform = new RotateTransform(0);
             RadioVoiceControlToggleButton.RenderTransform = new RotateTransform(0);
 
@@ -112,14 +112,5 @@ namespace Falcon.Radio.Windows
         }
 
         #endregion
-
-        /* protected override void OnClosing(CancelEventArgs e)
-         {
-             e.Cancel = true;
- 
-             Hide();
- 
-             base.OnClosing(e);
-         } */
     }
 }

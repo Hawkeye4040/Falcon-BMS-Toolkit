@@ -86,8 +86,9 @@ namespace Falcon.Radio.Engine
 
             catch (Exception e)
             {
-                // TODO: Add debug logging here.
                 Console.WriteLine(e);
+
+                Diagnostics.Log(e);
 
                 throw;
             }
@@ -121,7 +122,7 @@ namespace Falcon.Radio.Engine
                         {
                             Console.WriteLine(e);
 
-                            // TODO: Log Errors here.
+                            Diagnostics.Log(e);
                         }
                     }
 
@@ -292,11 +293,11 @@ namespace Falcon.Radio.Engine
             if (associatedProcess == null) return true;
 
             IntPtr handle = Win32.GetForegroundWindow();
-            Win32.GetWindowThreadProcessId(handle, out uint pid);
+            _ = Win32.GetWindowThreadProcessId(handle, out uint pid);
             Process process = Process.GetProcessById((int) pid);
             string processPath = process.MainModule?.FileName;
 
-            return string.Compare(Path.GetFullPath(processPath), Path.GetFullPath(associatedProcess),
+            return string.Compare(Path.GetFullPath(processPath ?? string.Empty), Path.GetFullPath(associatedProcess),
                 StringComparison.InvariantCultureIgnoreCase) == 0;
         }
 
