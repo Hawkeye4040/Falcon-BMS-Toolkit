@@ -55,6 +55,8 @@ namespace Falcon.Radio.Engine
             {
                 Console.WriteLine(e);
 
+                Diagnostics.Log(e, $"There was an error loading the specified profile.\n {e.Message}");
+
                 MessageBox.Show($"There was an error loading the specified profile.\n {e.Message}",
                     "Error Loading Profile", MessageBoxButton.OK, MessageBoxImage.Exclamation, MessageBoxResult.OK);
             }

@@ -4,13 +4,25 @@ using System.Reflection;
 using System.Windows;
 using System.Xml;
 
+using Falcon.Core;
+
 namespace Falcon.Radio.Engine
 {
     public sealed class Database
     {
+        #region Fields
+
         private string dbFileName;
 
+        #endregion
+
+        #region Properties
+
         public Dictionary<string, Data> DatabaseInternal { get; }
+
+        #endregion
+
+        #region Constructors
 
         public Database()
         {
@@ -21,6 +33,10 @@ namespace Falcon.Radio.Engine
         {
             dbFileName = fileName;
         }
+
+        #endregion
+
+        #region Methods
 
         public void Load(XmlNode dbElements)
         {
@@ -43,25 +59,22 @@ namespace Falcon.Radio.Engine
 
                     Type newDataElementType = Type.GetType($"Falcon.Radio.{dataElementType}");
 
-                    object typeInstance;
-                    object entryInstance;
+                    if (newDataElementType == null) continue;
 
                     MethodInfo methodInfo = newDataElementType.GetMethod("ToObject");
-                    typeInstance = methodInfo.Invoke(null, new object [] {dataElementValue});
-                    entryInstance = Activator.CreateInstance(newDataElementType, dataElementName, typeInstance, dataElementComment);
 
-                    if (entryInstance != null)
-                    {
-                        if (!Insert((Data)entryInstance))
-                        {
-                            // TODO: Log a warning, variable failed to load.
-                        }
+                    if (methodInfo == null) continue;
 
-                        else
-                        {
-                            // TODO: Log successful entry into the database.
-                        }
-                    }
+                    object typeInstance = methodInfo.Invoke(null, new object [] {dataElementValue});
+
+                    object entryInstance = Activator.CreateInstance(newDataElementType, dataElementName, typeInstance,
+                        dataElementComment);
+
+                    if (entryInstance == null) continue;
+
+                    Diagnostics.Log(!Insert((Data) entryInstance)
+                        ? $"Error loading instance of database entry: {entryInstance}"
+                        : "Radio database loaded successfully.");
                 }
             }
             catch (Exception e)
@@ -70,6 +83,9 @@ namespace Falcon.Radio.Engine
 
                 if (e.InnerException != null)
                 {
+                    Diagnostics.Log(e,
+                        $"Warning! Failed to load database from file: \n {e.Message} \n Error Code: {e.InnerException.HResult}");
+
                     MessageBox.Show(
                         $"Warning! Failed to load database from file:\n {e.Message} \n Error Code: {e.InnerException.HResult}",
                         "Warning", MessageBoxButton.OK,
@@ -78,6 +94,9 @@ namespace Falcon.Radio.Engine
 
                 else
                 {
+                    Diagnostics.Log(e,
+                        $"Warning! Failed to load database from file: \n {e.Message} \n Error Code: Unknown");
+
                     MessageBox.Show(
                         $"Warning! Failed to load database from file:\n {e.Message}",
                         "Warning", MessageBoxButton.OK,
@@ -90,13 +109,13 @@ namespace Falcon.Radio.Engine
         {
             writer.WriteStartElement("Database");
 
-            foreach (KeyValuePair<string, Data> data in DatabaseInternal)
+            foreach ((string key, Data value) in DatabaseInternal)
             {
                 writer.WriteStartElement("Data");
-                writer.WriteAttributeString("Name", data.Key);
-                writer.WriteAttributeString("Type", data.Value.Type);
-                writer.WriteAttributeString("Value", data.Value.Value);
-                writer.WriteAttributeString("Comment", data.Value.Comment);
+                writer.WriteAttributeString("Name", key);
+                writer.WriteAttributeString("Type", value.Type);
+                writer.WriteAttributeString("Value", value.Value);
+                writer.WriteAttributeString("Comment", value.Comment);
                 writer.WriteEndElement();
             }
 
@@ -109,8 +128,8 @@ namespace Falcon.Radio.Engine
             if (DatabaseInternal.ContainsKey(data.Name)) return false;
 
             DatabaseInternal.Add(data.Name, data);
-            return true;
 
+            return true;
         }
 
         public bool Remove(Data data)
@@ -118,8 +137,8 @@ namespace Falcon.Radio.Engine
             if (!DatabaseInternal.ContainsKey(data.Name)) return false;
 
             DatabaseInternal.Remove(data.Name);
-            return true;
 
+            return true;
         }
 
         public bool Update(Data data)
@@ -127,13 +146,15 @@ namespace Falcon.Radio.Engine
             if (!DatabaseInternal.ContainsKey(data.Name)) return false;
 
             DatabaseInternal[data.Name] = data;
-            return true;
 
+            return true;
         }
 
         public bool IsDataNameTaken(string name)
         {
             return DatabaseInternal.ContainsKey(name);
         }
+
+        #endregion
     }
 }

@@ -6,19 +6,19 @@ using System.Xml;
 
 namespace Falcon.Radio.Engine
 {
-    public class ActionSequence : ITriggerEvent
+    public sealed class ActionSequence : ITriggerEvent
     {
         #region Properties
 
-        public List<Action> Actions { get; protected set; }
+        public List<Action> Actions { get; }
 
-        public string Name { get; set; }
+        public string Name { get; }
 
         public string Type { get; }
 
-        public string Comment { get; set; }
+        public string Comment { get; }
 
-        public string Value { get; set; }
+        public string Value { get; }
 
         #endregion
 
@@ -65,7 +65,6 @@ namespace Falcon.Radio.Engine
             if (element.Attributes["Comment"] != null) Comment = element.Attributes["Comment"].Value;
 
             foreach (XmlNode action in element.ChildNodes)
-            {
                 if (action.Attributes != null)
                 {
                     string actionType = action.Attributes.GetNamedItem("Type").Value;
@@ -118,21 +117,11 @@ namespace Falcon.Radio.Engine
                         }
                     }
                 }
-            }
         }
 
         #endregion
 
         #region Methods
-
-        public void Run()
-        {
-            foreach (Action action in Actions)
-            {
-                action.Run();
-                Thread.Sleep(20);
-            }
-        }
 
         public void WriteXml(XmlWriter writer)
         {
@@ -152,8 +141,8 @@ namespace Falcon.Radio.Engine
                         writer.WriteAttributeString("Type", action.Type);
                         writer.WriteAttributeString("Value", action.Value);
 
-                        PlaySound sound = (PlaySound)action;
-                        
+                        PlaySound sound = (PlaySound) action;
+
                         writer.WriteAttributeString("DeviceId", sound.GetDeviceId().ToString());
 
                         break;
@@ -163,6 +152,7 @@ namespace Falcon.Radio.Engine
                     {
                         writer.WriteAttributeString("Type", action.Type);
                         writer.WriteAttributeString("Value", action.Value);
+
                         break;
                     }
                 }
@@ -171,6 +161,15 @@ namespace Falcon.Radio.Engine
             }
 
             writer.WriteEndElement();
+        }
+
+        public void Run()
+        {
+            foreach (Action action in Actions)
+            {
+                action.Run();
+                Thread.Sleep(20);
+            }
         }
 
         #endregion

@@ -1,10 +1,13 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Speech.Synthesis;
 using System.Threading;
 using System.Windows;
 
+using Falcon.Core;
 using Falcon.Core.Utilities;
 
 using NAudio.Wave;
@@ -17,7 +20,7 @@ namespace Falcon.Radio.Engine
 
         public string Type { get; }
 
-        public string Value { get; set; }
+        public virtual string Value { get; protected set; }
 
         #endregion
 
@@ -117,7 +120,7 @@ namespace Falcon.Radio.Engine
     {
         #region Fields
 
-        private SpeechSynthesizer _profileSynthesis;
+        private readonly SpeechSynthesizer _profileSynthesis;
 
         #endregion
 
@@ -144,7 +147,7 @@ namespace Falcon.Radio.Engine
             {
                 Console.WriteLine(e);
 
-                // TODO: Log error.
+                Diagnostics.Log(e);
             }
         }
 
@@ -177,10 +180,12 @@ namespace Falcon.Radio.Engine
         #region Fields
 
         public const int DefaultDeviceId = -1;
-        private IWavePlayer wavePlayer;
-        private WaveOut waveOut;
-        private AudioFileReader audioFileReader;
-        private int playbackDeviceId;
+
+        private readonly IWavePlayer _wavePlayer;
+
+        private AudioFileReader _audioFileReader;
+
+        private readonly int _playbackDeviceId;
 
         #endregion
 
@@ -188,13 +193,13 @@ namespace Falcon.Radio.Engine
 
         public PlaySound(string fileName, int deviceId)
         {
-            playbackDeviceId = deviceId;
+            _playbackDeviceId = deviceId;
 
             try
             {
-                waveOut = new WaveOut {DeviceNumber = playbackDeviceId};
-                wavePlayer = waveOut;
-                audioFileReader = new AudioFileReader(Value);
+                WaveOut waveOut = new WaveOut {DeviceNumber = _playbackDeviceId};
+                _wavePlayer = waveOut;
+                _audioFileReader = new AudioFileReader(Value);
             }
 
             catch (Exception e)
@@ -216,12 +221,12 @@ namespace Falcon.Radio.Engine
 
         public void Stop()
         {
-            wavePlayer?.Stop();
+            _wavePlayer?.Stop();
         }
 
         public int GetDeviceId()
         {
-            return playbackDeviceId;
+            return _playbackDeviceId;
         }
 
         #endregion
@@ -274,6 +279,7 @@ namespace Falcon.Radio.Engine
 
         public override void Run()
         {
+            
         }
 
         #endregion
@@ -336,9 +342,9 @@ namespace Falcon.Radio.Engine
     {
         #region Fields
 
-        private SpeechSynthesizer profileSynthesizer;
+        private readonly SpeechSynthesizer _profileSynthesizer;
 
-        private Data data;
+        private readonly Data _data;
 
         #endregion
 
@@ -346,8 +352,8 @@ namespace Falcon.Radio.Engine
 
         public DataSpeak(SpeechSynthesizer profileSynthesizer, Data data)
         {
-            this.profileSynthesizer = profileSynthesizer;
-            this.data = data;
+            this._profileSynthesizer = profileSynthesizer;
+            this._data = data;
         }
 
         #endregion
@@ -358,7 +364,7 @@ namespace Falcon.Radio.Engine
         {
             try
             {
-                profileSynthesizer.SpeakAsync(data.Value);
+                _profileSynthesizer.SpeakAsync(_data.Value);
             }
 
             catch (Exception e)
@@ -377,7 +383,7 @@ namespace Falcon.Radio.Engine
     {
         #region Fields
 
-        private Process process = new Process();
+        private Process _process = new Process();
 
         #endregion
 
@@ -393,7 +399,40 @@ namespace Falcon.Radio.Engine
 
         public override void Run()
         {
-            Process.Start(Value);
+            try
+            {
+                Process.Start(Value);
+            }
+
+            catch (Win32Exception e)
+            {
+                Console.WriteLine(e);
+
+                Diagnostics.Log(e, "Win32 exception occured during process execution action.");
+            }
+
+            catch (ObjectDisposedException e)
+            {
+                Console.WriteLine(e);
+
+                Diagnostics.Log(e, "Object disposed exception occured during process execution action.");
+            }
+
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine(e);
+
+                Diagnostics.Log(e, "File not found exception occured during process execution action.");
+            }
+
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+
+                Diagnostics.Log(e, "Unknown error occured during process execution action.");
+
+                throw;
+            }
         }
 
         #endregion

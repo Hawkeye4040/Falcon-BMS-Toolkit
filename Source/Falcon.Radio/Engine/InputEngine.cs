@@ -6,6 +6,8 @@ using System.Speech.Synthesis;
 using System.Windows;
 using System.Windows.Input;
 
+using Falcon.Core;
+
 using InputManager;
 
 namespace Falcon.Radio.Engine
@@ -62,7 +64,7 @@ namespace Falcon.Radio.Engine
             synthesizer.SelectVoice(App.Settings.VoiceInfo);
             speechRecognitionEngine = new SpeechRecognitionEngine(App.Settings.RecognizerInfo);
 
-            GrammarBuilder grammarPhrases = new GrammarBuilder { Culture = App.Settings.RecognizerInfo };
+            GrammarBuilder grammarPhrases = new GrammarBuilder {Culture = App.Settings.RecognizerInfo};
 
             // Grammar must match speech recognition language localization
 
@@ -166,7 +168,7 @@ namespace Falcon.Radio.Engine
             // Only check if pushToTalkKeyIsDown is false
             // aka : pptKey is not down
 
-            if (((Key)vkCode).ToString() == App.Settings.PushToTalkKey)
+            if (((Key) vkCode).ToString() == App.Settings.PushToTalkKey)
             {
                 //if (pushToTalkKeyIsDown == false)
                 if (App.Settings.PushToTalkMode == "Hold")
@@ -198,8 +200,8 @@ namespace Falcon.Radio.Engine
 
                 else
                 {
-                    // TODO : Log warning, someone edited settings code 
-                    // but did not update the hooks here.
+                    Diagnostics.Log(
+                        "Error reading keyboard hook(s)! This was most likely caused by manually editing the key bindings file improperly.");
                 }
 
                 pushToTalkKeyIsDown = true;
@@ -227,8 +229,8 @@ namespace Falcon.Radio.Engine
 
                 else
                 {
-                    // TODO : Log warning, someone edited settings code 
-                    // but did not update the hooks here.
+                    Diagnostics.Log(
+                        "Error reading keyboard hook(s)! This was most likely caused by manually editing the key bindings file improperly.");
                 }
             }
         }
