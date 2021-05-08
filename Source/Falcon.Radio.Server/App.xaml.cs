@@ -46,7 +46,7 @@ namespace Falcon.Radio.Server
 
         private void App_SessionEnding(object sender, SessionEndingCancelEventArgs e)
         {
-            
+            // TODO: Add status message for server (self) and clients indicating the radio server session is ending.
         }
 
         #endregion
