@@ -9,3 +9,6 @@ Feature rich GUI for creating Campaigns, Operations, and various other modificat
 
 ## Falcon Radio
 Communication tool used for communication with AI and Human controlled aircraft alike.
+
+## Falcon Roster
+Personnel management tool optimized for use by Squadron/Wing S1 - Personnel Staff Offices.
