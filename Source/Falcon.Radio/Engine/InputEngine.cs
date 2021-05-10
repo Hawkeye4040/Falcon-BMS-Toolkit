@@ -18,17 +18,17 @@ namespace Falcon.Radio.Engine
 
         public bool IsListening;
 
-        private SpeechSynthesizer synthesizer;
+        private SpeechSynthesizer _synthesizer;
 
-        private SpeechRecognitionEngine speechRecognitionEngine;
+        private SpeechRecognitionEngine _speechRecognitionEngine;
 
-        private bool pushToTalkActive;
+        private bool _pushToTalkActive;
 
-        private bool pushToTalkKeyIsDown;
+        private bool _pushToTalkKeyIsDown;
 
-        private KeyboardHook.KeyDownEventHandler pushToTalkKeyDownHook;
+        private readonly KeyboardHook.KeyDownEventHandler _pushToTalkKeyDownHook;
 
-        private KeyboardHook.KeyUpEventHandler pushToTalkKeyUpHook;
+        private readonly KeyboardHook.KeyUpEventHandler _pushToTalkKeyUpHook;
 
         #endregion
 
@@ -36,10 +36,10 @@ namespace Falcon.Radio.Engine
 
         public InputEngine()
         {
-            pushToTalkActive = false;
-            pushToTalkKeyIsDown = false;
-            pushToTalkKeyDownHook = KeyboardHook_KeyDown;
-            pushToTalkKeyUpHook = KeyboardHook_KeyUp;
+            _pushToTalkActive = false;
+            _pushToTalkKeyIsDown = false;
+            _pushToTalkKeyDownHook = KeyboardHook_KeyDown;
+            _pushToTalkKeyUpHook = KeyboardHook_KeyUp;
         }
 
         #endregion
@@ -55,14 +55,15 @@ namespace Falcon.Radio.Engine
             if (App.ActiveProfile.ProfileTriggers != null &&
                 App.ActiveProfile.ProfileTriggers.Count == 0)
             {
-                MessageBox.Show("You need to add at least one Trigger");
+                Diagnostics.Log("LoadListen() called without a trigger added.");
+                MessageBox.Show("At least one Trigger must be added!");
 
                 return false;
             }
 
-            synthesizer = App.ActiveProfile.Synthesizer;
-            synthesizer.SelectVoice(App.Settings.VoiceInfo);
-            speechRecognitionEngine = new SpeechRecognitionEngine(App.Settings.RecognizerInfo);
+            _synthesizer = App.ActiveProfile.Synthesizer;
+            _synthesizer.SelectVoice(App.Settings.VoiceInfo);
+            _speechRecognitionEngine = new SpeechRecognitionEngine(App.Settings.RecognizerInfo);
 
             GrammarBuilder grammarPhrases = new GrammarBuilder {Culture = App.Settings.RecognizerInfo};
 
@@ -77,43 +78,44 @@ namespace Falcon.Radio.Engine
                     select trigger.Value);
 
             grammarPhrases.Append(new Choices(glossary.ToArray()));
-            speechRecognitionEngine.LoadGrammar(new Grammar(grammarPhrases));
+            _speechRecognitionEngine.LoadGrammar(new Grammar(grammarPhrases));
 
             // event function hook
-            speechRecognitionEngine.SpeechRecognized += PhraseRecognized;
-            speechRecognitionEngine.SpeechRecognitionRejected += Recognizer_SpeechRecognitionRejected;
+            _speechRecognitionEngine.SpeechRecognized += PhraseRecognized;
+            _speechRecognitionEngine.SpeechRecognitionRejected += Recognizer_SpeechRecognitionRejected;
 
             try
             {
-                speechRecognitionEngine.SetInputToDefaultAudioDevice();
+                _speechRecognitionEngine.SetInputToDefaultAudioDevice();
             }
 
-            catch (InvalidOperationException exception)
+            catch (InvalidOperationException e)
             {
-                //  For the time being, we're only catching failures to address an input device (typically a
-                //  microphone). // TODO: Show error message indicating a microphone was not detected.
-
-
+                Diagnostics.Log(e, "No microphone was detected.");
+                MessageBox.Show("No microphone was detected!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
 
-            catch (Exception)
+            catch (Exception e)
             {
-                // TODO: Show unknown error message here.
+                Diagnostics.Log(e, "An Unknown error occured when attempting to set default input device.");
+
+                MessageBox.Show("An unknown error has occured, contact support if the problem persists.", "Error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
 
-            speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
+            _speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
 
-            // Install Push to talk key hooks.
-            KeyboardHook.KeyDown += pushToTalkKeyDownHook;
-            KeyboardHook.KeyUp += pushToTalkKeyUpHook;
+            // subscribe to Push-to-Talk key hooks.
+            KeyboardHook.KeyDown += _pushToTalkKeyDownHook;
+            KeyboardHook.KeyUp += _pushToTalkKeyUpHook;
             KeyboardHook.InstallHook();
 
             if (App.Settings.PushToTalkMode != "Hold" && App.Settings.PushToTalkMode != "Toggle" &&
-                App.Settings.PushToTalkMode != "Single") pushToTalkActive = true;
+                App.Settings.PushToTalkMode != "Single") _pushToTalkActive = true;
 
-            //  We have successfully establish an instance of a SAPI engine with well-formed grammar.
+            //  successfully established an instance of SAPI engine with well-formed grammar.
 
             IsListening = true;
 
@@ -122,20 +124,20 @@ namespace Falcon.Radio.Engine
 
         public void StopListen()
         {
-            speechRecognitionEngine?.RecognizeAsyncCancel();
-            speechRecognitionEngine?.UnloadAllGrammars();
-            speechRecognitionEngine?.Dispose();
+            _speechRecognitionEngine?.RecognizeAsyncCancel();
+            _speechRecognitionEngine?.UnloadAllGrammars();
+            _speechRecognitionEngine?.Dispose();
 
             KeyboardHook.UninstallHook();
-            KeyboardHook.KeyDown -= pushToTalkKeyDownHook;
-            KeyboardHook.KeyUp -= pushToTalkKeyUpHook;
+            KeyboardHook.KeyDown -= _pushToTalkKeyDownHook;
+            KeyboardHook.KeyUp -= _pushToTalkKeyUpHook;
 
             IsListening = false;
         }
 
         private void PhraseRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-            if (pushToTalkActive)
+            if (_pushToTalkActive)
             {
                 string recognizedValue = e.Result.Text;
 
@@ -149,7 +151,7 @@ namespace Falcon.Radio.Engine
 
                 if (App.Settings.PushToTalkMode == "Single")
                 {
-                    pushToTalkActive = false;
+                    _pushToTalkActive = false;
                     UpdateStatusLog("Stop Listening");
                 }
             }
@@ -163,75 +165,73 @@ namespace Falcon.Radio.Engine
 
         private void KeyboardHook_KeyDown(int vkCode)
         {
-            if (pushToTalkKeyIsDown) return;
+            if (_pushToTalkKeyIsDown) return;
 
-            // Only check if pushToTalkKeyIsDown is false
-            // aka : pptKey is not down
+            // Only check if Push-to-Talk key is not pressed.
 
-            if (((Key) vkCode).ToString() == App.Settings.PushToTalkKey)
+            if (((Key) vkCode).ToString() != App.Settings.PushToTalkKey) return;
+
+            switch (App.Settings.PushToTalkMode)
             {
-                //if (pushToTalkKeyIsDown == false)
-                if (App.Settings.PushToTalkMode == "Hold")
-                {
-                    pushToTalkActive = true;
+                case "Hold":
+                    _pushToTalkActive = true;
                     UpdateStatusLog("Start Listening");
-                }
 
-                else if (App.Settings.PushToTalkMode == "Toggle")
+                    break;
+                case "Toggle" when _pushToTalkActive == false:
+                    _pushToTalkActive = true;
+                    UpdateStatusLog("Start Listening");
+
+                    break;
+                case "Toggle":
+                    _pushToTalkActive = false;
+                    UpdateStatusLog("Stop Listening");
+
+                    break;
+                case "Single":
                 {
-                    if (pushToTalkActive == false)
-                    {
-                        pushToTalkActive = true;
-                        UpdateStatusLog("Start Listening");
-                    }
-                    else
-                    {
-                        pushToTalkActive = false;
-                        UpdateStatusLog("Stop Listening");
-                    }
-                }
-                else if (App.Settings.PushToTalkMode == "Single")
-                {
-                    if (pushToTalkActive == false)
+                    if (_pushToTalkActive == false)
                         UpdateStatusLog("Start Listening");
 
-                    pushToTalkActive = true;
-                }
+                    _pushToTalkActive = true;
 
-                else
-                {
+                    break;
+                }
+                default:
                     Diagnostics.Log(
                         "Error reading keyboard hook(s)! This was most likely caused by manually editing the key bindings file improperly.");
-                }
 
-                pushToTalkKeyIsDown = true;
+                    break;
             }
+
+            _pushToTalkKeyIsDown = true;
         }
 
         private void KeyboardHook_KeyUp(int vkCode)
         {
-            if (pushToTalkKeyIsDown == false) return;
+            if (_pushToTalkKeyIsDown == false) return;
 
-            if (((Key) vkCode).ToString() == App.Settings.PushToTalkKey)
+            if (((Key) vkCode).ToString() != App.Settings.PushToTalkKey) return;
+
+            switch (App.Settings.PushToTalkMode)
             {
-                if (App.Settings.PushToTalkMode == "Hold")
-                {
-                    pushToTalkKeyIsDown = false;
-                    pushToTalkActive = false;
+                case "Hold":
+                    _pushToTalkKeyIsDown = false;
+                    _pushToTalkActive = false;
 
                     UpdateStatusLog("Stop Listening");
-                }
 
-                else if (App.Settings.PushToTalkMode == "Toggle" || App.Settings.PushToTalkMode == "Single")
-                {
-                    pushToTalkKeyIsDown = false;
-                }
+                    break;
+                case "Toggle":
+                case "Single":
+                    _pushToTalkKeyIsDown = false;
 
-                else
-                {
+                    break;
+                default:
                     Diagnostics.Log(
                         "Error reading keyboard hook(s)! This was most likely caused by manually editing the key bindings file improperly.");
-                }
+
+                    break;
             }
         }
 
